@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ứng dụng chuyển đổi tiền tệ</title>
+</head>
+<body>
+<h1>Chuyển đổi tiền tệ</h1>
+<p>Bạn hãy lựa chọn loại tiền gốc, loại tiền muốn đổi và số tiền cần đổi</p>
+<table>
+    <tr>
+        <th style="width: 200px">Amount</th>
+        <th style="width: 200px">From Currency</th>
+        <th style="width: 200px">To Currency</th>
+    </tr>
+    <tr>
+        <td><input type="number" id="amount"></td>
+        <td>
+            <select style="width: 200px" id="select1">
+                <option value="VND">VietNam</option>
+                <option value="USD">USD</option>
+                <option value="JPY">JPY</option>
+            </select>
+        </td>
+        <td>
+            <select style="width: 200px" id="select2">
+                <option value="VND">VietNam</option>
+                <option value="USD">USD</option>
+                <option value="JPY">JPY</option>
+            </select>
+        </td>
+        <td>
+            <button type="button" onclick="convert()" style="background-color: dodgerblue">Convert</button>
+        </td>
+    </tr>
+</table>
+<br>
+<p style="color: blue">Result: <span id="result"></span></p>
+<script src="Chuyen_Doi_Tien_Te.js"></script>
+</body>
+</html>

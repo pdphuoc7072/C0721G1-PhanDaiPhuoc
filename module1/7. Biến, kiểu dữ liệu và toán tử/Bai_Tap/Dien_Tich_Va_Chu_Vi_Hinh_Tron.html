@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Diện tích và chu vi hình tròn</title>
+</head>
+<body>
+<p>Bạn hãy nhập bán kính đường tròn <input type="number" id="radius"></p>
+
+<button type="button" onclick="ChuVi()">Tính chu vi</button>
+<p>Chu vi đường tròn là <span id="chuvi"></span></p>
+
+<button type="button" onclick="DienTich()">Tính diện tích</button>
+<p>Diện tích đường tròn là <span id="dientich"></span></p>
+
+<script>
+    function ChuVi() {
+        let r = document.getElementById("radius").value;
+        let a = 2 * 3.14 * r;
+        document.getElementById("chuvi").innerText = a;
+    }
+    function DienTich() {
+        let r = document.getElementById("radius").value;
+        let b = 3.14 * r * r;
+        document.getElementById("dientich").innerText = b;
+    }
+</script>
+</body>
+</html>
