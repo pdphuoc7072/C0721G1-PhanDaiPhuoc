@@ -1,0 +1,19 @@
+table {
+    margin: auto;
+    background: none;
+    border-style: solid;
+}
+#result {
+    width: 285px;
+    height: 70px;
+    font-size: 30px;
+}
+.Button {
+    margin: auto;
+    width: 70px;
+    height: 70px;
+    background-color: white;
+    color: blue;
+    border-style: solid;
+    font-size: 30px;
+}
