@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập cấu trúc điều kiện 01_Bài 2</title>
+</head>
+<body>
+<h2>Nhập tuổi và in ra kết quả nếu tuổi học sinh đó không đủ điều kiện vào học lớp 10.</h2>
+
+<p>Bạn hãy nhập tuổi của bạn: <input type="text" id="input_age"></p>
+<input type="button" value="Xác nhận" onclick="Confirm_Age()">
+<p> <span id="result"></span></p>
+
+<script>
+    function Confirm_Age() {
+        let age = document.getElementById("input_age").value;
+        if (isNaN(age)) {
+            document.getElementById("result").innerText = "Bạn đã nhập chữ!! Hãy nhập lại số tuổi của bạn!!"
+        } else if (age >= 16) {
+            document.getElementById("result").innerText = "Bạn đã đủ điều kiện vào học lớp 10."
+        } else if (age >= 0) {
+            document.getElementById("result").innerText = "Xin lỗi. Bạn chưa đủ điều kiện vào học lớp 10."
+        } else {
+            document.getElementById("result").innerText = "Bạn đã nhập sai!! Hãy nhập lại số tuổi của bạn!!"
+        }
+    }
+</script>
+</body>
+</html>

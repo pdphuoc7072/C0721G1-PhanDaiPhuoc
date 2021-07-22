@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập cấu trúc điều kiện 02_Bài 12</title>
+</head>
+<body>
+<h2>Bài 12: Viết chương trình tính lãi ngân hàng (lãi mẹ đẻ lãi con) khi biết số tiền ban đầu, số tháng cho vay và lãi xuất hàng tháng.</h2>
+<p>Hãy nhập vào số tiền bạn muốn vay (USD):</p>
+    <input type="number" id="input_number">
+<p>Hãy nhập vào số tháng bạn muốn vay (tối đa 3 tháng):</p>
+    <input type="number" id="input_month"> <br> <br>
+<input type="button" value="Xác nhận lãi" onclick="CF()">
+<p><span id="result"></span></p>
+<script>
+    function CF () {
+        let number = parseInt(document.getElementById("input_number").value);
+        let month = parseInt(document.getElementById("input_month").value);
+        switch (month) {
+            case 1:
+                document.getElementById("result").innerText = "Số lãi sẽ là: " + (number*0.05) + " USD";
+                break;
+            case 2:
+                document.getElementById("result").innerText = "Số lãi sẽ là: " + (number*0.05*(2+0.05)) + " USD";
+                break;
+            case 3:
+                document.getElementById("result").innerText = "Số lãi sẽ là: " + (number*(1+(2+0.05)*0.05)*(1+0.05)) + " USD";
+                break;
+        }
+    }
+</script>
+</body>
+</html>

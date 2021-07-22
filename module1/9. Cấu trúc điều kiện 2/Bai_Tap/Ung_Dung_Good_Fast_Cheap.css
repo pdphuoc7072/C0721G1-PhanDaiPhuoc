@@ -1,0 +1,40 @@
+body {
+    font-size: 50px;
+    margin: 0;
+    display: flex;
+    height: 500px;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+}
+.check {
+    position: relative;
+}
+.check:before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    background-color: wheat;
+    display: inline-block;
+    top: -15px;
+    left: -75px;
+    border-radius: 25px;
+}
+.check:after {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    top: -15px;
+    border-radius: 25px;
+    left: -75px;
+    transition: 200ms;
+}
+.check:checked:after {
+    left: 0;
+}
+.check:checked:before {
+    background-color: chartreuse;
+}

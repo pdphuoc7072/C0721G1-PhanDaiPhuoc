@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập cấu trúc điều kiện 02_Bài 11</title>
+</head>
+<body>
+<h2>Bài 11: Viết chương trình tính thuế thu nhập cá nhân.</h2>
+<pre>
+    Nếu lương trên 2000 USD thì thuế TNCN sẽ là 10%.
+    Nếu lương trên 1500 USD thì thuế TNCN sẽ là 8%.
+    Nếu lương trên 1000 USD thì thuế TNCN sẽ là 5%.
+    Nếu lương trên 700 USD thì thuế TNCN sẽ là 3%.
+    Nếu lương dưới 700 USD thì không phải đóng thuế.
+</pre>
+<p>Hãy nhập thu nhập của bạn (USD): <input type="number" id="input_number"></p>
+<input type="button" value="Xác nhận thuế TNCN" onclick="CF_num()">
+<p><span id="result"></span></p>
+
+<script>
+    function CF_num () {
+        let number = parseInt((document.getElementById("input_number").value));
+        if (number >= 2000) {
+            document.getElementById("result").innerText = "Thuế thu nhập cá nhân của bạn sẽ là: " + (number*10/100) + " USD";
+        } else if (number >= 1500) {
+            document.getElementById("result").innerText = "Thuế thu nhập cá nhân của bạn sẽ là: " + (number*8/100) + " USD";
+        } else if (number >= 1000) {
+            document.getElementById("result").innerText = "Thuế thu nhập cá nhân của bạn sẽ là: " + (number*5/100) + " USD";
+        } else if (number >= 700) {
+            document.getElementById("result").innerText = "Thuế thu nhập cá nhân của bạn sẽ là: " + (number*3/100) + " USD";
+        } else {
+            document.getElementById("result").innerText = "Bạn không cần phải đóng thuế thu nhập cá nhân."
+        }
+    }
+</script>
+</body>
+</html>

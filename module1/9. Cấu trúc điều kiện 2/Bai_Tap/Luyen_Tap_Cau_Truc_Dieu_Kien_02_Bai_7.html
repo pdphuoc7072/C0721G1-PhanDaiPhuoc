@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập cấu trúc điều kiện 02_Bài 7</title>
+</head>
+<body>
+<h2>Bài 7: Giải phương trình bậc 2.</h2>
+<p>Cho phương trình bậc 2 theo dạng: ax<sup>2</sup> + bx + c = 0 (a # 0)</p>
+<p>Hãy nhập a, b, c để tìm nghiệm của phương trình</p>
+<p>Hãy nhập số a: <input type="number" id="input_a"></p>
+<p>Hãy nhập số b: <input type="number" id="input_b"></p>
+<p>Hãy nhập số c: <input type="number" id="input_c"></p>
+<input type="button" value="Tìm nghiệm" onclick="GPT()">
+<p><span id="result"></span></p>
+
+<script>
+    function GPT () {
+        let a = parseInt(document.getElementById("input_a").value);
+        let b = parseInt(document.getElementById("input_b").value);
+        let c = parseInt(document.getElementById("input_c").value);
+        let d = b*b - 4*a*c;
+        if (d > 0) {
+            document.getElementById("result").innerText = "Phương trình có nghiệm là: x1 = " + ((-b+Math.sqrt(d))/2*a) + " và x2 = " + ((-b-Math.sqrt(d))/2*a);
+        } else if (d === 0) {
+            document.getElementById("result").innerText = "Phương trình có nghiệm kép là: x = " + (-b/2*a);
+        } else {
+            document.getElementById("result").innerText = "Phương trình đã cho vô nghiệm."
+        }
+    }
+</script>
+</body>
+</html>

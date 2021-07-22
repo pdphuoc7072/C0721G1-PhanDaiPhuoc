@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập cấu trúc điều kiện 01_Bài 5</title>
+</head>
+<body>
+<h2>Bài 5: Xếp hạng học lực của học sinh dựa trên các điểm bài kiểm tra, điểm thi giữa kỳ, điểm thi cuối kỳ</h2>
+
+<p>Hãy nhập vào số điểm bài kiểm tra (Thang điểm 10): <input type="text" id="input_KT"></p>
+<p>Hãy nhập vào số điểm bài giữa kỳ (Thang điểm 10): <input type="text" id="input_GK"></p>
+<p>Hãy nhập vào số điểm bài cuối kỳ (Thang điểm 10): <input type="text" id="input_CK"></p>
+<input type="button" value="Xác nhận" onclick="CF_input()">
+<p><span id="result"></span> </p>
+<script>
+    function CF_input() {
+        let KT = document.getElementById("input_KT").value;
+        let GK = document.getElementById("input_GK").value;
+        let CK = document.getElementById("input_CK").value;
+        let result = (parseInt(KT) + parseInt(GK) + parseInt(CK))/3;
+        if (isNaN(KT) || isNaN(GK) || isNaN(CK)) {
+            document.getElementById("result").innerText = "Bạn đã nhập chữ. Hãy nhập lại số điểm."
+        } else if (result >= 9) {
+            document.getElementById("result").innerText = "Điểm trung bình là " + result + ". Xếp loại Giỏi";
+        } else if (result >= 7) {
+            document.getElementById("result").innerText = "Điểm trung bình là " + result + ". Xếp loại Khá";
+        } else if (result >= 5) {
+            document.getElementById("result").innerText = "Điểm trung bình là " + result + ". Xếp loại Trung Bình";
+        } else {
+            document.getElementById("result").innerText = "Điểm trung bình là " + result + ". Xếp loại Yếu";
+        }
+    }
+</script>
+</body>
+</html>
