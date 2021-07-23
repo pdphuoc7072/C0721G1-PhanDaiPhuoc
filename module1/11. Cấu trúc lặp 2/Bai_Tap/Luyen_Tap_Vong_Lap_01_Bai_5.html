@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập vòng lặp 01 _ Bài 5</title>
+</head>
+<body>
+<h2>Bài 5: Tính tổng của 20 số đầu tiên trong dãy fibonacci.</h2>
+
+<script>
+    let f = 0;
+    let f1 = 0;
+    let f2 = 0;
+    let total = 0;
+    for (let i = 0; i < 20; i++) {
+        if (i == 0) {
+            f = 0;
+            f1 = 1;
+            total += f;
+        } else {
+            f = f1 + f2;
+            f1 = f2;
+            f2 = f;
+            total += f;
+        }
+    }
+    document.write("Tổng của 20 số đầu tiên trong dãy fibonacci là : " + total);
+</script>
+</body>
+</html>

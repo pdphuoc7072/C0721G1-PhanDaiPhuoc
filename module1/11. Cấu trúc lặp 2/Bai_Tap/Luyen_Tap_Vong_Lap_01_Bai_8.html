@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập vòng lặp 01 _ Bài 8</title>
+</head>
+<body>
+<h2>Bài 8: Game đoán số</h2>
+<input type="button" value="Chơi game" onclick="choi_game()">
+<script>
+    function choi_game () {
+        let a = parseInt(prompt("Bạn muốn đoán trong khoảng số (a -> b) nào. Hãy nhập số a;"));
+        let b = parseInt(prompt("Hãy nhập số b"));
+        let random = Math.round(Math.random() * (b - a) + a);
+        let check = false;
+        for (let i = 0; i < 3; i++) {
+            let c = parseInt(prompt("Hãy nhập 1 số mà bạn muốn đoán. Bạn chỉ có " +  (3-i) + " lần đoán"));
+            if (c === random) {
+                alert("Chúc mừng. Bạn đã đoán đúng");
+                check = true;
+                break;
+            } else {
+                alert("Bạn đã đoán sai. Hãy thử lại");
+                check = false;
+            }
+        }
+        if (check == false) {
+            alert("Bạn đã đoán hết 3 lần mà vẫn sai.")
+        }
+    }
+</script>
+</body>
+</html>

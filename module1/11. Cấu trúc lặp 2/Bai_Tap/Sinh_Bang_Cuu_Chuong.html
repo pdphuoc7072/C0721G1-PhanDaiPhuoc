@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sinh bảng cửu chương</title>
+</head>
+<body>
+<script>
+    let dong;
+    let cot;
+    let sout = "<table border='1' width='800' cellspacing='0' cellpadding='5'>"
+    for (dong = 1; dong <= 9; dong++){
+        sout = sout + "<tr>";
+            for (cot = 2; cot <= 9; cot++) {
+                sout = sout + "<td>" + cot + " x " + dong + " = " + cot*dong + "</td>";
+            }
+        sout = sout + "</tr>";
+    }
+    sout = sout + "</table>";
+
+    document.write(sout);
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập vòng lặp 01 _ Bài 4</title>
+</head>
+<body>
+<h2>Bài 4: Tìm số đầu tiên trong dãy fibonacci chia hết cho 5.</h2>
+
+<script>
+    let f = 0;
+    let f1 = 0;
+    let f2 = 0;
+    let mod5 = "";
+    let fibo = "";
+    for (let i = 0; i < 20; i++) {
+        if (i == 0) {
+            f = 0;
+            f1 = 1;
+            fibo += f + " , ";
+        } else {
+            f = f1 + f2;
+            f1 = f2;
+            f2 = f;
+            fibo += f + " , ";
+            if (f % 5 == 0) {
+                mod5 = f;
+                break;
+            }
+        }
+    }
+    document.write("Số đầu tiên trong dãy fibonacci chia hết cho 5 là: " + mod5);
+</script>
+</body>
+</html>
