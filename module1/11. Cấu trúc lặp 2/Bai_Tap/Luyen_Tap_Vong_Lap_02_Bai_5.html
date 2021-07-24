@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập vòng lặp 02 _ Bài 5</title>
+</head>
+<body>
+<h2>Bài 12: Viết chương trình tính lãi ngân hàng (lãi mẹ đẻ lãi con) khi biết số tiền ban đầu, số tháng cho vay và lãi xuất hàng tháng.</h2>
+<p>Hãy nhập vào số tiền bạn muốn vay (USD), lãi suất 5%/1 tháng:</p>
+<input type="number" id="input_number">
+<p>Hãy nhập vào số tháng bạn muốn vay:</p>
+<input type="number" id="input_month"> <br> <br>
+<input type="button" value="Xác nhận" onclick="CF()">
+<p><span id="result"></span></p>
+<script>
+    function CF () {
+        let number = parseInt(document.getElementById("input_number").value);
+        let month = parseInt(document.getElementById("input_month").value);
+        let result;
+        for (let i = 1; i <= month; i++) {
+            number = (number + (number * 5 / 100));
+        }
+        document.getElementById("result").innerText = "Sau " + month + " tháng, số tiền bạn phải trả sẽ là: " + number;
+    }
+</script>
+</body>
+</html>

@@ -5,12 +5,12 @@
     <title>Luyện tập cấu trúc điều kiện 02_Bài 12</title>
 </head>
 <body>
-<h2>Bài 12: Viết chương trình tính lãi ngân hàng (lãi mẹ đẻ lãi con) khi biết số tiền ban đầu, số tháng cho vay và lãi xuất hàng tháng.</h2>
+<h2>Bài 5: Viết chương trình tính lãi ngân hàng (lãi mẹ đẻ lại con) khi biết số tiền ban đầu, số tháng cho vay và lãi xuất hàng tháng.</h2>
 <p>Hãy nhập vào số tiền bạn muốn vay (USD):</p>
     <input type="number" id="input_number">
-<p>Hãy nhập vào số tháng bạn muốn vay (tối đa 3 tháng):</p>
+<p>Hãy nhập vào số tháng bạn muốn vay (tháng):</p>
     <input type="number" id="input_month"> <br> <br>
-<input type="button" value="Xác nhận lãi" onclick="CF()">
+<input type="button" value="Xác nhận" onclick="CF()">
 <p><span id="result"></span></p>
 <script>
     function CF () {
@@ -18,13 +18,13 @@
         let month = parseInt(document.getElementById("input_month").value);
         switch (month) {
             case 1:
-                document.getElementById("result").innerText = "Số lãi sẽ là: " + (number*0.05) + " USD";
+                document.getElementById("result").innerText = "Sau 1 tháng số tiền bạn phải trả là:  " + (number + number*0.05) + " USD";
                 break;
             case 2:
-                document.getElementById("result").innerText = "Số lãi sẽ là: " + (number*0.05*(2+0.05)) + " USD";
+                document.getElementById("result").innerText = "Sau 2 tháng số tiền bạn phải trả là: " + (number*0.05*(2+0.05)+number) + " USD";
                 break;
             case 3:
-                document.getElementById("result").innerText = "Số lãi sẽ là: " + (number*(1+(2+0.05)*0.05)*(1+0.05)) + " USD";
+                document.getElementById("result").innerText = "Sau 3 tháng số tiền bạn phải trả là: " + (number*(1+(2+0.05)*0.05)*(1+0.05)) + " USD";
                 break;
         }
     }
