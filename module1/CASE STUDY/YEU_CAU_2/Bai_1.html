@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 1</title>
+</head>
+<body>
+<p>Hãy nhập lương của bạn: <input type="number" id="input_num"></p>
+<input type="button" value="Xác nhận" onclick="CF()">
+<p><span id="result"></span></p>
+<script>
+    function CF () {
+        let num = parseInt(document.getElementById("input_num").value);
+        if (num >= 15000000) {
+            document.getElementById("result").innerText = "Thuế thu nhập cá nhân của bạn sẽ là: " + (num*20/100) + " VND. Và lương ròng của bạn sẽ là: " + (num-num*20/100) + " VND";
+        } else if (num >= 7000000) {
+            document.getElementById("result").innerText = "Thuế thu nhập cá nhân của bạn sẽ là: " + (num*10/100) + " VND. Và lương ròng của bạn sẽ là: " + (num-num*10/100) + " VND";
+        } else {
+            document.getElementById("result").innerText = "Bạn không thuộc đối tượng chịu thuế thu nhập cá nhân. Và lương ròng của bạn vẫn là: " + num + " VND";
+        }
+    }
+</script>
+</body>
+</html>
