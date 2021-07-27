@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập mảng 01_Bài 2</title>
+</head>
+<body>
+<script>
+    let array = [10,2,11,7,9,15,1,3,20,5];
+    let max = array[0];
+    let x;
+    for (let i = 1; i < array.length; i++) {
+        if (array[i] > max) {
+            max = array[i];
+            x = i;
+        }
+    }
+    alert("Số lớn nhất trong mảng là: " + max + " và ở vị trí index: " + x);
+
+</script>
+</body>
+</html>

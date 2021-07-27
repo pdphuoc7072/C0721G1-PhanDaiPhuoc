@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập mảng 02_Bài 3</title>
+</head>
+<body>
+ <script>
+     let array = ["a", "10", "y", "5", "k", "d", "x", "15", "2", "p", "12", "m", "0"];
+     let x = 0;
+     for (let i = 0; i < array.length; i++) {
+         if ( !(isNaN(array[i]))) {
+             x += 1;
+         }
+     }
+     document.write("Mảng này có " + x + " ký tự số");
+ </script>
+</body>
+</html>

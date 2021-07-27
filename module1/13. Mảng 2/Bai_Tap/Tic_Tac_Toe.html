@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tạo bàn cờ ca rô đơn giản</title>
+</head>
+<body>
+<h3>Caro Game Simple</h3>
+<p id="carogame" ></p>
+<script>
+    let b = document.getElementById("carogame");
+
+    let board = [];
+    let data = "";
+    for (let i = 0; i < 10; i++) {
+        board[i] = new Array("..", "..", "..", "..", "..","..", "..", "..", "..", "..");
+    }
+
+    for (let i = 0; i < 10; i++) {
+        data += "<br/>";
+        for (let j = 0; j < 10; j++) {
+            data += board[i][j] + "&nbsp&nbsp&nbsp&nbsp";
+        }
+    }
+
+    data += "<br/><br/><input type='button' value='Người chơi 1' onclick='changeValue1()'>";
+    data += "<br/><br/><input type='button' value='Người chơi 2' onclick='changeValue2()'>";
+    b.innerHTML = data;
+    function changeValue1() {
+        let positionX = prompt("X: ");
+        let positionY = prompt("Y: ");
+        data = "";
+        board[positionX][positionY] = "x";
+        for (let i = 0; i < 10; i++) {
+            data += "<br/>";
+            for (let j = 0; j < 10; j++) {
+                data += board[i][j] + "&nbsp&nbsp&nbsp&nbsp";
+                if ((board[i][j] === "x" && board[i][j+1] === "x" && board[i][j+2] === "x") ||
+                    (board[i][j] === "x" && board[i+1][j] === "x" && board[i+2][j] === "x") ||
+                    (board[i][j] === "x" && board[i-1][j+1] === "x" && board[i-2][j+2] === "x") ||
+                    (board[i][j] === "x" && board[i+1][j+1] === "x" && board[i+2][j+2] === "x")) {
+                    b.innerHTML = "<hr/>" + data;
+                    alert("chiến thắng");
+                }
+            }
+        }
+
+        data += "<br/><br/><input type='button' value='Người chơi 1' onclick='changeValue1()'>";
+        data += "<br/><br/><input type='button' value='Người chơi 2' onclick='changeValue2()'>";
+        b.innerHTML = "<hr/>" + data;b.innerHTML = "<hr/>" + data;
+    }
+    function changeValue2() {
+        let positionX = prompt("X: ");
+        let positionY = prompt("Y: ");
+        data = "";
+        board[positionX][positionY] = "o";
+        for (let i = 0; i < 10; i++) {
+            data += "<br/>";
+            for (let j = 0; j < 10; j++) {
+                data += board[i][j] + "&nbsp&nbsp&nbsp&nbsp";
+                if ((board[i][j] === "o" && board[i][j+1] === "o" && board[i][j+2] === "o") ||
+                    (board[i][j] === "o" && board[i+1][j] === "o" && board[i+2][j] === "o") ||
+                    (board[i][j] === "o" && board[i-1][j+1] === "o" && board[i-2][j+2] === "o") ||
+                    (board[i][j] === "o" && board[i+1][j+1] === "o" && board[i+2][j+2] === "o")) {
+                    b.innerHTML = "<hr/>" + data;
+                    alert("chiến thắng");
+                }
+            }
+        }
+        data += "<br/><br/><input type='button' value='Người chơi 1' onclick='changeValue1()'>";
+        data += "<br/><br/><input type='button' value='Người chơi 2' onclick='changeValue2()'>";
+        b.innerHTML = "<hr/>" + data;
+    }
+</script>
+</body>
+</html>

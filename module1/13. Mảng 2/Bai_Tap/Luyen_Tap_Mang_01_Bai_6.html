@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập mảng 01_Bài 6</title>
+</head>
+<body>
+ <script>
+     let array = [10,9,11,25,18,15,17,30,20,5];
+     let number = prompt("Hãy nhập 1 số: ");
+     let check;
+     for (let i = 0; i < array.length; i++) {
+         if (number == array[i]) {
+             alert("Số nhập vào thuộc dãy này");
+             check = true;
+             break;
+         } else {
+             check = false;
+         }
+     }
+     if (check == false) {
+         alert("Số nhập vào không thuộc dãy này");
+     }
+ </script>
+</body>
+</html>

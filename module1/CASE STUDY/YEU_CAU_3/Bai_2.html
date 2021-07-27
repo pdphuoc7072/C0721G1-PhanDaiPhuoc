@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 2</title>
+</head>
+<body>
+ <script>
+     let array_1 = [7, 2, 5, 3, 10, 13, 9];
+     let array_2 = [7, 2, 4, 5, 3, 8, 10, 1, 13, 9, 6];
+     let missArray = [];
+     for (let i = 0; i < array_2.length; i++) {
+         if ((array_2[i] != array_1[i]) && array_2[i+1] == array_1[i]) {
+             let b = array_2.splice(i,1);
+             missArray.push(b);
+         }
+     }
+     missArray.sort(function (a, b) {
+         return a - b;
+     });
+     document.write("Những phần tử xuất hiện trong array_2 nhưng không xuất hiện trong array_1 là: " + missArray.join(" "));
+ </script>
+</body>
+</html>

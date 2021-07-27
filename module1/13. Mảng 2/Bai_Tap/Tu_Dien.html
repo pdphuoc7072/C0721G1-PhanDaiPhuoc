@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Từ điển</title>
+</head>
+<body>
+<script>
+    let eng = ["teacher", "student", "car", "truck", "yellow", "red", "rain", "sun", "storm", "weather"];
+    let vie = ["giáo viên", "học sinh", "xe con", "xe tải", "màu vàng", "màu đỏ", "mưa", "nắng", "bão", "thời tiết"];
+    let tim = prompt("Hãy tìm kiếm 1 từ: ");
+    let check;
+    for (let i = 0; i < eng.length; i++) {
+        if (eng[i] === tim) {
+            alert("Từ tiếng Việt sẽ là: " + vie[i]);
+            check = true;
+            break;
+        } else {
+            check = false;
+        }
+    }
+    if (check == false) {
+        alert("Không có dữ liệu");
+    }
+</script>
+</body>
+</html>

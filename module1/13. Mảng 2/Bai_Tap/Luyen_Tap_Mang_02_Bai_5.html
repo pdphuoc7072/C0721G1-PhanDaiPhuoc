@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập mảng 02_Bài 5</title>
+</head>
+<body>
+
+<script>
+    let str_1 = prompt("Hãy nhập vào câu thứ nhất: ");
+    let str_2 = prompt("Hãy nhập vào câu thứ hai: ");
+    let array_1 = str_1.split(" ");
+    let array_2 = str_2.split(" ");
+    let check = true;
+    if (array_1.length !== array_2.length) {
+        check = false;
+    } else {
+        for (let i = 0; i < array_1.length; i++) {
+            if (array_1[i] != array_2[i]) {
+                check = false;
+            } else {
+                check = true;
+            }
+        }
+    }
+
+    if (check) {
+        alert("HAI CHUỖI " + str_1 + " VÀ " + str_2 + " : GIỐNG NHAU");
+    } else {
+        alert("HAI CHUỖI " + str_1 + " VÀ " + str_2 + " : KHÔNG GIỐNG NHAU");
+    }
+</script>
+</body>
+</html>

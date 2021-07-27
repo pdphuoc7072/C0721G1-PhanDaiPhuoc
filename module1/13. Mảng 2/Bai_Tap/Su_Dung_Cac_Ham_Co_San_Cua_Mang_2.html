@@ -6,16 +6,18 @@
 </head>
 <body>
 <script>
-    let str = prompt("Enter a number: ");
-    let array = [str[0]];
-    for (let i = 1; i < str.length; i++) {
-        if (str[i] % 2 === 0 && str[i-1] % 2 === 0) {
-            array.push("-", str[i]);
-        } else {
-            array.push(str[i]);
+    let num = prompt("Hãy nhập vào 1 số: ");
+    const str = num.toString();
+    const result = [str[0]];
+    for(let i = 1; i < str.length; i++) {
+        if((str[i-1]%2 === 0)&&(str[i]%2 === 0)) {
+            result.push("-", str[i]);
+        }
+        else {
+            result.push(str[i]);
         }
     }
-    document.write(array.join());
+    document.write(result.join(""));
 </script>
 </body>
 </html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập mảng 02_Bài 4</title>
+</head>
+<body>
+
+<script>
+    let str = prompt("Hãy nhập vào 1 câu: ");
+    let soTu = 0;
+    for (let i = 0; i < str.length - 1; i++) {
+        if (str[i] == " " && str[i+1] != " ") {
+            soTu += 1;
+        }
+    }
+    if (str[0] != " ") {
+        soTu += 1;
+    }
+    alert("Số từ trong câu: " + str + " là " + soTu + " từ");
+</script>
+</body>
+</html>

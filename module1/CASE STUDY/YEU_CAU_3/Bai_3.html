@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 3</title>
+</head>
+<body>
+<script>
+    let tu_so  = [5, 4, 6, 8, 9, 7];
+    let mau_so = [6, 5, 4, 9, 10, 5];
+    let max = tu_so[0]/mau_so[0];
+    let index;
+    for (let i = 0; i < tu_so.length; i++) {
+        if ((tu_so[i]/mau_so[i]) > max) {
+            max = (tu_so[i]/mau_so[i]);
+            index = i;
+        }
+    }
+    document.write(max + " là phân số lớn nhất, có chỉ số index là: " + index);
+</script>
+</body>
+</html>
