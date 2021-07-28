@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 3</title>
+</head>
+<body>
+ <script>
+     let m = parseInt(prompt("Hãy nhập vào kích thước m: "));
+     let n = parseInt(prompt("Hãy nhập vào kích thước n: "));
+     let ma_tran= new Array();
+     for (let i = 0; i < m; i++) {
+         ma_tran[i] = new Array();
+         for (let j = 0; j < n; j++) {
+             ma_tran[i][j] = Math.floor((Math.random()*100)+1);
+         }
+     }
+     let min = ma_tran[0][0];
+     let max = ma_tran[4][4];
+     for (let i = 0; i < ma_tran.length; i++) {
+         for (let j = 0; j < ma_tran[i].length; j++) {
+             if (ma_tran[i][j] < min) {
+                 min = ma_tran[i][j];
+             }
+         }
+     }
+
+     for (let i = ma_tran.length-1; i >= 0 ; i--) {
+         for (let j = ma_tran[i].length-1; j >= 0; j--) {
+             if (ma_tran[i][j] > max) {
+                 max = ma_tran[i][j];
+             }
+         }
+     }
+     console.log(ma_tran);
+     document.write("Giá trị nhỏ nhất trong mảng này là: " + min + "<br>");
+     document.write("Giá trị lớn nhất trong mảng này là: " + max);
+ </script>
+</body>
+</html>

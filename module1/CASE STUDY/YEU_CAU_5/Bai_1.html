@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 1</title>
+</head>
+<body>
+ <script>
+     let m = parseInt(prompt("Hãy nhập vào kích thước m: "));
+     let n = parseInt(prompt("Hãy nhập vào kích thước n: "));
+     let ma_tran= new Array();
+     for (let i = 0; i < m; i++) {
+         ma_tran[i] = new Array();
+         for (let j = 0; j < n; j++) {
+             ma_tran[i][j] = parseInt(prompt("Hãy nhập giá trị ở vị trí index: " + i + " , " + j));
+         }
+     }
+     console.log(ma_tran);
+     let result = [];
+     for (let i = 0; i < ma_tran.length; i++) {
+         for (let j = 0; j < ma_tran[i].length; j++) {
+             if (ma_tran[i][j] % 2 === 0) {
+                 result.push(ma_tran[i][j]);
+             }
+         }
+     }
+     let total = 0;
+     for (let x = 0; x < result.length; x++) {
+         total += result[x];
+     }
+     document.write("Các số chẵn trong ma trận trên là: " + result.join(" ") + "<br>");
+     document.write("Tổng các số chẵn trong ma trận trên là: " + total);
+
+ </script>
+</body>
+</html>

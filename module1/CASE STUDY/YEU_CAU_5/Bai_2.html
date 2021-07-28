@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 2</title>
+</head>
+<body>
+ <script>
+     let m = parseInt(prompt("Hãy nhập vào kích thước m: "));
+     let n = parseInt(prompt("Hãy nhập vào kích thước n: "));
+     let ma_tran= new Array();
+     for (let i = 0; i < m; i++) {
+         ma_tran[i] = new Array();
+         for (let j = 0; j < n; j++) {
+             ma_tran[i][j] = Math.floor((Math.random()*100)+1);
+         }
+     }
+     function check_prime (number) {
+         let check = true;
+         let x;
+         for (x = 2; x <= Math.sqrt(number); x++){
+             if (number % x === 0 && number > 2) {
+                 check = false;
+             }
+         }
+         return check;
+     }
+     let list_prime = [];
+     for (let k = 0; k < ma_tran.length; k++) {
+         for (let l = 0; l < ma_tran[k].length; l++) {
+             if (check_prime(ma_tran[k][l])) {
+                 list_prime.push(ma_tran[k][l]);
+             }
+         }
+     }
+     for (let i = 0; i < list_prime.length; i++) {
+         if (list_prime[i] == 1) {
+             list_prime.splice(i, 1);
+         }
+     }
+     console.log(ma_tran);
+     document.write("Số nguyên tố trong mảng 2 chiều này là: " + list_prime.join(" ") + "<br>");
+     document.write("Có tất cả " + list_prime.length + " số nguyên tố trong mảng 2 chiều này");
+ </script>
+</body>
+</html>
