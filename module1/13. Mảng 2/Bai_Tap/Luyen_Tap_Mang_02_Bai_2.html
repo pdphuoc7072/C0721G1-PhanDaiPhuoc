@@ -6,7 +6,11 @@
 </head>
 <body>
  <script>
-     let array = ["a", "10", "y", "5", "k", "d", "x", "15", "2", "p"];
+     let number = prompt("Hãy nhập kích thước của mảng: ");
+     let array = [];
+     for (let i = 0; i < number; i++) {
+         array[i] = prompt("Hãy nhập số ở vị trí index: " + i);
+     }
      let first = 0;
      let last = array.length - 1;
      while (first < last) {

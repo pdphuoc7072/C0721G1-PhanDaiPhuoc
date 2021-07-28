@@ -6,13 +6,16 @@
 </head>
 <body>
 <script>
-    let array = [10,9,8,11,12,6,7,98,2,15];
+    let number = parseInt(prompt("Hãy nhập kích thước của mảng: "));
+    let array = [];
     let x = 0;
-    for (let i = 0; i < array.length; i++) {
+    for (let i = 0; i < number; i++) {
+        array[i] = parseInt(prompt("Hãy nhập số ở vị trí index: " + i));
         if (array[i] >= 10) {
             x += 1;
         }
     }
+    console.log(array);
     alert("Có " + x +" số nguyên trong mảng lớn hơn 10");
 </script>
 </body>

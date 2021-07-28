@@ -6,7 +6,11 @@
 </head>
 <body>
  <script>
-     let array = ["a", "10", "y", "5", "k", "d", "x", "15", "2", "p", "12", "m", "0"];
+     let number = prompt("Hãy nhập kích thước của mảng: ");
+     let array = [];
+     for (let i = 0; i < number; i++) {
+         array[i] = prompt("Hãy nhập số ở vị trí index: " + i);
+     }
      let x = 0;
      for (let i = 0; i < array.length; i++) {
          if ( !(isNaN(array[i]))) {

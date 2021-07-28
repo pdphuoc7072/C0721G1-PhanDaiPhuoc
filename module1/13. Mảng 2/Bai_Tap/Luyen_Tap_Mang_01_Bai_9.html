@@ -6,10 +6,20 @@
 </head>
 <body>
 <script>
-    let array_a = [10, 9, 11, 25, 18, 15, 17, 30, 20, 5];
-    let array_b = [1, 13, 8, 4, 50, 9, 19, 6, 2, 80];
-    let array_c = array_a.concat(array_b);
-    document.write(array_c.join(" "));
+    let number_1 = parseInt(prompt("Hãy nhập kích thước của mảng 1: "));
+    let array_1 = [];
+    for (let i = 0; i < number_1; i++) {
+        array_1[i] = parseInt(prompt("Hãy nhập số ở vị trí index: " + i));
+    }
+    let number_2 = parseInt(prompt("Hãy nhập kích thước của mảng 2: "));
+    let array_2 = [];
+    for (let j = 0; j < number_2; j++) {
+        array_2[j] = parseInt(prompt("Hãy nhập số ở vị trí index: " + j));
+    }
+    let array_3 = array_1.concat(array_2);
+    console.log(array_1);
+    console.log(array_2);
+    console.log(array_3);
 </script>
 </body>
 </html>

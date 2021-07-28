@@ -6,13 +6,17 @@
 </head>
 <body>
  <script>
-     let arr = ["Hôm", "nay", "-", "đi", "học", "-", "thêm", "tới", "-", "chiều", "tôi", "-", "đi", "-", "về"];
-     for (let i = 0; i < arr.length; i++) {
-         if (arr[i] == "-") {
-             arr[i] = "_";
+     let number = prompt("Hãy nhập kích thước của mảng: ");
+     let array = [];
+     for (let i = 0; i < number; i++) {
+         array[i] = prompt("Hãy nhập ký tự ở vị trí index: " + i);
+     }
+     for (let i = 0; i < array.length; i++) {
+         if (array[i] == "-") {
+             array[i] = "_";
          }
      }
-     alert(arr.join(""));
+     alert(array.join(""));
 
  </script>
 </body>
