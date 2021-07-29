@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập tạo và sử dụng hàm 02_Bài 2</title>
+</head>
+<body>
+ <script>
+     function acreageCircle(radius) {
+         return 3.14 * radius * radius;
+     }
+     function circuitCircle(radius) {
+         return 3.14 * 2 * radius;
+     }
+     let input_radius = parseInt(prompt("Hãy nhập vào bán kính của đường tròn: "));
+     let result_1 = acreageCircle(input_radius);
+     let result_2 = circuitCircle(input_radius);
+     alert("Diện tích của hình tròn có bán kính: " + input_radius + " là " + result_1);
+     alert("Chu vi của hình tròn có bán kính: " + input_radius + " là " + result_2);
+ </script>
+</body>
+</html>

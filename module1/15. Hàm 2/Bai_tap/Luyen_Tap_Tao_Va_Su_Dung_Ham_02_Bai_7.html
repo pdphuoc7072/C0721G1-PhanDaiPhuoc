@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập tạo và sử dụng hàm 02_Bài 7</title>
+</head>
+<body>
+ <script>
+     function swapNumber(arr) {
+         let temp = arr[0];
+         arr[0] = arr[1];
+         arr[1] = temp;
+     }
+     let input_number1 = prompt("Hãy nhập số nguyên thứ 1: ");
+     let input_number2 = prompt("Hãy nhập số nguyên thứ 2: ");
+     let array = [input_number1, input_number2];
+     swapNumber(array);
+     alert("Sau khi đổi chỗ: Số nguyên thứ 1 sẽ là: " + array[0] + " và số nguyên thứ 2 sẽ là: " + array[1]);
+ </script>
+</body>
+</html>

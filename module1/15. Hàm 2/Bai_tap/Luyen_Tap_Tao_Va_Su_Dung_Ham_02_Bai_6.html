@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập tạo và sử dụng hàm 02_Bài 6</title>
+</head>
+<body>
+ <script>
+     function positiveNumber(num) {
+         if (num > 0) {
+             return true;
+         } else {
+             return false;
+         }
+     }
+     let input_number = parseInt(prompt("Bạn hãy nhập vào 1 số: "));
+     let result = positiveNumber(input_number);
+     if (result) {
+         alert("Đây là số nguyên dương");
+     } else {
+         alert("Đây không phải là số nguyên dương");
+     }
+ </script>
+</body>
+</html>

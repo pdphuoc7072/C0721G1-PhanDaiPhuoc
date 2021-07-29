@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ứng dụng quản lý sản phẩm sử dụng hàm</title>
+</head>
+<body>
+<h3>Danh sách các sản phẩm</h3>
+<p><span id="list_product"></span></p> <br>
+<button type="button" onclick="addProduct(product)">Add</button>
+<button type="button" onclick="editProduct(product)">Edit</button>
+<button type="button" onclick="deleteProduct(product)">Delete</button> <br>
+
+ <script>
+     var product = ["Sony Xperia", "Samsung Galaxy", "Nokia 6", "Xiaomi Redmi Note 4", "Apple Iphone 6S"];
+     function displayProduct(arr) {
+         var list = "";
+         for (let i = 0; i < arr.length; i++) {
+             list += (i+1) + ". " + arr[i] + "<br>";
+         }
+         return list;
+     }
+     function addProduct(product) {
+         let new_product = prompt("Hãy nhập tên sản phẩm mà bạn muốn thêm vào: ");
+         product.push(new_product);
+         document.getElementById("list_product").innerHTML = displayProduct(product);
+     }
+     function editProduct(product) {
+         let index = prompt("Hãy nhập vào số thứ tự của sản phẩm mà bạn muốn sửa: ");
+         let new_product = prompt("Hãy nhập tên sản phẩm mà bạn muốn thay thế: ");
+         product[index-1] = new_product;
+         document.getElementById("list_product").innerHTML = displayProduct(product);
+     }
+     function deleteProduct(product) {
+         let index = prompt("Hãy nhập vào số thứ tự của sản phẩm mà bạn muốn xóa: ");
+         product.splice(index-1, 1);
+         document.getElementById("list_product").innerHTML = displayProduct(product);
+     }
+     document.getElementById("list_product").innerHTML = displayProduct(product);
+ </script>
+</body>
+</html>

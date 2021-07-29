@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập tạo và sử dụng hàm 02_Bài 3</title>
+</head>
+<body>
+<script>
+    function factorialNumber(number) {
+        let result = 1;
+        for (let i = 1; i <= number; i++) {
+            result *= i;
+        }
+        return result;
+    }
+    let input_number = parseInt(prompt("Hãy nhập vào 1 số: "));
+    let result = factorialNumber(input_number);
+    alert("Giai thừa của " + input_number + " là " + result);
+</script>
+</body>
+</html>

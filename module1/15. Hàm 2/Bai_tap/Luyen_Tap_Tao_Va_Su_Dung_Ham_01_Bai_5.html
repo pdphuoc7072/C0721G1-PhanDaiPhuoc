@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập tạo và sử dụng hàm 01_Bài 5</title>
+</head>
+<body>
+<script>
+    let array_1 = ["Polaris", "Aldebaran", "Deneb", "Vega", "Altair", "Dubhe", "Regulus"];
+    let array_2 = ["Ursa Minor", "Tarurus", "Cygnus", "Lyra", "Aquila", "Ursa Major", "Leo"];
+    let check;
+    function searchStar(input_string) {
+        for (let i = 0; i < array_1.length; i++) {
+            if (input_string == array_1[i]) {
+                check = true;
+                return array_2[i];
+                break;
+            } else {
+                check = false;
+            }
+        }
+        return check;
+    }
+    let inputString = prompt("Hãy nhập 1 ngôi sao: ");
+    let result = searchStar(inputString);
+    if (check == false) {
+        alert("Không tìm thấy ngôi sao mà bạn cần tìm");
+    } else {
+        alert("Chòm sao của ngôi sao: " + inputString + " là: " + result);
+    }
+</script>
+</body>
+</html>

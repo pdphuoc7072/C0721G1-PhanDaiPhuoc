@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f01be9b0-336c-4e25-b5de-0f7f3fe16cfd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../14. Hàm 1/Thuc_Hanh/Chuyen_Doi_Nhiet_Do.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../14. Hàm 1/Thuc_Hanh/Tao_Va_Goi_Ham.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../14. Hàm 1/Thuc_Hanh/Tim_Gia_Tri_Nho_Nhat_Cua_Mang.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Bai_tap/Chuyen_Doi_Giua_Feet_Va_Meters.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Bai_tap/Ham_Kiem_Tra_So_Nguyen_To.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Bai_tap/Luyen_Tap_Tao_Va_Su_Dung_Ham_01_Bai_1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Bai_tap/Luyen_Tap_Tao_Va_Su_Dung_Ham_01_Bai_2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Bai_tap/Luyen_Tap_Tao_Va_Su_Dung_Ham_01_Bai_3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Bai_tap/Luyen_Tap_Tao_Va_Su_Dung_Ham_01_Bai_4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Bai_tap/Luyen_Tap_Tao_Va_Su_Dung_Ham_01_Bai_5.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Bai_tap/Luyen_Tap_Tao_Va_Su_Dung_Ham_02_Bai_1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Bai_tap/Luyen_Tap_Tao_Va_Su_Dung_Ham_02_Bai_2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Bai_tap/Luyen_Tap_Tao_Va_Su_Dung_Ham_02_Bai_3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Bai_tap/Luyen_Tap_Tao_Va_Su_Dung_Ham_02_Bai_4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Bai_tap/Luyen_Tap_Tao_Va_Su_Dung_Ham_02_Bai_5.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Bai_tap/Luyen_Tap_Tao_Va_Su_Dung_Ham_02_Bai_6.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Bai_tap/Luyen_Tap_Tao_Va_Su_Dung_Ham_02_Bai_7.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Bai_tap/Luyen_Tap_Tao_Va_Su_Dung_Ham_02_Bai_8.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Bai_tap/Luyen_Tap_Tao_Va_Su_Dung_Ham_02_Bai_9.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1vyK2Q2jV5wvAR0TRBXOBfeUGnY" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Bai_tap" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f01be9b0-336c-4e25-b5de-0f7f3fe16cfd" name="Default Changelist" comment="" />
+      <created>1627528680957</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1627528680957</updated>
+      <workItem from="1627528682098" duration="20000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="549" y="164" key="FileChooserDialogImpl" timestamp="1627528701295">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state x="549" y="164" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1627528701295" />
+  </component>
+</project>

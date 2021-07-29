@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập tạo và sử dụng hàm 02_Bài 8</title>
+</head>
+<body>
+ <script>
+     function reverseArray(arr) {
+         let first = 0;
+         let last = arr.length-1;
+         while (first < last) {
+             let temp;
+             temp = arr[first];
+             arr[first] = arr[last];
+             arr[last] = temp;
+             first++;
+             last--;
+         }
+     }
+     let input_number = parseInt(prompt("Hãy nhập kích thước của mảng: "))
+     let array = [];
+     for (let i = 0; i < input_number; i++) {
+         array[i] = parseInt(prompt("Hãy nhập số có index là: " + i));
+     }
+     reverseArray(array);
+     alert("Sau khi đảo ngược, mảng sẽ là: " + array.join(" "));
+ </script>
+</body>
+</html>

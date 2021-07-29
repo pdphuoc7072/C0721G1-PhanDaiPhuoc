@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra từ đối xứng</title>
+</head>
+<body>
+ <script>
+     let input_str = prompt("Hãy nhập vào 1 từ: ");
+     let array = input_str.split("");
+     function palindromeArray(arr) {
+         for (let i = 0; i < arr.length; i++) {
+             let check;
+             if (arr[i] != arr[arr.length-1-i]) {
+                 return check = false;
+                 break;
+             } else {
+                 return check = true;
+             }
+         }
+     }
+     function isPalindrome(arr1) {
+         if (palindromeArray(arr1)) {
+             return true;
+         } else {
+             return false;
+         }
+     }
+     if (isPalindrome(array)) {
+         alert("Đây là từ đối xứng");
+     } else {
+         alert("Đây không phải là từ đối xứng");
+     }
+ </script>
+</body>
+</html>
