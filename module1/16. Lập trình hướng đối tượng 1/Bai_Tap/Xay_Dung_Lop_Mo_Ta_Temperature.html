@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xây dựng lớp mô tả Temperature</title>
+</head>
+<body>
+<script>
+    let Temperature = function (Celsius) {
+        this.Celsius = Celsius;
+        this.getFahrenheit = function () {
+            return (this.Celsius - 32) / 1.8;
+        };
+        this.getKenvin = function () {
+            return (this.Celsius + 273.15);
+        };
+        this.setCelsius = function (Celsius) {
+            this.Celsius = Celsius;
+        }
+    };
+    let temperature = new Temperature(25);
+    let f = temperature.getFahrenheit();
+    let k = temperature.getKenvin();
+    alert("Khi độ C là: " + temperature.Celsius  + " thì độ F là: " + f + " và độ K là: " + k);
+
+    temperature.setCelsius(30);
+    let f1 = temperature.getFahrenheit();
+    let k1 = temperature.getKenvin();
+    alert("Khi độ C là: " + temperature.Celsius  + " thì độ F là: " + f1 + " và độ K là: " + k1);
+</script>
+</body>
+</html>

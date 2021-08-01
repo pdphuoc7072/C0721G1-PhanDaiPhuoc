@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xây dựng lớp mô tả hình chữ nhật</title>
+</head>
+<canvas id="myCanvas" width="1368px" height="768px" style="border:1px solid #d3d3d3;"></canvas>
+<body>
+ <script>
+     let Rectangle = function (width, height) {
+         this.width = width;
+         this.height = height;
+
+         this.getWidth = function () {
+             return this.width;
+         };
+         this.getHeight = function () {
+             return this.height;
+         };
+         this.setWidth = function (width) {
+             this.width = width;
+         };
+         this.setHeight = function (height) {
+             this.height = height;
+         };
+         this.getArea = function () {
+             return this.width * this.height;
+         };
+         this.getCircuit = function () {
+             return 2 * (this.width + this.height)
+         };
+     };
+
+     Rectangle.prototype.display = function () {
+         let ctx = document.getElementById("myCanvas").getContext("2d");
+         ctx.rect(10, 10, this.width, this.height);
+         ctx.stroke();
+     };
+
+     let rectangle = new Rectangle(10, 5);
+     let width = rectangle.getWidth();
+     let height = rectangle.getHeight();
+     let area = rectangle.getArea();
+     let circuit = rectangle.getCircuit();
+     alert("Hình chữ nhật có chiều dài là: " + width + " và chiều rộng là: " + height + " thì có diện tích là: " + area + " và chu vi là: " + circuit);
+
+     rectangle.setWidth(20);
+     rectangle.setHeight(10);
+     let width1 = rectangle.getWidth();
+     let height1 = rectangle.getHeight();
+     let area1 = rectangle.getArea();
+     let circuit1 = rectangle.getCircuit();
+     alert("Hình chữ nhật có chiều dài là: " + width1 + " và chiều rộng là: " + height1 + " thì có diện tích là: " + area1 + " và chu vi là: " + circuit1);
+
+     function createRectangle () {
+         let rectangle = new Rectangle(500, 200);
+         rectangle.display();
+     }
+     createRectangle ();
+ </script>
+</body>
+</html>

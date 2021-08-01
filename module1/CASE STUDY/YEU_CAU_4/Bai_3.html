@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 3</title>
+</head>
+<body>
+
+<script>
+    let string_1 = prompt("Hãy nhập vào chuỗi thứ nhất: ");
+    let string_2 = prompt("Hãy nhập vào chuỗi thứ hai: ");
+    let array_1 = string_1.split("");
+    let array_2 = string_2.split("");
+    console.log(array_1);
+    console.log(array_2);
+    let count = 0;
+    for (let i = 0; i < array_1.length; i++) {
+        for (let j = 0; j < array_2.length; j++) {
+            if (array_1[i] == array_2[j]) {
+                array_2.splice(j, 1);
+                count++;
+                break;
+            }
+        }
+    }
+    alert("Có " + count + " ký tự chung của 2 chuỗi " + string_1 + " và " + string_2);
+</script>
+</body>
+</html>

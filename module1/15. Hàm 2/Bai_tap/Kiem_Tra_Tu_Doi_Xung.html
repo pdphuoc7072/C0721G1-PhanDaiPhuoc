@@ -8,19 +8,15 @@
  <script>
      let input_str = prompt("Hãy nhập vào 1 từ: ");
      let array = input_str.split("");
-     function palindromeArray(arr) {
-         for (let i = 0; i < arr.length; i++) {
-             let check;
-             if (arr[i] != arr[arr.length-1-i]) {
-                 return check = false;
-                 break;
-             } else {
-                 return check = true;
-             }
+
+     function isPalindrome(arr) {
+         if (arr.length == 0) {
+             return true;
          }
-     }
-     function isPalindrome(arr1) {
-         if (palindromeArray(arr1)) {
+         if (arr[0] == arr[arr.length-1]) {
+             let last = arr.pop();
+             let first = arr.shift();
+             isPalindrome(arr);
              return true;
          } else {
              return false;

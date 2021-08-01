@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 1</title>
+</head>
+<body>
+ <script>
+     let input_string = prompt("Hãy nhập vào 1 câu: ");
+     let array = input_string.split("");
+     let result = "";
+     if (array[0] === array[0].toLowerCase()) {
+         result += (array[0].toUpperCase());
+     }
+     console.log(array);
+     for (let i = 1; i < array.length; i++) {
+         if (array[i] == " " && array[i+1] == " ") {
+             array.splice(i, 2);
+         } else if (array[i] == " " && (array[i+1] == array[i+1].toLowerCase())) {
+             result += array[i+1].toUpperCase();
+         } else if (array[i] == " " && (array[i+1] == array[i+1].toUpperCase())) {
+             result += array[i+1];
+         } else if (array[i] === array[i].toUpperCase()) {
+             result += array[i].toLowerCase();
+         } else {
+             result += array[i];
+         }
+     }
+
+     console.log(result);
+ </script>
+</body>
+</html>
