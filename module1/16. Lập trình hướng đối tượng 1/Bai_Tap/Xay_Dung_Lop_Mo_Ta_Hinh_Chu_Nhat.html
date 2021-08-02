@@ -7,29 +7,30 @@
 <canvas id="myCanvas" width="1368px" height="768px" style="border:1px solid #d3d3d3;"></canvas>
 <body>
  <script>
-     let Rectangle = function (width, height) {
-         this.width = width;
-         this.height = height;
-
-         this.getWidth = function () {
-             return this.width;
-         };
-         this.getHeight = function () {
-             return this.height;
-         };
-         this.setWidth = function (width) {
+     class Rectangle {
+         constructor(width, height) {
              this.width = width;
-         };
-         this.setHeight = function (height) {
              this.height = height;
-         };
-         this.getArea = function () {
+         }
+         getWidth () {
+             return this.width;
+         }
+         getHeight () {
+             return this.height;
+         }
+         setWidth (width) {
+             this.width = width;
+         }
+         setHeight (height) {
+             this.height = height;
+         }
+         getArea () {
              return this.width * this.height;
-         };
-         this.getCircuit = function () {
+         }
+         getCircuit () {
              return 2 * (this.width + this.height)
-         };
-     };
+         }
+     }
 
      Rectangle.prototype.display = function () {
          let ctx = document.getElementById("myCanvas").getContext("2d");

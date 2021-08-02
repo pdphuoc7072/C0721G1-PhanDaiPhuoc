@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phát triển chương trình sử dụng Remote để điều khiển Tivi</title>
+</head>
+<body>
+ <script>
+     class Remote {
+         constructor(id) {
+             this.id = id;
+         }
+         volumeControl (Tivi, number_volume) {
+             if (Tivi.id == this.id) {
+                 Tivi.connectRemoteToVolumeControl(number_volume);
+             }
+         }
+         channelControl (Tivi, number_channel) {
+             if (Tivi.id == this.id) {
+                 Tivi.connectRemoteToChannelControl(number_channel);
+             }
+         }
+         turnOnOff (Tivi) {
+             if (Tivi.id == this.id) {
+                 Tivi.turnOnOff();
+             }
+         }
+     }
+     class TiVi {
+         constructor(id) {
+             this.id = id;
+             this.tivi_channel = 1;
+             this.volume = 20;
+             this.isOn = false;
+         }
+         turnOnOff () {
+             if (this.isOn) {
+                 this.isOn = false;
+                 console.log("Turn off TIVI");
+             } else {
+                 this.isOn = true;
+                 console.log("Turn on TIVI");
+             }
+         }
+         connectRemoteToVolumeControl (number) {
+             if (this.isOn) {
+                 number = Number(number);
+                 this.volume += number;
+                 console.log("Âm lượng: " + this.volume)
+             } else {
+                 console.log("Tivi đang tắt")
+             }
+         }
+         connectRemoteToChannelControl (number) {
+             if (this.isOn) {
+                 number = Number(number);
+                 this.tivi_channel = number;
+                 console.log("Tivi chuyển kênh: " + this.tivi_channel)
+             } else {
+                 console.log("Tivi đang tắt")
+             }
+         }
+     }
+     let aqua = new TiVi(100);
+     aqua.turnOnOff();
+     aqua.connectRemoteToChannelControl(7);
+
+     let remote = new Remote(100);
+     remote.channelControl(aqua, 3);
+     remote.volumeControl(aqua, -2);
+     remote.turnOnOff(aqua);
+     console.log(aqua);
+ </script>
+</body>
+</html>
