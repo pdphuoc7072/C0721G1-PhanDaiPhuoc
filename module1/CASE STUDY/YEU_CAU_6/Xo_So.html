@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xổ số</title>
+    <style>
+        .BALL {
+            background-color: floralwhite;
+            float: left;
+        }
+        .BALL .ball {
+            color: red;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 100%;
+            float: left;
+            margin: 10px;
+            font-weight: 500;
+            box-shadow: 1px 1px 1px 1px;
+        }
+    </style>
+</head>
+<body>
+<h2>Xổ số CodeGym</h2>
+<form>
+    <div class="BALL">
+        <p class="ball" id="number1"></p>
+        <p class="ball" id="number2"></p>
+        <p class="ball" id="number3"></p>
+        <p class="ball" id="number4"></p>
+        <p class="ball" id="number5"></p>
+        <p class="ball" id="number6"></p>
+    </div>
+    <br> <br> <br>
+    <p> <span id="buy_num_0"></span></p>
+    <p> <span id="buy_num_1"></span></p>
+    <p> <span id="buy_num_2"></span></p>
+    <p> <span id="buy_num_3"></span></p>
+    <p> <span id="random_1"></span></p>
+    <br>
+    <button type="button" onclick="buyLotto()">Mua vé</button>
+    <button type="button" onclick="checkResult()">Xác nhận</button>
+</form>
+
+<script>
+    class Customer {
+        constructor(name, phone,address) {
+            this.lotto = [];
+            this.name = name;
+            this.phone = phone;
+            this.address = address;
+        }
+        buyLotto (lotto) {
+            if (this.lotto.length <= 4) {
+                this.lotto.push(lotto.number);
+            } else {
+                alert("Bạn đã mua quá 4 vé!!!")
+            }
+        }
+    }
+    class Lotto {
+        constructor() {
+            this.number = [];
+        }
+        insetNumber (number) {
+            if (this.number.length <= 6 && number >= 0 && number <= 99) {
+                this.number.push(number);
+            } else {
+                alert("Bạn đã nhập sai, hoặc bạn đã nhập đủ 6 số!!!")
+            }
+        }
+    }
+    let customer = new Customer("A", "0912345678", "Đà Nẵng");
+    function buyLotto () {
+        if (customer.lotto.length < 4 ) {
+            for (let p = 0; p < 4; p++) {
+                alert("Bạn mua vé lần thứ: " + (p+1));
+                let x = parseInt(prompt("Bạn có 2 lựa chọn: " + "\n" + "1. Bạn muốn tự chọn số" + "\n" + "2. Hệ thống tự chọn số"));
+                switch (x) {
+                    case 1:
+                        let lotto = new Lotto();
+                        for (let i = 1; i <= 6; i++) {
+                            let number = parseInt(prompt("Hãy nhập số thứ " + i + " trong khoảng từ 0-99"));
+                            document.getElementById("number" + i).innerHTML = number;
+                            document.getElementById("number" + i).value = number;
+                            lotto.insetNumber(number);
+                        }
+                        customer.buyLotto(lotto);
+                        console.log(customer.lotto[p]);
+                        document.getElementById("buy_num_" + p).innerHTML = "Bạn đã mua vé thứ " + (p+1) + " là: " + customer.lotto[p];
+                        break;
+                    case 2:
+                        let lottoRandom = new Lotto();
+                        for (let j = 1; j <= 6; j++) {
+                            let numberRandom = Math.floor(Math.random() * 99);
+                            document.getElementById("number" + j).innerHTML = numberRandom;
+                            document.getElementById("number" + j).value = numberRandom;
+                            lottoRandom.insetNumber(numberRandom);
+                        }
+                        customer.buyLotto(lottoRandom);
+                        console.log(customer.lotto[p]);
+                        document.getElementById("buy_num_" + p).innerHTML = "Bạn đã mua vé thứ " + (p+1) + " là: " + customer.lotto[p];
+                        break;
+                    default:
+                        alert("Bạn hãy nhập 1 hoặc 2");
+                }
+            }
+        } else {
+            alert("Bạn đã mua đủ 4 vé trong ngày!!!");
+        }
+    }
+    function checkResult() {
+        let randomArray = [];
+        let count = 0;
+        for (let i = 0; i < 6; i++) {
+            randomArray[i] = Math.floor(Math.random() * 99);
+        }
+        console.log(randomArray);
+        document.getElementById("random_1").innerHTML = "Vé trúng thưởng là: " + randomArray.join();
+        for (let i = 0; i < customer.lotto.length; i++) {
+            for (let j = 0; j < customer.lotto[i].length; j++)
+                for (let k = 0; k < randomArray.length; k++) {
+                    if (customer.lotto[i][j] === randomArray[k]) {
+                        count++;
+                        break;
+                }
+            }
+        }
+        if (count === 6) {
+            alert("Bạn đã trúng giải nhất")
+        } else if (count === 5) {
+            alert("Bạn đã trúng giải nhì")
+        } else if (count === 4) {
+            alert("Bạn đã trúng giải ba")
+        } else if (count === 3) {
+            alert("Bạn đã trúng giải khuyến khích")
+        } else if (count < 3) {
+            alert("Chúc bạn may mắn lần sau")
+        }
+    }
+</script>
+</body>
+</html>
