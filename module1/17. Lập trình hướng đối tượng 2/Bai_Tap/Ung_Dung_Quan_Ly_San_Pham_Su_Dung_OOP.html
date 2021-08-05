@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ứng dụng quản lý sản phẩm sử dụng OOP</title>
+</head>
+<body>
+<h2>Add New Product</h2>
+<input type="text" id="inputProductName" placeholder="New Product Name">
+<input type="text" id="inputProducer" placeholder="New Producer">
+<input type="text" id="inputPrice" placeholder="New Price">
+<input type="button" onclick="addNewProduct()" value="Add">
+<p><span id="display_product"></span></p>
+<script>
+    class Product {
+        constructor(productName, producer, price) {
+            this.productName = productName;
+            this.producer = producer;
+            this.price = price;
+        }
+        getProductName (){
+            return this.productName;
+        }
+        getProducer () {
+            return this.producer;
+        }
+        getPrice () {
+            return this.price
+        }
+        setProductName (name) {
+            this.productName = name;
+        }
+        setProducer (producer) {
+            this.producer = producer;
+        }
+        setPrice (price) {
+            this.price = price;
+        }
+    }
+    let productList = [];
+    let product1 = new Product("Iphone 11", "Apple", 1000);
+    let product2 = new Product("Oppo A71", "Oppo", 5000);
+    let product3 = new Product("Samsung Galaxy", "Samsung", 800);
+    let product4 = new Product("Xiaomi Pocco", "Xiaomi", 1000);
+    let product5 = new Product("Nokia X", "Nokia", 1000);
+    productList.push(product1);
+    productList.push(product2);
+    productList.push(product3);
+    productList.push(product4);
+    productList.push(product5);
+    console.log(productList);
+    displayProduct();
+    function displayProduct() {
+        let table = "<table border='1'>" +
+                    "<tr><th>Tên sản phẩm</th>" +
+                    "<th>Nhà sản xuất</th>" +
+                    "<th>Giá</th></tr>";
+        for (let i = 0; i < productList.length; i++) {
+            table += "<tr>" + "<td>" + productList[i].getProductName() + "</td>" +
+                              "<td>" + productList[i].getProducer() + "</td>" +
+                              "<td>" + productList[i].getPrice() + "</td>" +
+                              "<td><button onclick='editProduct(" + i + ")'>Sửa</button></td>" +
+                              "<td><button onclick='deleteProduct(" + i + ")'>Xóa</button></td>" + "</tr>";
+
+        }
+        document.getElementById("display_product").innerHTML = table;
+    }
+    function addNewProduct() {
+        let name = document.getElementById("inputProductName").value;
+        let producer = document.getElementById("inputProducer").value;
+        let price = document.getElementById("inputPrice").value;
+        document.getElementById("inputProductName").value = "";
+        document.getElementById("inputProducer").value = "";
+        document.getElementById("inputPrice").value = "";
+        let product = new Product(name, producer, price);
+        productList.push(product);
+        displayProduct();
+    }
+    function editProduct(index) {
+        let number = parseInt(prompt("Hãy nhập loại bạn cần sửa: \n" +
+                                     "1. Sửa tên sản phẩm \n" +
+                                     "2. Sửa nhà sản xuất \n" +
+                                     "3. Sửa giá"));
+        switch (number) {
+            case 1:
+                let name = prompt("Hãy nhập tên sản phẩm mà bạn muốn sửa: ");
+                productList[index].setProductName(name);
+                displayProduct();
+                break;
+            case 2:
+                let producer = prompt("Hãy nhập tên nhà sản xuất mà bạn muốn sửa: ");
+                productList[index].setProducer(producer);
+                displayProduct();
+                break;
+            case 3:
+                let price = prompt("Hãy nhập giá mà bạn muốn sửa: ");
+                productList[index].setPrice(price);
+                displayProduct();
+                break;
+            default:
+                alert("Hãy nhập số 1, 2 hoặc 3");
+        }
+    }
+    function deleteProduct(index) {
+        confirm("Bạn chắc chắn muốn xóa?");
+        productList.splice(index, 1);
+        displayProduct();
+    }
+</script>
+</body>
+</html>
