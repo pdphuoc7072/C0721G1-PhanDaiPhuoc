@@ -7,6 +7,56 @@
 <body>
 
 <div id="game"></div>
-<script src="Game_Don_Gian_Di_Chuyen_Doi_Tuong.js"></script>
+<script>
+    class Hero {
+        constructor(image, top, left, size, speed) {
+            this.image = image;
+            this.top = top;
+            this.left = left;
+            this.size = size;
+            this.speed = speed;
+        }
+        getHeroElement () {
+            return '<img width="'+ this.size + '"' +
+                ' height="'+ this.size + '"' +
+                ' src="' + this.image +'"' +
+                ' style="top: '+this.top+'px; left:'+this.left+'px;position:absolute;" />';
+        }
+        moveRight () {
+            this.left += this.speed;
+            console.log('ok: ' + this.left);
+        }
+        moveLeft () {
+            this.left -= this.speed;
+            console.log('ok: ' + this.left);
+        }
+        moveUp () {
+            this.top -= this.speed;
+            console.log('ok: ' + this.top);
+        }
+        moveDown () {
+            this.top += this.speed;
+            console.log('ok: ' + this.top);
+        }
+    }
+    let hero = new Hero('pikachu.png', 20, 30, 200, 200);
+    let baseLeft = hero.left;
+
+    function start(){
+        if((hero.left < window.innerWidth - hero.size) && (hero.top <= baseLeft)){
+            hero.moveRight();
+        } else if ((hero.left >= window.innerWidth - hero.size) && (hero.top < window.innerHeight - hero.size)) {
+            hero.moveDown();
+        } else if (hero.left > 0) {
+            hero.moveLeft();
+        } else if (hero.top > 0) {
+            hero.moveUp();
+        }
+        document.getElementById('game').innerHTML = hero.getHeroElement();
+        setTimeout(start, 500);
+    }
+
+    start();
+</script>
 </body>
 </html>
