@@ -40,16 +40,15 @@
         }
     }
     let hero = new Hero('pikachu.png', 20, 30, 200, 200);
-    let baseLeft = hero.left;
 
     function start(){
-        if((hero.left < window.innerWidth - hero.size) && (hero.top <= baseLeft)){
+        if((hero.left < window.innerWidth - hero.size) && (hero.top < hero.size)){
             hero.moveRight();
-        } else if ((hero.left >= window.innerWidth - hero.size) && (hero.top < window.innerHeight - hero.size)) {
+        } else if ((hero.left > window.innerWidth - hero.size) && (hero.top < window.innerHeight - hero.size)) {
             hero.moveDown();
-        } else if (hero.left > 0) {
+        } else if (hero.left > hero.size) {
             hero.moveLeft();
-        } else if (hero.top > 0) {
+        } else if ((hero.left < window.innerWidth - hero.size) && (hero.top > hero.size)) {
             hero.moveUp();
         }
         document.getElementById('game').innerHTML = hero.getHeroElement();
