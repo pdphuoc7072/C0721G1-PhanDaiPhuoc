@@ -1,0 +1,21 @@
+package _4_Lop_Va_Doi_Tuong_Trong_Java.thuc_hanh;
+
+public class Lop_Hinh_Chu_Nhat {
+    double width;
+    double height;
+    public Lop_Hinh_Chu_Nhat () {
+    }
+    public Lop_Hinh_Chu_Nhat (double width, double height) {
+        this.width = width;
+        this.height = height;
+    }
+    public double getArea () {
+        return this.width * this.height;
+    }
+    public double getPerimeter() {
+        return (this.width + this.height) * 2;
+    }
+    public String display() {
+        return "Rectangle{" + "width=" + width + ", height=" + height + "}";
+    }
+}
