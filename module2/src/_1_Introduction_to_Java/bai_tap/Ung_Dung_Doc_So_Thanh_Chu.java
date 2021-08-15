@@ -8,7 +8,7 @@ public class Ung_Dung_Doc_So_Thanh_Chu {
         String str = "";
         switch (number) {
             case 0:
-                str = "zero";
+                str = "";
                 break;
             case 1:
                 str = "one";
@@ -74,46 +74,26 @@ public class Ung_Dung_Doc_So_Thanh_Chu {
                 }
                 break;
             case 2:
-                if (num1 == 0) {
-                    str = "twenty ";
-                } else {
-                    str = "twenty " + doc1ChuSo(num1);
-                }
+                str = "twenty " + doc1ChuSo(num1);
                 break;
             case 3:
-                if (num1 == 0) {
-                    str = "thirty ";
-                } else {
-                    str = "thirty " + doc1ChuSo(num1);
-                }
+                str = "thirty " + doc1ChuSo(num1);
                 break;
             case 4:
-                if (num1 == 0) {
-                    str = "forty ";
-                } else {
-                    str = "forty " + doc1ChuSo(num1);
-                }
+                str = "forty " + doc1ChuSo(num1);
+
                 break;
             case 5:
-                if (num1 == 0) {
-                    str = "fifty ";
-                } else {
-                    str = "fifty " + doc1ChuSo(num1);
-                }
+                str = "fifty " + doc1ChuSo(num1);
+
                 break;
             case 8:
-                if (num1 == 0) {
-                    str = "eighty ";
-                } else {
-                    str = "eighty " + doc1ChuSo(num1);
-                }
+                str = "eighty " + doc1ChuSo(num1);
+
                 break;
             default:
-                if (num1 == 0) {
-                    str = doc1ChuSo(num) + "ty ";
-                } else {
-                    str = doc1ChuSo(num) + "ty " + doc1ChuSo(num1);
-                }
+                str = doc1ChuSo(num) + "ty " + doc1ChuSo(num1);
+
         }
         return str;
     }
@@ -123,7 +103,7 @@ public class Ung_Dung_Doc_So_Thanh_Chu {
         String str = "";
         if (num1 == 0 && num > 0) {
             str = doc1ChuSo(num) + " hundred";
-        } else if (num1 > 0 && num1 <= 9 && num > 0){
+        } else if (num1 >= 0 && num1 <= 9 && num > 0){
             str = doc1ChuSo(num) + " hundred and " + doc1ChuSo(num1);
         } else {
             str = doc1ChuSo(num) + " hundred and " + doc2ChuSo(num1);
@@ -137,7 +117,9 @@ public class Ung_Dung_Doc_So_Thanh_Chu {
         int inputNumber = scanner.nextInt();
         if (inputNumber < 0) {
             System.out.println("Bạn đã nhập sai. Hãy nhập lại số nguyên không âm.");
-        } else if (inputNumber >= 0 && inputNumber <= 9) {
+        } else if (inputNumber == 0){
+            System.out.println("Sau khi chuyển đổi, số nhập vào sẽ được đọc là: zero");
+        } else if (inputNumber > 0 && inputNumber <= 9) {
             System.out.println("Sau khi chuyển đổi, số nhập vào sẽ được đọc là: " + doc1ChuSo(inputNumber));
         } else if (inputNumber >= 10 && inputNumber < 100) {
             System.out.println("Sau khi chuyển đổi, số nhập vào sẽ được đọc là: " + doc2ChuSo(inputNumber));
