@@ -2,7 +2,7 @@ package _3_Mang_Va_Phuong_Thuc_Trong_Java.bai_tap;
 
 import java.util.Scanner;
 
-public class Gop_Mang {
+public class GopMang {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Hãy nhập size của mảng 1: ");

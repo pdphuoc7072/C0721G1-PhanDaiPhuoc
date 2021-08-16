@@ -1,6 +1,6 @@
 package _3_Mang_Va_Phuong_Thuc_Trong_Java.thuc_hanh;
 
-public class Tim_GTNN_Trong_Mang_Su_Dung_Phuong_Thuc {
+public class TimGTNNTrongMangSuDungPhuongThuc {
     public static int minValue(int[] array){
         int index = 0;
         for (int i = 1;i < array.length; i++){

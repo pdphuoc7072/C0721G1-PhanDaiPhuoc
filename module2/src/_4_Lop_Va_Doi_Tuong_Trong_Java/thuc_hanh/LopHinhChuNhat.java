@@ -1,11 +1,11 @@
 package _4_Lop_Va_Doi_Tuong_Trong_Java.thuc_hanh;
 
-public class Lop_Hinh_Chu_Nhat {
+public class LopHinhChuNhat {
     double width;
     double height;
-    public Lop_Hinh_Chu_Nhat () {
+    public LopHinhChuNhat() {
     }
-    public Lop_Hinh_Chu_Nhat (double width, double height) {
+    public LopHinhChuNhat(double width, double height) {
         this.width = width;
         this.height = height;
     }

@@ -2,7 +2,7 @@ package _3_Mang_Va_Phuong_Thuc_Trong_Java.bai_tap;
 
 import java.util.Scanner;
 
-public class Dem_So_Lan_Xuat_Hien_Cua_Ky_Tu_Trong_Chuoi {
+public class DemSoLanXuatHienCuaKyTuTrongChuoi {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Hãy nhập vào 1 chuỗi ký tự: ");

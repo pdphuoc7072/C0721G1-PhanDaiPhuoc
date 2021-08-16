@@ -3,7 +3,7 @@ package _3_Mang_Va_Phuong_Thuc_Trong_Java.bai_tap;
 import javax.sound.midi.Soundbank;
 import java.util.Scanner;
 
-public class Mang_2_Chieu_Tinh_Tong_Cac_So_O_Duong_Cheo_Chinh_Cua_Ma_Tran_Vuong {
+public class Mang2ChieuTinhTongCacSoODuongCheoChinhCuaMaTranVuong {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Hãy nhập số hàng của ma trận vuông: ");

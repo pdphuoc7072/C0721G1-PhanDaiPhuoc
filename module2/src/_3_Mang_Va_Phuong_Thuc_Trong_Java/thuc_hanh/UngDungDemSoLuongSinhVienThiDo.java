@@ -2,7 +2,7 @@ package _3_Mang_Va_Phuong_Thuc_Trong_Java.thuc_hanh;
 
 import java.util.Scanner;
 
-public class Ung_Dung_Dem_So_Luong_Sinh_Vien_Thi_Do {
+public class UngDungDemSoLuongSinhVienThiDo {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int size;

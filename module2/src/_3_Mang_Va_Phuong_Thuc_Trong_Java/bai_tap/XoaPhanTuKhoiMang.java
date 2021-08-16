@@ -4,7 +4,7 @@ import sun.security.util.ArrayUtil;
 
 import java.util.Scanner;
 
-public class Xoa_Phan_Tu_Khoi_Mang {
+public class XoaPhanTuKhoiMang {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Hãy nhập size của mảng: ");

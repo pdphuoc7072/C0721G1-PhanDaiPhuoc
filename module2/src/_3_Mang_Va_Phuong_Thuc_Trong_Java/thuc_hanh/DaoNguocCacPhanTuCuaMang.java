@@ -2,7 +2,7 @@ package _3_Mang_Va_Phuong_Thuc_Trong_Java.thuc_hanh;
 
 import java.util.Scanner;
 
-public class Dao_Nguoc_Cac_Phan_Tu_Cua_Mang {
+public class DaoNguocCacPhanTuCuaMang {
     public static void main(String[] args) {
         int size;
         int[] array;

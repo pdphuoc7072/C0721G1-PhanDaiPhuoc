@@ -2,7 +2,7 @@ package _4_Lop_Va_Doi_Tuong_Trong_Java.bai_tap;
 
 import java.time.LocalTime;
 
-public class Main_StopWatch {
+public class MainStopWatch {
     public static int[] selectionSort (int...a) {
         for (int i = 0; i < a.length; i++) {
             for (int j = i + 1; j < a.length; j++) {

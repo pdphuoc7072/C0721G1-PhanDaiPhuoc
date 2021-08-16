@@ -2,7 +2,7 @@ package _3_Mang_Va_Phuong_Thuc_Trong_Java.thuc_hanh;
 
 import java.util.Scanner;
 
-public class Chuong_Trinh_Chuyen_Doi_Nhiet_Do {
+public class ChuongTrinhChuyenDoiNhietDo {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         double fahrenheit;

@@ -2,12 +2,12 @@ package _3_Mang_Va_Phuong_Thuc_Trong_Java.bai_tap;
 
 import java.util.Scanner;
 
-public class Tinh_Tong_Cac_So_O_Mot_Cot_Xac_Dinh {
+public class TimPhanTuLonNhatTrongMang2Chieu {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Hãy nhập số hàng của ma trận matrix: ");
+        System.out.println("Hãy nhập số hàng của ma trận matrix: ");
         int row = scanner.nextInt();
-        System.out.print("Hãy nhập số cột của ma trận matrix: ");
+        System.out.println("Hãy nhập số cột của ma trận matrix: ");
         int col = scanner.nextInt();
         int[][] matrix = new int[row][col];
         for (int i = 0; i < matrix.length; i++) {
@@ -23,16 +23,18 @@ public class Tinh_Tong_Cac_So_O_Mot_Cot_Xac_Dinh {
             }
             System.out.print("\n");
         }
-        System.out.print("Bạn muốn tính tổng ở cột số mấy? ");
-        int x = scanner.nextInt();
-        int sum = 0;
-        if (x < 0 || x > col - 1) {
-            System.out.print("Xảy ra lỗi. Hãy nhập lại");
-        } else {
-            for (int i = 0; i < matrix.length; i++) {
-                sum += matrix[i][x];
+        int max = matrix[0][0];
+        int x = 0;
+        int y = 0;
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                if (matrix[i][j] > max) {
+                    max = matrix[i][j];
+                    x = i;
+                    y = j;
+                }
             }
-            System.out.print("Tổng các phần tử ở cột " + x + " là: " + sum);
         }
+        System.out.print("Số lớn nhất trong ma trận là " + max + " ở vị trí " + x + ", " + y);
     }
 }

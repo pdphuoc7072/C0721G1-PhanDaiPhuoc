@@ -2,7 +2,7 @@ package _4_Lop_Va_Doi_Tuong_Trong_Java.bai_tap;
 
 import java.util.Scanner;
 
-public class Main_QuadraticEquation {
+public class MainQuadraticEquation {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Tìm nghiệm của phương trình bậc 2: ax2 + bx + c = 0\n");
