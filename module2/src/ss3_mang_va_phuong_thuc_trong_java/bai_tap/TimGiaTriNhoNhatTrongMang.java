@@ -1,5 +1,6 @@
 package ss3_mang_va_phuong_thuc_trong_java.bai_tap;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class TimGiaTriNhoNhatTrongMang {
@@ -12,10 +13,7 @@ public class TimGiaTriNhoNhatTrongMang {
             System.out.println("Hãy nhập phần tử có index là: " + i);
             array[i] = Integer.parseInt(scanner.nextLine());
         }
-        System.out.println("Mảng vừa tạo là: ");
-        for (int i = 0; i < array.length; i++) {
-            System.out.print(array[i] + "\t");
-        }
+        System.out.println("Mảng vừa tạo là: " + Arrays.toString(array));
         int min = array[0];
         int x = 0;
         for (int i = 1; i < array.length; i++) {

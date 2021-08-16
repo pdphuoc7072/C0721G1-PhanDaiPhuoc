@@ -1,5 +1,6 @@
 package ss3_mang_va_phuong_thuc_trong_java.bai_tap;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class XoaPhanTuKhoiMang {
@@ -12,10 +13,7 @@ public class XoaPhanTuKhoiMang {
             System.out.println("Hãy nhập phần tử có index là " + i);
             array[i] = Integer.parseInt(scanner.nextLine());
         }
-        System.out.print("Mảng vừa tạo là: ");
-        for (int i = 0; i < array.length; i++) {
-            System.out.print(array[i] + "\t");
-        }
+        System.out.print("Mảng vừa tạo là: " + Arrays.toString(array));
         System.out.println("\nHãy nhập phần tử cần xóa: ");
         int X = Integer.parseInt(scanner.nextLine());
         boolean check = true;
@@ -36,10 +34,7 @@ public class XoaPhanTuKhoiMang {
                 array[i] = array[i+1];
             }
             array[array.length-1] = 0;
-            System.out.print("Mảng mới sau khi xóa là: ");
-            for (int i = 0; i < array.length; i++) {
-                System.out.print(array[i] + "\t");
-            }
+            System.out.print("Mảng mới sau khi xóa là: " + Arrays.toString(array));
         }
     }
 }
