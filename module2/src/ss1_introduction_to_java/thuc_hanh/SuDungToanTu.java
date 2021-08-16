@@ -4,13 +4,11 @@ import java.util.Scanner;
 
 public class SuDungToanTu {
     public static void main(String[] args) {
-        float width;
-        float height;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhập vào chiều rộng: ");
-        width = scanner.nextFloat();
+        float width = Float.parseFloat(scanner.nextLine());
         System.out.println("Nhập chiều cao: ");
-        height = scanner.nextFloat();
+        float height = Float.parseFloat(scanner.nextLine());
         float area = width * height;
         System.out.println("Diện tích của hình chữ nhật là: " + area);
     }

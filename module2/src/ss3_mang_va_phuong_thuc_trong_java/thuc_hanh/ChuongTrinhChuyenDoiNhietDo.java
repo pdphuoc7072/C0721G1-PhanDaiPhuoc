@@ -15,18 +15,18 @@ public class ChuongTrinhChuyenDoiNhietDo {
             System.out.println("2. Celsius to Fahrenheit");
             System.out.println("0. Exit");
             System.out.println("Enter your choice: ");
-            choice = input.nextInt();
+            choice = Integer.parseInt(input.nextLine());
 
             switch (choice) {
                 case 1: {
                     System.out.println("Enter fahrenheit: ");
-                    fahrenheit = input.nextDouble();
+                    fahrenheit = Double.parseDouble(input.nextLine());
                     System.out.println("Fahrenheit to Celsius: " + fahrenheitToCelsius(fahrenheit));
                     break;
                 }
                 case 2:{
                     System.out.println("Enter Celsius: ");
-                    celsius = input.nextDouble();
+                    celsius = Double.parseDouble(input.nextLine());
                     System.out.println("Celsius to Fahrenheit: " + celsiusToFahrenheit(celsius));
                     break;
                 }

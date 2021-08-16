@@ -6,18 +6,18 @@ public class XoaPhanTuKhoiMang {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Hãy nhập size của mảng: ");
-        int N = scanner.nextInt();
+        int N = Integer.parseInt(scanner.nextLine());
         int[] array = new int[N];
         for (int i = 0; i < array.length; i++) {
             System.out.println("Hãy nhập phần tử có index là " + i);
-            array[i] = scanner.nextInt();
+            array[i] = Integer.parseInt(scanner.nextLine());
         }
         System.out.print("Mảng vừa tạo là: ");
         for (int i = 0; i < array.length; i++) {
             System.out.print(array[i] + "\t");
         }
         System.out.println("\nHãy nhập phần tử cần xóa: ");
-        int X = scanner.nextInt();
+        int X = Integer.parseInt(scanner.nextLine());
         boolean check = true;
         int x = 0;
         for (int j = 0; j < array.length; j++) {

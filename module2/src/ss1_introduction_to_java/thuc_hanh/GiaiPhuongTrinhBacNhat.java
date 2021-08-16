@@ -6,11 +6,11 @@ public class GiaiPhuongTrinhBacNhat {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("a = ");
-        double a = scanner.nextDouble();
+        double a = Double.parseDouble(scanner.nextLine());
         System.out.println("b = ");
-        double b = scanner.nextDouble();
+        double b = Double.parseDouble(scanner.nextLine());
         System.out.println("c = ");
-        double c = scanner.nextDouble();
+        double c = Double.parseDouble(scanner.nextLine());
         if (a != 0) {
             double answer = (c - b) / a;
             System.out.println("Phương trình có nghiệm là: x = " + answer);

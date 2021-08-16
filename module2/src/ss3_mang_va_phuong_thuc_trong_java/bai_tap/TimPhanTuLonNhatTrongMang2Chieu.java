@@ -6,14 +6,14 @@ public class TimPhanTuLonNhatTrongMang2Chieu {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Hãy nhập số hàng của ma trận matrix: ");
-        int row = scanner.nextInt();
+        int row = Integer.parseInt(scanner.nextLine());
         System.out.println("Hãy nhập số cột của ma trận matrix: ");
-        int col = scanner.nextInt();
+        int col = Integer.parseInt(scanner.nextLine());
         int[][] matrix = new int[row][col];
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
                 System.out.println("Hãy nhập phần tử ở index: " + i + ", " + j);
-                matrix[i][j] = scanner.nextInt();
+                matrix[i][j] = Integer.parseInt(scanner.nextLine());
             }
         }
         System.out.println("Ma trận vừa tạo là: ");

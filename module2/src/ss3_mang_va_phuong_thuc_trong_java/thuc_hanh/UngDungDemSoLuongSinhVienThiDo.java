@@ -9,7 +9,7 @@ public class UngDungDemSoLuongSinhVienThiDo {
         int[] array;
         do {
             System.out.print("Enter a size: ");
-            size = scanner.nextInt();
+            size = Integer.parseInt(scanner.nextLine());
             if (size > 30)
                 System.out.println("Size should not exceed 30");
         } while (size > 30);
@@ -17,7 +17,7 @@ public class UngDungDemSoLuongSinhVienThiDo {
         int i = 0;
         while (i < array.length) {
             System.out.print("Enter a mark for student " + (i + 1) + ": ");
-            array[i] = scanner.nextInt();
+            array[i] = Integer.parseInt(scanner.nextLine());
             i++;
         }
         int count = 0;

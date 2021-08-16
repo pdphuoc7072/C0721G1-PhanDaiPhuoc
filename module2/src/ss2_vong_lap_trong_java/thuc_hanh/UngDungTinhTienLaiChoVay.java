@@ -9,11 +9,11 @@ public class UngDungTinhTienLaiChoVay {
         double interestRate = 1.0;
         Scanner scanner = new Scanner(System.in);
         System.out.print("Nhập số tiền gửi: ");
-        money = scanner.nextDouble();
+        money = Double.parseDouble(scanner.nextLine());
         System.out.print("Nhập số tháng gửi: ");
-        month = scanner.nextInt();
+        month = Integer.parseInt(scanner.nextLine());
         System.out.print("Nhập lãi suất: ");
-        interestRate = scanner.nextDouble();
+        interestRate = Double.parseDouble(scanner.nextLine());
         double totalInterest = 0;
         for (int i = 0; i < month; i++) {
             totalInterest += money * (interestRate/100)/12 * month;

@@ -4,13 +4,11 @@ import java.util.Scanner;
 
 public class TimUocSoChungLonNhat {
     public static void main(String[] args) {
-        int a;
-        int b;
         Scanner scanner = new Scanner(System.in);
         System.out.print("Hãy nhập số a: ");
-        a = scanner.nextInt();
+        int a = Integer.parseInt(scanner.nextLine());
         System.out.print("Hãy nhập số b: ");
-        b = scanner.nextInt();
+        int b = Integer.parseInt(scanner.nextLine());
         a = Math.abs(a);
         b = Math.abs(b);
         if (a == 0 || b == 0) {

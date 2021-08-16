@@ -5,14 +5,11 @@ import java.util.Scanner;
 public class TinhChiSoCanNangCuaCoThe {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        double weight;
-        double height;
-        double bmi;
-        System.out.println("Bạn nặng bao nhiêu (kg)?");
-        weight = scanner.nextDouble();
-        System.out.println("Bạn cao bao nhiêu (m)?");
-        height = scanner.nextDouble();
-        bmi = weight / (Math.pow(height, 2));
+        System.out.println("Bạn nặng bao nhiêu (kg)? ");
+        double weight = Double.parseDouble(scanner.nextLine());
+        System.out.println("Bạn cao bao nhiêu (m)? ");
+        double height = Double.parseDouble(scanner.nextLine());
+        double bmi = weight / (Math.pow(height, 2));
         System.out.printf("%-20s%s", "bmi", "Interpretation\n");
         if (bmi < 18) {
             System.out.printf("%-20.2f%s", bmi, "Underweight");

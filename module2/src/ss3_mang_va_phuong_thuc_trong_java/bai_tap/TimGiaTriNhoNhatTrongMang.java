@@ -6,11 +6,11 @@ public class TimGiaTriNhoNhatTrongMang {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Hãy nhập size của mảng: ");
-        int size = scanner.nextInt();
+        int size = Integer.parseInt(scanner.nextLine());
         int[] array = new int[size];
         for (int i = 0; i < array.length; i++) {
             System.out.println("Hãy nhập phần tử có index là: " + i);
-            array[i] = scanner.nextInt();
+            array[i] = Integer.parseInt(scanner.nextLine());
         }
         System.out.println("Mảng vừa tạo là: ");
         for (int i = 0; i < array.length; i++) {

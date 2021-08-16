@@ -6,7 +6,7 @@ public class HienThiCacSoNguyenToNhoHonN {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Bạn muốn hiển thị số nguyên tố nhỏ hơn bao nhiêu? ");
-        int number = scanner.nextInt();
+        int number = Integer.parseInt(scanner.nextLine());
         int N = 2;
         while (N <= number){
             int i = 2;

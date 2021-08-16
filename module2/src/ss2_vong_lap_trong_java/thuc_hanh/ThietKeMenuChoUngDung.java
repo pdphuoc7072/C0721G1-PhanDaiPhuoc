@@ -13,7 +13,7 @@ public class ThietKeMenuChoUngDung {
             System.out.println("3. Draw the rectangle");
             System.out.println("0. Exit");
             System.out.println("Enter your choice: ");
-            choice = input.nextInt();
+            choice = Integer.parseInt(input.nextLine());
             switch (choice) {
                 case 1:
                     System.out.println("Draw the triangle");

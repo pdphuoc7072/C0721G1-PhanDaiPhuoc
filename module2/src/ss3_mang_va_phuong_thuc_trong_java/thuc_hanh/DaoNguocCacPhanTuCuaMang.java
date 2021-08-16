@@ -9,7 +9,7 @@ public class DaoNguocCacPhanTuCuaMang {
         Scanner scanner = new Scanner(System.in);
         do {
             System.out.print("Enter a size:");
-            size = scanner.nextInt();
+            size = Integer.parseInt(scanner.nextLine());
             if (size > 20)
                 System.out.println("Size does not exceed 20");
         } while (size > 20);
@@ -17,7 +17,7 @@ public class DaoNguocCacPhanTuCuaMang {
         int i = 0;
         while (i < array.length) {
             System.out.print("Enter element " + (i + 1) + ": ");
-            array[i] = scanner.nextInt();
+            array[i] = Integer.parseInt(scanner.nextLine());
             i++;
         }
         System.out.printf("%-20s%s", "Elements in array: ", "");

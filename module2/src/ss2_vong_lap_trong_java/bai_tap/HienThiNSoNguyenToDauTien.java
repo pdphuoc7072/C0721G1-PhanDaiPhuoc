@@ -6,7 +6,7 @@ public class HienThiNSoNguyenToDauTien {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Bạn muốn hiển thị bao nhiêu số nguyên tố đầu tiên? ");
-        int num = scanner.nextInt();
+        int num = Integer.parseInt(scanner.nextLine());
         int count = 0;
         int N = 2;
         while (count < num) {

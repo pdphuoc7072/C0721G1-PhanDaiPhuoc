@@ -1,12 +1,14 @@
 package ss1_introduction_to_java.thuc_hanh;
 
+import org.omg.PortableInterceptor.INACTIVE;
+
 import java.util.Scanner;
 
 public class TinhSoNgayTrongThang {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Month = ");
-        int month = scanner.nextInt();
+        int month = Integer.parseInt(scanner.nextLine());
         String daysInMonth;
         switch (month) {
             case 2:

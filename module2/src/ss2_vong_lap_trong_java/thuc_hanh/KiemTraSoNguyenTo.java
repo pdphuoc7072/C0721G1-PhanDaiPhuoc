@@ -6,7 +6,7 @@ public class KiemTraSoNguyenTo {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Hãy nhập vào 1 số: ");
-        int inputNumber = scanner.nextInt();
+        int inputNumber = Integer.parseInt(scanner.nextLine());
         if (inputNumber < 2) {
             System.out.print("Số này không phải là số nguyên tố.");
         } else {

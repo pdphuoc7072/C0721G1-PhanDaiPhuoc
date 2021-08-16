@@ -113,7 +113,7 @@ public class UngDungDocSoThanhChu {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Hãy nhập 1 số nguyên không âm: ");
-        int inputNumber = scanner.nextInt();
+        int inputNumber = Integer.parseInt(scanner.nextLine());
         if (inputNumber < 0) {
             System.out.println("Bạn đã nhập sai. Hãy nhập lại số nguyên không âm.");
         } else if (inputNumber == 0){

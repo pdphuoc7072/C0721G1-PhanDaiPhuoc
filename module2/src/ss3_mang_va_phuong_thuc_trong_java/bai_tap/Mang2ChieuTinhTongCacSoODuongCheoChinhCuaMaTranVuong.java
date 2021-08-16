@@ -6,9 +6,9 @@ public class Mang2ChieuTinhTongCacSoODuongCheoChinhCuaMaTranVuong {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Hãy nhập số hàng của ma trận vuông: ");
-        int row = scanner.nextInt();
+        int row = Integer.parseInt(scanner.nextLine());
         System.out.println("Hãy nhập số cột của ma trận vuông: ");
-        int col = scanner.nextInt();
+        int col = Integer.parseInt(scanner.nextLine());
         int[][] matrix = new int[row][col];
         if (row != col) {
             System.out.println("Đây không phải là ma trận vuông. Hãy nhập lại.");
@@ -16,7 +16,7 @@ public class Mang2ChieuTinhTongCacSoODuongCheoChinhCuaMaTranVuong {
             for (int i = 0; i < matrix.length; i++) {
                 for (int j = 0; j < matrix[i].length; j++) {
                     System.out.println("Hãy nhập phần tử ở vị trí index là: " + i + ", " + j);
-                    matrix[i][j] = scanner.nextInt();
+                    matrix[i][j] = Integer.parseInt(scanner.nextLine());
                 }
             }
             System.out.println("Ma trận vừa tạo là: ");
@@ -26,14 +26,14 @@ public class Mang2ChieuTinhTongCacSoODuongCheoChinhCuaMaTranVuong {
                 }
                 System.out.print("\n");
             }
-        }
-        int sum = 0;
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                sum += matrix[i][i];
-                break;
+            int sum = 0;
+            for (int i = 0; i < matrix.length; i++) {
+                for (int j = 0; j < matrix[i].length; j++) {
+                    sum += matrix[i][i];
+                    break;
+                }
             }
+            System.out.println("Tổng các số ở đường chéo chính của ma trận vuông là: " + sum);
         }
-        System.out.println("Tổng các số ở đường chéo chính của ma trận vuông là: " + sum);
     }
 }

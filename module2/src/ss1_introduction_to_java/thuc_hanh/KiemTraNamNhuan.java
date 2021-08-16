@@ -5,9 +5,8 @@ import java.util.Scanner;
 public class KiemTraNamNhuan {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int year;
         System.out.println("Hãy nhập vào 1 năm: ");
-        year = scanner.nextInt();
+        int year = Integer.parseInt(scanner.nextLine());
         boolean isLeapYear;
         isLeapYear = (year % 100 == 0) ? (year % 400 == 0) : (year % 4 == 0);
         if (isLeapYear) {

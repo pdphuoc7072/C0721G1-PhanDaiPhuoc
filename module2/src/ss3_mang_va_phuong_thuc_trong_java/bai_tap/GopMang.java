@@ -6,18 +6,18 @@ public class GopMang {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Hãy nhập size của mảng 1: ");
-        int size1 = scanner.nextInt();
+        int size1 = Integer.parseInt(scanner.nextLine());
         int[] array1 = new int[size1];
         for (int i = 0; i < array1.length; i++) {
             System.out.println("Trong mảng 1, hãy nhập phần tử có index là: " + i);
-            array1[i] = scanner.nextInt();
+            array1[i] = Integer.parseInt(scanner.nextLine());
         }
         System.out.println("Hãy nhập size của mảng 2: ");
-        int size2 = scanner.nextInt();
+        int size2 = Integer.parseInt(scanner.nextLine());
         int[] array2 = new int[size2];
         for (int j = 0; j < array2.length; j++) {
             System.out.println("Trong mảng 2, hãy nhập phần tử có index là: " + j);
-            array2[j] = scanner.nextInt();
+            array2[j] = Integer.parseInt(scanner.nextLine());
         }
         System.out.print("Mảng 1 vừa tạo là: ");
         for (int i = 0; i < array1.length; i++) {

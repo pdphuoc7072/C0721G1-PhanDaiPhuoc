@@ -13,13 +13,13 @@ public class HienThiCacLoaiHinh {
             System.out.println("\t3. In hình tam giác cân");
             System.out.println("\t4. Exit");
             System.out.print("Enter your choice: ");
-            choice = scanner.nextInt();
+            choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {
                 case 1:
                     System.out.print("Hãy nhập chiều dài của hình chữ nhật: ");
-                    int width = scanner.nextInt();
+                    int width = Integer.parseInt(scanner.nextLine());
                     System.out.print("Hãy nhập chiều rộng của hình chữ nhật: ");
-                    int height = scanner.nextInt();
+                    int height = Integer.parseInt(scanner.nextLine());
                     for (int i = 0; i < height; i++) {
                         for (int j = 0; j < width; j++) {
                             System.out.print("*");
@@ -29,13 +29,13 @@ public class HienThiCacLoaiHinh {
                     break;
                 case 2:
                     System.out.print("Hãy nhập cạnh a của hình tam giác vuông cân: ");
-                    int a = scanner.nextInt();
+                    int a = Integer.parseInt(scanner.nextLine());
                     System.out.println("Bạn muốn hình tam giác vuông cân có đỉnh ở đâu: \n" +
                             "1. Ở trên bên trái \n" +
                             "2. Ở trên bên phải \n" +
                             "3. Ở dưới bên trái \n" +
                             "4. Ở dưới bên phải");
-                    int choice1 = scanner.nextInt();
+                    int choice1 = Integer.parseInt(scanner.nextLine());
                     switch (choice1) {
                         case 1:
                             for (int k = a; k > 0; k--) {
@@ -82,7 +82,7 @@ public class HienThiCacLoaiHinh {
                     break;
                 case 3:
                     System.out.print("Nhập chiều cao của tam giác cân: ");
-                    int h = scanner.nextInt();
+                    int h = Integer.parseInt(scanner.nextLine());
                     for (int e = 0; e < h; e++) {
                         for (int f = h - e; f > 0; f--) {
                             System.out.print(" ");
