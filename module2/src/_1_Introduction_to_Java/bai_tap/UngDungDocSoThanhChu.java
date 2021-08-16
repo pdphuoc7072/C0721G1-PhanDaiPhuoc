@@ -1,9 +1,8 @@
 package _1_Introduction_to_Java.bai_tap;
 
-import javax.crypto.spec.PSource;
 import java.util.Scanner;
 
-public class Ung_Dung_Doc_So_Thanh_Chu {
+public class UngDungDocSoThanhChu {
     public static String doc1ChuSo (int number) {
         String str = "";
         switch (number) {

@@ -2,7 +2,7 @@ package _1_Introduction_to_Java.thuc_hanh;
 
 import java.util.Scanner;
 
-public class Tinh_Chi_So_Can_Nang_Cua_Co_The {
+public class TinhChiSoCanNangCuaCoThe {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         double weight;

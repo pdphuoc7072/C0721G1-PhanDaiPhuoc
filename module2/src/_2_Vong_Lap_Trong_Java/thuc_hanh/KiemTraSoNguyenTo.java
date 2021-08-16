@@ -2,7 +2,7 @@ package _2_Vong_Lap_Trong_Java.thuc_hanh;
 
 import java.util.Scanner;
 
-public class Kiem_Tra_So_Nguyen_To {
+public class KiemTraSoNguyenTo {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Hãy nhập vào 1 số: ");

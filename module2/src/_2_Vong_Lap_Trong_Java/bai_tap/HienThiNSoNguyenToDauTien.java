@@ -2,13 +2,14 @@ package _2_Vong_Lap_Trong_Java.bai_tap;
 
 import java.util.Scanner;
 
-public class Hien_Thi_Cac_So_Nguyen_To_Nho_Hon_N {
+public class HienThiNSoNguyenToDauTien {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Bạn muốn hiển thị số nguyên tố nhỏ hơn bao nhiêu? ");
-        int number = scanner.nextInt();
+        System.out.print("Bạn muốn hiển thị bao nhiêu số nguyên tố đầu tiên? ");
+        int num = scanner.nextInt();
+        int count = 0;
         int N = 2;
-        while (N <= number){
+        while (count < num) {
             int i = 2;
             boolean check = true;
             while (i <= Math.sqrt(N)) {
@@ -20,6 +21,7 @@ public class Hien_Thi_Cac_So_Nguyen_To_Nho_Hon_N {
             }
             if (check) {
                 System.out.println(N);
+                count++;
             }
             N++;
         }

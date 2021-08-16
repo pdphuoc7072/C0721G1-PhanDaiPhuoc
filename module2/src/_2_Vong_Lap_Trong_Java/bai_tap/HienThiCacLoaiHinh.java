@@ -2,7 +2,7 @@ package _2_Vong_Lap_Trong_Java.bai_tap;
 
 import java.util.Scanner;
 
-public class Hien_Thi_Cac_Loai_Hinh {
+public class HienThiCacLoaiHinh {
     public static void main(String[] args) {
         int choice = -1;
         Scanner scanner = new Scanner(System.in);

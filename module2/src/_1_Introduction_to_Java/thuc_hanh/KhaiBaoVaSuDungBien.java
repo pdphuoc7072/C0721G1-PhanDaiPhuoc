@@ -1,6 +1,6 @@
 package _1_Introduction_to_Java.thuc_hanh;
 
-public class Khai_Bao_Va_Su_Dung_Bien {
+public class KhaiBaoVaSuDungBien {
     public static void main(String[] args) {
         int i = 10;
         float f = 20.5f;
@@ -14,6 +14,5 @@ public class Khai_Bao_Va_Su_Dung_Bien {
         System.out.println("b = " + b);
         System.out.println("c = " + c);
         System.out.println("s = " + s);
-
     }
 }

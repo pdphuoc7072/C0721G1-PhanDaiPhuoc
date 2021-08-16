@@ -2,7 +2,7 @@ package _1_Introduction_to_Java.bai_tap;
 
 import java.util.Scanner;
 
-public class Ung_Dung_Chuyen_Doi_Tien_Te {
+public class UngDungChuyenDoiTienTe {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         final int rate = 23000;
