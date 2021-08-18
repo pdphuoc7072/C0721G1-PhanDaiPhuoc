@@ -18,13 +18,16 @@ public class MainStopWatch {
     public static void main(String[] args) {
         int[] array = new int[100000];
         for (int i = 0; i < 100000; i++) {
-            array[i] = (int) (Math.random()*1000);
+            array[i] = (int) (Math.random()*10000);
         }
         LocalTime start = LocalTime.now();
         array = selectionSort(array);
         LocalTime end = LocalTime.now();
         StopWatch stopWatch = new StopWatch(start, end);
         System.out.println("Time is: " + stopWatch.getElapsedTime() + " ms");
+        for (int i = 0; i < 100000; i++) {
+            System.out.println(array[i]);
+        }
     }
 }
 
