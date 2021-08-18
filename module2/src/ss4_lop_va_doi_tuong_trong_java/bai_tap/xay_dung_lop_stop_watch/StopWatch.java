@@ -25,9 +25,9 @@ public class StopWatch {
         endTime = LocalTime.now();
     }
     public int getElapsedTime() {
-        int miliSecond = ((endTime.getHour() - startTime.getHour()) * 3600 +
+        int millisecond = ((endTime.getHour() - startTime.getHour()) * 3600 +
                 (endTime.getMinute() - startTime.getMinute()) * 60 +
                 (endTime.getSecond() - startTime.getSecond()) * 1000);
-        return miliSecond;
+        return millisecond;
     }
 }
