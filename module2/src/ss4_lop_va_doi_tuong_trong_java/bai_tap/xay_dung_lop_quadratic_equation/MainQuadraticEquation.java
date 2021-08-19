@@ -13,12 +13,6 @@ public class MainQuadraticEquation {
         System.out.print("Hãy nhập c: ");
         double c = Double.parseDouble(scanner.nextLine());
         QuadraticEquation quadraticEquation = new QuadraticEquation(a, b, c);
-        if (quadraticEquation.getDiscriminant() < 0) {
-            System.out.print("Phương trình đã cho vô nghiệm");
-        } else if (quadraticEquation.getDiscriminant() == 0) {
-            System.out.print("Phương trình đã cho có nghiệm kép là: x = " + quadraticEquation.getRoot1());
-        } else {
-            System.out.print("Phương trình đã cho có nghiệm là: x1 = " + quadraticEquation.getRoot1() + " và x2 = " + quadraticEquation.getRoot2());
-        }
+        quadraticEquation.getRoot();
     }
 }

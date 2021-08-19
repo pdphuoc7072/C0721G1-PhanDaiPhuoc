@@ -1,7 +1,5 @@
 package ss4_lop_va_doi_tuong_trong_java.bai_tap.xay_dung_lop_stop_watch;
 
-import java.time.LocalTime;
-
 public class MainStopWatch {
     public static int[] selectionSort (int...array) {
         for (int i = 0; i < array.length; i++) {
@@ -16,18 +14,15 @@ public class MainStopWatch {
         return array;
     }
     public static void main(String[] args) {
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
         int[] arrayOfRandomNumber = new int[100000];
         for (int i = 0; i < 100000; i++) {
             arrayOfRandomNumber[i] = (int) (Math.random()*10000);
         }
-        LocalTime start = LocalTime.now();
         arrayOfRandomNumber = selectionSort(arrayOfRandomNumber);
-        LocalTime end = LocalTime.now();
-        StopWatch stopWatch = new StopWatch(start, end);
+        stopWatch.stop();
         System.out.println("Time is: " + stopWatch.getElapsedTime() + " ms");
-        for (int i = 0; i < 100000; i++) {
-            System.out.println(arrayOfRandomNumber[i]);
-        }
     }
 }
 

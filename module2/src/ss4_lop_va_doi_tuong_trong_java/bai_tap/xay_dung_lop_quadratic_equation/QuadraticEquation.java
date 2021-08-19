@@ -47,4 +47,13 @@ public class QuadraticEquation {
             return (-this.b - (Math.pow(this.getDiscriminant(), 0.5))) / (2 * this.a);
         }
     }
+    public void getRoot () {
+        if (this.getDiscriminant() < 0) {
+            System.out.print("Phương trình đã cho vô nghiệm");
+        } else if (this.getDiscriminant() == 0) {
+            System.out.print("Phương trình đã cho có nghiệm kép là: x = " + this.getRoot1());
+        } else {
+            System.out.print("Phương trình đã cho có nghiệm là: x1 = " + this.getRoot1() + " và x2 = " + this.getRoot2());
+        }
+    }
 }
