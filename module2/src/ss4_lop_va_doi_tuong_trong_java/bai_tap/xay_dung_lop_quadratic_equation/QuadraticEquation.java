@@ -1,10 +1,11 @@
 package ss4_lop_va_doi_tuong_trong_java.bai_tap.xay_dung_lop_quadratic_equation;
 
 public class QuadraticEquation {
-    private double a = 1;
-    private double b = 1;
-    private double c = 1;
+    private double a;
+    private double b;
+    private double c;
     public QuadraticEquation () {
+        this(1.0, 1.0, 1.0);
     }
     public QuadraticEquation (double a, double b, double c) {
         this.a = a;

@@ -1,8 +1,9 @@
 package ss6_ke_thua.bai_tap.lop_circle_va_lop_cylinder;
 
 public class Cylinder extends Circle{
-    private double height = 1.0;
+    private double height;
     public Cylinder () {
+        this(1.0);
     }
     public Cylinder (double height) {
         this.height = height;

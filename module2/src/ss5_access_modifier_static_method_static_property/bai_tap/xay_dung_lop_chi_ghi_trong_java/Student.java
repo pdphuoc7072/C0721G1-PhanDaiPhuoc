@@ -1,9 +1,14 @@
 package ss5_access_modifier_static_method_static_property.bai_tap.xay_dung_lop_chi_ghi_trong_java;
 
 public class Student {
-    private String name = "John";
-    private String classes = "C02";
+    private String name;
+    private String classes;
     public Student () {
+        this("John", "C02");
+    }
+    public Student (String name, String classes) {
+        this.name = name;
+        this.classes = classes;
     }
     public String getName () {
         return this.name;

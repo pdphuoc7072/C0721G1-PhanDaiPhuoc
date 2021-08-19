@@ -1,8 +1,9 @@
 package ss7_abstract_class_va_interface.bai_tap.trien_khai_interface_resizeable_cho_cac_lop_hinh_hoc;
 
 public class Circle extends Shape implements Resizeable {
-    private double radius = 1.0;
+    private double radius;
     public Circle() {
+        this(1.0);
     }
     public Circle(double radius) {
         this.radius = radius;

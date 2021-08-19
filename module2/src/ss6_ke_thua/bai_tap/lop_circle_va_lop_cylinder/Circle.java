@@ -1,9 +1,10 @@
 package ss6_ke_thua.bai_tap.lop_circle_va_lop_cylinder;
 
 public class Circle {
-    private double radius = 1;
-    private String color = "black";
+    private double radius;
+    private String color;
     public Circle () {
+        this(1.0, "black");
     }
     public Circle (double radius, String color) {
         this.radius = radius;

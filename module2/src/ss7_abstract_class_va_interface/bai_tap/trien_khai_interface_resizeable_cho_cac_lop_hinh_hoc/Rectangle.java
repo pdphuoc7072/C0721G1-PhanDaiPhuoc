@@ -1,9 +1,10 @@
 package ss7_abstract_class_va_interface.bai_tap.trien_khai_interface_resizeable_cho_cac_lop_hinh_hoc;
 
 public class Rectangle extends Shape implements Resizeable {
-    private double width = 1.0;
-    private double height = 1.0;
+    private double width;
+    private double height;
     public Rectangle() {
+        this(1.0, 1.0);
     }
     public Rectangle(double width, double height) {
         this.width = width;
