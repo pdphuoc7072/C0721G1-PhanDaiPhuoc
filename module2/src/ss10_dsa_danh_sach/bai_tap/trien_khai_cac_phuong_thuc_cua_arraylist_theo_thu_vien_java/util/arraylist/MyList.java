@@ -1,5 +1,6 @@
 package ss10_dsa_danh_sach.bai_tap.trien_khai_cac_phuong_thuc_cua_arraylist_theo_thu_vien_java.util.arraylist;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MyList<E> {
@@ -43,11 +44,16 @@ public class MyList<E> {
         }
     }
     public int size () {
-        return elements.length;
+        return size;
     }
-//    public E clone () {
-//
-//    }
+    @Override
+    public E clone () {
+        MyList<E> cloneList = new MyList<>(size);
+        for (Object element : elements) {
+            cloneList.add((E)element);
+        }
+        return (E) cloneList;
+    }
     public boolean contains (E o) {
         for (int i = 0; i < size; i++) {
             if (o.equals(elements[i])) {
@@ -64,12 +70,20 @@ public class MyList<E> {
         }
         return -1;
     }
-//    public boolean add (E e) {
-//
-//    }
-//    public void ensureCapacity (int minCapacity) {
-//
-//    }
+    public boolean add (E e) {
+        if (size < 0) {
+            return false;
+        }
+        ensureCapacity();
+        elements[size++] = e;
+        return true;
+    }
+    public void ensureCapacity (int minCapacity) {
+        if (minCapacity > DEFAULT_CAPACITY) {
+            int newSize = minCapacity;
+            elements = Arrays.copyOf(elements, newSize);
+        }
+    }
     public E get (int i) {
         checkIndex(i);
         return (E) elements[i];
