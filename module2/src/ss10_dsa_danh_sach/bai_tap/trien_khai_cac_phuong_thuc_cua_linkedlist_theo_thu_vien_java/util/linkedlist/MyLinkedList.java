@@ -162,4 +162,11 @@ public class MyLinkedList<E> {
         head = null;
         numNodes = 0;
     }
+    public void printList () {
+        Node temp = head;
+        while (temp.next != null) {
+            System.out.println(temp.data);
+            temp = temp.next;
+        }
+    }
 }

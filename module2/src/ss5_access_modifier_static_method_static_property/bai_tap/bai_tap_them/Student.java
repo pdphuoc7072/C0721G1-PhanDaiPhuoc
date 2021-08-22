@@ -34,6 +34,7 @@ public class Student {
     public void setAddressStudent(String addressStudent) {
         this.addressStudent = addressStudent;
     }
+
     public String displayStudent () {
         return ("Name: " + getNameStudent() + ", Age: " + getAgeStudent() + ", Address: " + getAddressStudent());
     }

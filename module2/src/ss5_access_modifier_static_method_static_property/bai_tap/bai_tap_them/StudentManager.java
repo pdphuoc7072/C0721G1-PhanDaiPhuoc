@@ -78,7 +78,7 @@ public class StudentManager {
     public static void searchListStudent () {
         System.out.print("Hãy nhập tên của sinh viên cần tìm: ");
         String searchNameStudent = scanner.nextLine();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < studentList.length; i++) {
             if (studentList[i].getNameStudent().equals(searchNameStudent)) {
                 System.out.println("Sinh viên cần tìm là: ");
                 System.out.println(studentList[i].displayStudent());
