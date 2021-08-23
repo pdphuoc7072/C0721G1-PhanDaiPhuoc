@@ -44,6 +44,6 @@ public class Person {
 
     @Override
     public String toString () {
-        return "name = " + getName() + "gender = " + getGender() + "dateOfBirth = " + Arrays.toString(getDateOfBirth());
+        return " name = " + getName() + ", gender = " + getGender() + ", dateOfBirth = " + Arrays.toString(getDateOfBirth()) + "\n";
     }
 }
