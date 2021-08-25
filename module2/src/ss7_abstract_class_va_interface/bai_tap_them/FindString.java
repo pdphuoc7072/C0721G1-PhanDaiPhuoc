@@ -5,28 +5,34 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class FindString {
-    public static String[] find (String string) {
-        string = string.replaceAll(" ", "");
-        String[] arrayOfString = new String[string.length()];
-        for (int i = 0; i < string.length(); i++) {
-            arrayOfString[i] = String.valueOf(string.charAt(i));
-        }
-        int count = 0;
-        String[] tempArray = new String[arrayOfString.length];
-        for (int i = 0; i < arrayOfString.length - 1; i++) {
-            for (int j = i + 1; j < arrayOfString.length; j++) {
-                if (arrayOfString[i].equals(arrayOfString[j])) {
-                    tempArray[count] = arrayOfString[i];
+    public static String[] find (String str) {
+        String[] arrResult = null;
+        String tempResult = "";
+        for (int i = 0; i < str.length(); i++) {
+            int count = 0;
+            for (int j = 0; j < str.length(); j++) {
+                if (str.charAt(i) == str.charAt(j)) {
                     count++;
-                    break;
+                }
+            }
+            // kiểm tra nếu xuất hiện lớn hơn 1 lần và khác " "
+            if (count > 1 && !String.valueOf(str.charAt(i)).equals(" ")) {
+                boolean flag = false;
+                // kiểm tra để lấy giá trị duy nhất
+                for (int k = 0; k < tempResult.length(); k++) {
+                    if (str.charAt(i) == tempResult.charAt(k)) {
+                        flag = true;
+                    }
+                }
+                // cho ký tự vào biến tạm nếu chưa tồn tại trong biến tạm
+                if (!flag) {
+                    tempResult += str.charAt(i);
                 }
             }
         }
-        String[] resultArray = new String[count];
-        for (int i = 0; i < count; i++) {
-            resultArray[i] = tempArray[i];
-        }
-        return tempArray;
+        // chuyển về mảng theo yêu cầu
+        arrResult = tempResult.split("");
+        return arrResult;
     }
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
