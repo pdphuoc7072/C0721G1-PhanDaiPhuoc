@@ -15,8 +15,8 @@ public class FindString {
                     count++;
                 }
             }
-            // kiểm tra nếu xuất hiện lớn hơn 1 lần và khác " "
-            if (count > 1 && !String.valueOf(str.charAt(i)).equals(" ")) {
+            // kiểm tra nếu xuất hiện lớn hơn 1 lần và khác ' '
+            if (count > 1 && str.charAt(i) != ' ') {
                 boolean flag = false;
                 // kiểm tra để lấy giá trị duy nhất
                 for (int k = 0; k < tempResult.length(); k++) {
