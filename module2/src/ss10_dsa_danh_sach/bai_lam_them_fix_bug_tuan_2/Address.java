@@ -1,6 +1,4 @@
-package ss10_dsa_danh_sach.bai_lam_them_fix_bug;
-
-import java.util.Arrays;
+package ss10_dsa_danh_sach.bai_lam_them_fix_bug_tuan_2;
 
 public class Address {
     private String houseNumber;

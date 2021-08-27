@@ -1,4 +1,4 @@
-package ss10_dsa_danh_sach.bai_lam_them_fix_bug;
+package ss10_dsa_danh_sach.bai_lam_them_fix_bug_tuan_2;
 
 public abstract class Person {
     private String name;
