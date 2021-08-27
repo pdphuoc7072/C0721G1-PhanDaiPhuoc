@@ -1,12 +1,6 @@
 package models;
 
 public class Employee extends Person {
-    private enum EducationLevel {
-        INTERMEDIATE_LEVEL, COLLEGE_LEVEL, UNIVERSITY_LEVEL, AFTER_UNIVERSITY_LEVEL; //Trung cấp, cao đẳng, đại học, sau đại học
-    }
-    private enum Position {
-        RECEPTIONIST, SERVICE, EXPERT, MONITOR, MANAGER, DIRECTOR; // Lễ tân, phục vụ, chuyên viên, giám sát, quản lý, giám đốc
-    }
     private String idOfEmployee; // Mã nhân viên
     private EducationLevel educationLevel; // Trình độ
     private Position position; // Vị trí

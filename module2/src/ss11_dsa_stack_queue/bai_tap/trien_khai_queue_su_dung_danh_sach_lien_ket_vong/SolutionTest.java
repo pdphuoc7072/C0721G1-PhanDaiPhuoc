@@ -2,22 +2,22 @@ package ss11_dsa_stack_queue.bai_tap.trien_khai_queue_su_dung_danh_sach_lien_ket
 
 public class SolutionTest {
     public static void main(String[] args) {
-        Queue queue = new Queue();
-        queue.front = null;
-        queue.rear = null;
-        Solution solution = new Solution();
-        solution.enQueue(queue, 14);
-        solution.enQueue(queue, 22);
-        solution.enQueue(queue, -6);
-        solution.displayQueue(queue);
-        solution.deQueue(queue);
-        solution.displayQueue(queue);
-        solution.deQueue(queue);
-        solution.displayQueue(queue);
-        solution.enQueue(queue, 9);
-        solution.displayQueue(queue);
-        solution.enQueue(queue, 20);
-        solution.displayQueue(queue);
+        Queue myQueue = new Queue();
+        myQueue.front = null;
+        myQueue.rear = null;
+        Solution mySolution = new Solution();
+        mySolution.enQueue(myQueue, 14);
+        mySolution.enQueue(myQueue, 22);
+        mySolution.enQueue(myQueue, -6);
+        mySolution.displayQueue(myQueue);
+        mySolution.deQueue(myQueue);
+        mySolution.displayQueue(myQueue);
+        mySolution.deQueue(myQueue);
+        mySolution.displayQueue(myQueue);
+        mySolution.enQueue(myQueue, 9);
+        mySolution.displayQueue(myQueue);
+        mySolution.enQueue(myQueue, 20);
+        mySolution.displayQueue(myQueue);
 
     }
 

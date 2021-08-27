@@ -22,18 +22,18 @@ public class PalindromeCheck {
         this.arrayOfString = this.myString.split("");
     }
     private Stack<String> pushMyStringToStack (String[] strings) {
-        Stack<String> stack = new Stack<>();
+        Stack<String> myStack = new Stack<>();
         for (String element : strings) {
-            stack.push(element);
+            myStack.push(element);
         }
-        return stack;
+        return myStack;
     }
     private Queue<String> pushMyStringToQueue (String[] strings) {
-        Queue<String> queue = new LinkedList<>();
+        Queue<String> myQueue = new LinkedList<>();
         for (String element : strings) {
-            queue.add(element);
+            myQueue.add(element);
         }
-        return queue;
+        return myQueue;
     }
     public boolean isElementInStackAndQueueEqual () {
         Stack<String> myStack = pushMyStringToStack(arrayOfString);

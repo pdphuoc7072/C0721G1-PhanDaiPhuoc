@@ -138,9 +138,6 @@ public class MyLinkedList<E> {
             return false;
         }
     }
-//    public void ensureCapacity (int minCapacity) {
-//
-//    }
     public E get (int index) {
         Node temp = head;
         for (int i = 0; i < index; i++) {

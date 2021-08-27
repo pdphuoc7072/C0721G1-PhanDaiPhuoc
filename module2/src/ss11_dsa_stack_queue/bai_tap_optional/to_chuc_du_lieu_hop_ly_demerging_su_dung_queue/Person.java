@@ -1,14 +1,11 @@
 package ss11_dsa_stack_queue.bai_tap_optional.to_chuc_du_lieu_hop_ly_demerging_su_dung_queue;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Person {
     private String name;
     private String gender;
     private LocalDate dateOfBirth;
-    static ArrayList<Person> listOfPerson = new ArrayList<>();
 
     public Person() {
     }

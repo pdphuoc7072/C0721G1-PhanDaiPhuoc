@@ -6,35 +6,35 @@ import java.util.Scanner;
 public class MyGenericStackTest {
     private static void stackOfIntegers () {
         Scanner scanner = new Scanner(System.in);
-        MyGenericStack<Integer> stackIntegers = new MyGenericStack();
+        MyGenericStack<Integer> myStackIntegers = new MyGenericStack();
         System.out.print("Hãy nhập size của mảng: ");
         int sizeOfArray = Integer.parseInt(scanner.nextLine());
-        int[] arrayIntegers = new int[sizeOfArray];
+        int[] arrayOfIntegers = new int[sizeOfArray];
         for (int i = 0; i < sizeOfArray; i++) {
             System.out.print("Hãy nhập phần tử có index = " + i + " : ");
-            arrayIntegers[i] = Integer.parseInt(scanner.nextLine());
+            arrayOfIntegers[i] = Integer.parseInt(scanner.nextLine());
         }
-        System.out.print("Mảng trước khi đưa vào stack: " + Arrays.toString(arrayIntegers) + "\n");
+        System.out.print("Mảng trước khi đưa vào stack: " + Arrays.toString(arrayOfIntegers) + "\n");
         for (int i = 0; i < sizeOfArray; i++) {
-            stackIntegers.push(arrayIntegers[i]);
+            myStackIntegers.push(arrayOfIntegers[i]);
         }
         for (int i = 0 ; i < sizeOfArray; i++) {
-            arrayIntegers[i] = stackIntegers.pop();
+            arrayOfIntegers[i] = myStackIntegers.pop();
         }
-        System.out.print("Mảng sau khi lấy ra từ stack: " + Arrays.toString(arrayIntegers));
+        System.out.print("Mảng sau khi lấy ra từ stack: " + Arrays.toString(arrayOfIntegers));
     }
     private static void stackOfStrings () {
         Scanner scanner = new Scanner(System.in);
-        MyGenericStack<String> stackStrings = new MyGenericStack();
+        MyGenericStack<String> myStackStrings = new MyGenericStack();
         System.out.print("Hãy nhập 1 câu: ");
         String inputString = scanner.nextLine();
         String[] inputStringOfArray = inputString.split(" ");
         StringBuilder outputString = new StringBuilder();
         for (String element : inputStringOfArray) {
-            stackStrings.push(element);
+            myStackStrings.push(element);
         }
-        while (!stackStrings.isEmpty()) {
-            outputString.append(stackStrings.pop()).append(" ");
+        while (!myStackStrings.isEmpty()) {
+            outputString.append(myStackStrings.pop()).append(" ");
         }
         System.out.println("Sau khi lấy ra từ stack, câu nhập vào ban đầu sẽ là: " + outputString);
 

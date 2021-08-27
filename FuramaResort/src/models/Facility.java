@@ -1,9 +1,6 @@
 package models;
 
 public abstract class Facility {
-    protected enum RentalType {
-        YEAR, MONTH, DAY, HOUR; // Kiểu thuê theo năm, tháng, ngày, giờ
-    }
     private String nameService; // Tên dịch vụ
     private double usableArea; // Diện tích sử dụng
     private double rentalCost; // Chi phí thuê

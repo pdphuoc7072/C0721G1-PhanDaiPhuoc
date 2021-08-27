@@ -18,7 +18,7 @@ public class BracketCheck {
     private void setArrayOfMyString () {
         this.arrayOfMyString = this.myString.split("");
     }
-    public boolean isOK () {
+    public boolean isRight() {
         String[] strings = this.arrayOfMyString;
         Stack<String> stack = new Stack<>();
         StringBuilder left = new StringBuilder();

@@ -5,10 +5,10 @@ import java.util.Scanner;
 public class ConvertDecimalToBinaryTest {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        ConvertDecimalToBinary convert = new ConvertDecimalToBinary();
+        ConvertDecimalToBinary myConvert = new ConvertDecimalToBinary();
         System.out.print("Hãy nhập vào 1 số nguyên không âm bất kỳ: ");
-        int number = Integer.parseInt(scanner.nextLine());
-        System.out.print("Hệ nhị phân của " + number + " là: ");
-        convert.convertDecimalToBinary(number);
+        int inputNumber = Integer.parseInt(scanner.nextLine());
+        System.out.print("Hệ nhị phân của " + inputNumber + " là: ");
+        myConvert.convertDecimalToBinary(inputNumber);
     }
 }

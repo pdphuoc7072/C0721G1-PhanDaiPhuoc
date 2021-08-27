@@ -10,7 +10,7 @@ public class CountWord {
         System.out.print("Hãy nhập vào 1 câu: ");
         String inputString = scanner.nextLine();
         String[] arrayOfInputString = inputString.split(" ");
-        Map<String, Integer> myMap = new TreeMap<String, Integer>();
+        Map<String, Integer> myMap = new TreeMap<>();
         for (String string : arrayOfInputString) {
             string = string.toLowerCase();
             int countKey = 1;

@@ -17,19 +17,21 @@ public class ProductManager {
     }
     public static void addProduct () {
         System.out.print("Hãy nhập id: ");
-        int idProduct = Integer.parseInt(scanner.nextLine());
-        System.out.print("hãy nhập tên: ");
-        String nameProduct = scanner.nextLine();
-        System.out.print("hãy nhập giá: ");
-        double priceProduct = Double.parseDouble(scanner.nextLine());
+        int idOfNewProduct = Integer.parseInt(scanner.nextLine());
+        System.out.print("Hãy nhập tên: ");
+        String nameOfNewProduct = scanner.nextLine();
+        System.out.print("Hãy nhập giá: ");
+        boolean check = true;
+        double priceOfNewProduct = Double.parseDouble(scanner.nextLine());
         for (int i = 0; i < listProduct.size(); i++) {
-            if (listProduct.get(i).getIdOfProduct() == idProduct) {
-                System.out.print("Id này đã tồn tại trong danh sách. Hãy nhập lại \n");
-                break;
-            } else {
-                listProduct.add(new Product(idProduct, nameProduct, priceProduct));
+            if (listProduct.get(i).getIdOfProduct() == idOfNewProduct || idOfNewProduct == 0) {
+                System.out.print("Lỗi do id mà bạn đã nhập đã tồn tại trong danh sách, hoặc bằng 0. \n");
+                check = false;
                 break;
             }
+        }
+        if (check) {
+            listProduct.add(new Product(idOfNewProduct, nameOfNewProduct, priceOfNewProduct));
         }
     }
     public static void displayProduct () {
@@ -46,7 +48,7 @@ public class ProductManager {
                 check = true;
                 System.out.print("\t1. Sửa tên sản phẩm \n");
                 System.out.print("\t2. Sửa giá sản phẩm \n");
-                System.out.print("Bạn muốn sửa loại gì? \n");
+                System.out.print("Bạn muốn sửa loại gì? ");
                 int choice = Integer.parseInt(scanner.nextLine());
                 switch (choice) {
                     case 1:
@@ -87,14 +89,19 @@ public class ProductManager {
     public static void searchProduct () {
         System.out.print("Hãy nhập tên của sản phẩm cần tìm: ");
         String nameOfProductToSearch = scanner.nextLine();
+        boolean check = false;
         for (Product product : listProduct) {
             if (product.getNameOfProduct().equals(nameOfProductToSearch)) {
-                product.toString();
+                System.out.println(product.toString());
+                check = true;
                 break;
             }
         }
+        if (!check) {
+            System.out.println("Không tìm thấy trong danh sách tên sản phẩm cần tìm ");
+        }
     }
-    public static void sortAscendingToPriceOfProduct () {
+    public static void sortAscendingForPriceOfProduct() {
         Collections.sort(listProduct, new Comparator<Product>() {
             @Override
             public int compare(Product o1, Product o2) {
@@ -102,7 +109,7 @@ public class ProductManager {
             }
         });
     }
-    public static void sortDescendingToPriceOfProduct () {
+    public static void sortDescendingForPriceOfProduct() {
         Collections.sort(listProduct, new Comparator<Product>() {
             @Override
             public int compare(Product o1, Product o2) {

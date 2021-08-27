@@ -3,16 +3,16 @@ package ss10_dsa_danh_sach.bai_tap.trien_khai_cac_phuong_thuc_cua_linkedlist_the
 public class MyLinkedListTest {
     public static void main(String[] args) {
         System.out.println("/=/=/=/= TESTING /=/=/=/=");
-        MyLinkedList ll = new MyLinkedList(30);
-        ll.addFirst(11);
-        ll.addFirst(12);
-        ll.addFirst(13);
+        MyLinkedList myLinkedList = new MyLinkedList(30);
+        myLinkedList.addFirst(11);
+        myLinkedList.addFirst(12);
+        myLinkedList.addFirst(13);
 
-        ll.add(4,9);
-        ll.addLast(14);
-        ll.addLast(20);
-        ll.remove(0);
-        ll.printList();
+        myLinkedList.add(4,9);
+        myLinkedList.addLast(14);
+        myLinkedList.addLast(20);
+        myLinkedList.remove(0);
+        myLinkedList.printList();
 
     }
 }

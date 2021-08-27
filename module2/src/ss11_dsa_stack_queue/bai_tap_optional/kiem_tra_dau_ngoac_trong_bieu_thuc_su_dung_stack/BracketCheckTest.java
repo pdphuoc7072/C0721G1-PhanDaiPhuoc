@@ -3,7 +3,7 @@ package ss11_dsa_stack_queue.bai_tap_optional.kiem_tra_dau_ngoac_trong_bieu_thuc
 public class BracketCheckTest {
     public static void main(String[] args) {
         BracketCheck bracketCheck = new BracketCheck();
-        if (bracketCheck.isOK()) {
+        if (bracketCheck.isRight()) {
             System.out.print("Very well");
         } else {
             System.out.print("?????");
