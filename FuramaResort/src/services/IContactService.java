@@ -1,5 +1,7 @@
 package services;
 
-public interface IContactService extends IService {
+import models.Contract;
+
+public interface IContactService extends IService<Contract> {
 
 }

@@ -1,24 +1,25 @@
 package models;
 
 public class EducationLevel {
-    private final String INTERMEDIATE_LEVEL = "intermediateLevel";
-    private final String COLLEGE_LEVEL = "collegeLevel";
-    private final String UNIVERSITY_LEVEL = "universityLevel";
-    private final String AFTER_UNIVERSITY_LEVEL = "afterUniversityLevel";
+    private String educationLevel;
 
-    public String getINTERMEDIATE_LEVEL() {
-        return INTERMEDIATE_LEVEL;
+    public EducationLevel() {
     }
 
-    public String getCOLLEGE_LEVEL() {
-        return COLLEGE_LEVEL;
+    public EducationLevel(String educationLevel) {
+        this.educationLevel = educationLevel;
     }
 
-    public String getUNIVERSITY_LEVEL() {
-        return UNIVERSITY_LEVEL;
+    public String getEducationLevel() {
+        return educationLevel;
     }
 
-    public String getAFTER_UNIVERSITY_LEVEL() {
-        return AFTER_UNIVERSITY_LEVEL;
+    public void setEducationLevel(String educationLevel) {
+        this.educationLevel = educationLevel;
+    }
+
+    @Override
+    public String toString() {
+        return "'" + educationLevel + '\'' ;
     }
 }

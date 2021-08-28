@@ -1,25 +1,22 @@
 package models;
 
 public class Customer extends Person {
-    private enum CustomerType {
-        DIAMOND, PLATINIUM, GOLD, SILVER, MEMBER;
-    }
-    private String idOfCustomer; // Mã khách hàng
-    private CustomerType customerType; // Loại khách hàng
-    private String addressOfCustomer; // Địa chỉ của khách hàng
+    private int idOfCustomer; // Mã khách hàng
+    private CustomerType customerType; // Loại khách hàng: diamond, platinium, gold, silver, member
+    private AddressOfCustomer addressOfCustomer; // Địa chỉ của khách hàng
 
-    public Customer(String fullName, String birthday, Gender gender, String idCardNumber, String phoneNumber, String email, String idOfCustomer, CustomerType customerType, String addressOfCustomer) {
+    public Customer(String fullName, String birthday, String gender, String idCardNumber, String phoneNumber, String email, int idOfCustomer, CustomerType customerType, AddressOfCustomer addressOfCustomer) {
         super(fullName, birthday, gender, idCardNumber, phoneNumber, email);
         this.idOfCustomer = idOfCustomer;
         this.customerType = customerType;
         this.addressOfCustomer = addressOfCustomer;
     }
 
-    public String getIdOfCustomer() {
+    public int getIdOfCustomer() {
         return idOfCustomer;
     }
 
-    public void setIdOfCustomer(String idOfCustomer) {
+    public void setIdOfCustomer(int idOfCustomer) {
         this.idOfCustomer = idOfCustomer;
     }
 
@@ -31,11 +28,21 @@ public class Customer extends Person {
         this.customerType = customerType;
     }
 
-    public String getAddressOfCustomer() {
+    public AddressOfCustomer getAddressOfCustomer() {
         return addressOfCustomer;
     }
 
-    public void setAddressOfCustomer(String addressOfCustomer) {
+    public void setAddressOfCustomer(AddressOfCustomer addressOfCustomer) {
         this.addressOfCustomer = addressOfCustomer;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                super.toString() +
+                "idOfCustomer = '" + idOfCustomer + "'" +
+                ", customerType = " + customerType +
+                ", addressOfCustomer = " + addressOfCustomer +
+                '}';
     }
 }

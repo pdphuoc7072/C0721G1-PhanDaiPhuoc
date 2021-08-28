@@ -6,6 +6,7 @@ public abstract class Facility {
     private double rentalCost; // Chi phí thuê
     private int maxNumberPeople; // Số lượng người tối đa
     private RentalType rentalTye; // Kiểu thuê
+
     public Facility (String nameService, double usableArea, double rentalCost, int maxNumberPeople, RentalType rentalTye) {
         this.nameService = nameService;
         this.usableArea = usableArea;

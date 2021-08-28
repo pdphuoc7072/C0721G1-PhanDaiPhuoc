@@ -1,9 +1,14 @@
 package controllers;
 
+import services.impl.CustomerServiceImpl;
+import services.impl.EmployeeServiceImpl;
+
 import java.util.Scanner;
 
 public class FuramaController {
-    public static void displayMainMenu() {
+    public static void main(String[] args) {
+        EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
+        CustomerServiceImpl customerService = new CustomerServiceImpl();
         Scanner scanner = new Scanner(System.in);
         int choice = -1;
         do {
@@ -28,10 +33,13 @@ public class FuramaController {
                         choiceNumber1 = Integer.parseInt(scanner.nextLine());
                         switch (choiceNumber1) {
                             case 1:
+                                employeeService.displayList();
                                 break;
                             case 2:
+                                employeeService.addList();
                                 break;
                             case 3:
+                                employeeService.editList();
                                 break;
                             case 4:
                                 break;
@@ -51,10 +59,13 @@ public class FuramaController {
                         choiceNumber2 = Integer.parseInt(scanner.nextLine());
                         switch (choiceNumber2) {
                             case 1:
+                                customerService.displayList();
                                 break;
                             case 2:
+                                customerService.addList();
                                 break;
                             case 3:
+                                customerService.editList();
                                 break;
                             case 4:
                                 break;
@@ -118,7 +129,7 @@ public class FuramaController {
                 case 5:
                     int choiceNumber5 = -1;
                     do {
-                        System.out.print("\t1. Display list customers use service \n");
+                        System.out.print("\t\n1. Display list customers use service \n");
                         System.out.print("\t2. Display list customers get voucher \n");
                         System.out.print("\t3. Return main menu \n");
                         System.out.print("Enter your choice: ");
@@ -139,9 +150,6 @@ public class FuramaController {
                     System.exit(6);
             }
         } while (choice != 6);
-    }
 
-    public static void main(String[] args) {
-        displayMainMenu();
     }
 }

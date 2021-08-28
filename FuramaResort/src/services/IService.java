@@ -1,5 +1,9 @@
 package services;
 
-public interface IService {
-    public abstract String showInformation ();
+import java.util.List;
+
+public interface IService<E> {
+    void addList ();
+    void displayList();
+    void editList ();
 }

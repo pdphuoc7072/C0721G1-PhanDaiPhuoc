@@ -1,34 +1,26 @@
 package models;
 
 public class Position {
-    private final String RECEPTIONIST = "receptionist";
-    private final String SERVICE = "service";
-    private final String EXPERT = "expert";
-    private final String MONITOR = "monitor";
-    private final String MANAGER = "manager";
-    private final String DIRECTOR = "director";
+    //
+    private String position;
 
-    public String getRECEPTIONIST() {
-        return RECEPTIONIST;
+    public Position() {
     }
 
-    public String getSERVICE() {
-        return SERVICE;
+    public Position(String position) {
+        this.position = position;
     }
 
-    public String getEXPERT() {
-        return EXPERT;
+    public String getPosition() {
+        return position;
     }
 
-    public String getMONITOR() {
-        return MONITOR;
+    public void setPosition(String position) {
+        this.position = position;
     }
 
-    public String getMANAGER() {
-        return MANAGER;
-    }
-
-    public String getDIRECTOR() {
-        return DIRECTOR;
+    @Override
+    public String toString() {
+        return "'" + position + '\'' ;
     }
 }

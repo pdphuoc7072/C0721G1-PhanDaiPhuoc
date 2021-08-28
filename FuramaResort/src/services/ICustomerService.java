@@ -1,5 +1,7 @@
 package services;
 
-public interface ICustomerService extends IService {
+import models.Customer;
+
+public interface ICustomerService extends IService<Customer> {
 
 }

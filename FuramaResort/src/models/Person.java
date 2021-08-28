@@ -1,17 +1,14 @@
 package models;
 
 public abstract class Person {
-    protected enum Gender {
-        MALE, FEMALE; // Giới tính nam, nữ
-    }
     private String fullName; // Họ tên
     private String birthday; // Ngày sinh
-    private Gender gender; // Giới tính
+    private String gender; // Giới tính
     private String idCardNumber; // Số CMND
     private String phoneNumber; // Số điện thoại
     private String email; // Email
 
-    public Person(String fullName, String birthday, Gender gender, String idCardNumber, String phoneNumber, String email) {
+    public Person(String fullName, String birthday, String gender, String idCardNumber, String phoneNumber, String email) {
         this.fullName = fullName;
         this.birthday = birthday;
         this.gender = gender;
@@ -36,11 +33,11 @@ public abstract class Person {
         this.birthday = birthday;
     }
 
-    public Gender getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(Gender gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
@@ -66,5 +63,15 @@ public abstract class Person {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return  "fullName = '" + fullName + '\'' +
+                ", birthday = '" + birthday + '\'' +
+                ", gender = " + gender +
+                ", idCardNumber = '" + idCardNumber + '\'' +
+                ", phoneNumber = '" + phoneNumber + '\'' +
+                ", email = '" + email + '\'' + ", ";
     }
 }

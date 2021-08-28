@@ -1,29 +1,25 @@
 package models;
 
 public class CustomerType {
-    private final String DIAMOND = "diamond";
-    private final String PLATINIUM = "platinium";
-    private final String GOLD = "gold";
-    private final String SILVER = "silver";
-    private final String MEMBER = "member";
+    private String customerType;
 
-    public String getDIAMOND() {
-        return DIAMOND;
+    public CustomerType() {
     }
 
-    public String getPLATINIUM() {
-        return PLATINIUM;
+    public CustomerType(String customerType) {
+        this.customerType = customerType;
     }
 
-    public String getGOLD() {
-        return GOLD;
+    public String getCustomerType() {
+        return customerType;
     }
 
-    public String getSILVER() {
-        return SILVER;
+    public void setCustomerType(String customerType) {
+        this.customerType = customerType;
     }
 
-    public String getMEMBER() {
-        return MEMBER;
+    @Override
+    public String toString() {
+        return "'" + customerType + '\'';
     }
 }
