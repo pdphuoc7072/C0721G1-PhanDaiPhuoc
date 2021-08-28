@@ -1,4 +1,4 @@
-package ss10_dsa_danh_sach.bai_lam_them_fix_bug_tuan_2;
+package bai_lam_them_fix_bug_tuan_2;
 
 public class Teacher extends Person {
     private int salary;

@@ -1,6 +1,4 @@
-package bai_lam_them_fix_bug;
-
-import java.util.Arrays;
+package bai_lam_them_fix_bug_tuan_1;
 
 public class Address {
     private String houseNumber;
