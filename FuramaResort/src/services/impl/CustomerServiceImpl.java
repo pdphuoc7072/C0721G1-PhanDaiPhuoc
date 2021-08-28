@@ -148,6 +148,7 @@ public class CustomerServiceImpl implements ICustomerService {
                                 System.out.print("Please enter new house number: ");
                                 String newHouseNumberOfCustomer = scanner.nextLine();
                                 AddressOfCustomer addressOfCustomer1 = new AddressOfCustomer();
+                                addressOfCustomer1 = listCustomer.get(i).getAddressOfCustomer();
                                 addressOfCustomer1.setHouseNumber(newHouseNumberOfCustomer);
                                 listCustomer.get(i).setAddressOfCustomer(addressOfCustomer1);
                                 break;
@@ -155,6 +156,7 @@ public class CustomerServiceImpl implements ICustomerService {
                                 System.out.print("Please enter new street: ");
                                 String newStreetOfCustomer = scanner.nextLine();
                                 AddressOfCustomer addressOfCustomer2 = new AddressOfCustomer();
+                                addressOfCustomer2 = listCustomer.get(i).getAddressOfCustomer();
                                 addressOfCustomer2.setStreet(newStreetOfCustomer);
                                 listCustomer.get(i).setAddressOfCustomer(addressOfCustomer2);
                                 break;
@@ -162,6 +164,7 @@ public class CustomerServiceImpl implements ICustomerService {
                                 System.out.print("Please enter new ward: ");
                                 String newWardOfCustomer = scanner.nextLine();
                                 AddressOfCustomer addressOfCustomer3 = new AddressOfCustomer();
+                                addressOfCustomer3 = listCustomer.get(i).getAddressOfCustomer();
                                 addressOfCustomer3.setWard(newWardOfCustomer);
                                 listCustomer.get(i).setAddressOfCustomer(addressOfCustomer3);
                                 break;
@@ -169,6 +172,7 @@ public class CustomerServiceImpl implements ICustomerService {
                                 System.out.print("Please enter new district: ");
                                 String newDistrictOfCustomer = scanner.nextLine();
                                 AddressOfCustomer addressOfCustomer4 = new AddressOfCustomer();
+                                addressOfCustomer4 = listCustomer.get(i).getAddressOfCustomer();
                                 addressOfCustomer4.setDistrict(newDistrictOfCustomer);
                                 listCustomer.get(i).setAddressOfCustomer(addressOfCustomer4);
                                 break;
@@ -176,6 +180,7 @@ public class CustomerServiceImpl implements ICustomerService {
                                 System.out.print("Please enter new province: ");
                                 String newProvinceOfCustomer = scanner.nextLine();
                                 AddressOfCustomer addressOfCustomer5 = new AddressOfCustomer();
+                                addressOfCustomer5 = listCustomer.get(i).getAddressOfCustomer();
                                 addressOfCustomer5.setProvince(newProvinceOfCustomer);
                                 listCustomer.get(i).setAddressOfCustomer(addressOfCustomer5);
                                 break;
