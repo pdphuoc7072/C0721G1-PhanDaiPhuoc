@@ -13,9 +13,21 @@ public class EmployeeServiceImpl implements IEmployeeService {
     Scanner scanner = new Scanner(System.in);
     static List<Employee> listEmployee = new ArrayList<>();
     static {
-        listEmployee.add(new Employee("Phan Đại Phước", "27/07/1990", "male",
-                                   "201854596", "0906514122", "pdphuoc7072@gmail.com", 1,
+        listEmployee.add(new Employee("Phan Đại Phước", "01/01/1990", "male",
+                                   "123456789", "0905123456", "abcxyz@gmail.com", 1,
                                    new EducationLevel("university"), new Position("expert")));
+        listEmployee.add(new Employee("Nguyễn Văn A", "02/08/1994", "male",
+                                      "456123789", "0905234098", "xyaghu@gmail.com", 2,
+                                      new EducationLevel("college"), new Position("waiter")));
+        listEmployee.add(new Employee("Trương Thị B", "08/12/1988", "female",
+                                      "578097124", "0901478932", "stuhjk@gmail.com", 3,
+                                       new EducationLevel("intermediate"), new Position("receptionist")));
+        listEmployee.add(new Employee("Ngô Văn C", "22/6/1992", "male",
+                                     "347812390", "0902965438", "aythugf@gmail.com", 4,
+                                      new EducationLevel("intermediate"), new Position("waiter")));
+        listEmployee.add(new Employee("Hà Thị D", "29/3/1994", "female",
+                                      "458124670", "0903409671", "drytui@gmail.com", 5,
+                                       new EducationLevel("college"), new Position("waitress")));
     }
     @Override
     public void addList () {

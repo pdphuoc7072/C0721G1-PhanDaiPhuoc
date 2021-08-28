@@ -1,18 +1,18 @@
 package models;
 
 public class Room extends Facility {
-    private String freeServiceIncluded; // Dịch vụ miễn phí đi kèm
+    private FreeServiceIncluded freeServiceIncluded; // Dịch vụ miễn phí đi kèm
 
-    public Room(String nameService, double usableArea, double rentalCost, int maxNumberPeople, RentalType rentalTye, String freeServiceIncluded) {
+    public Room(String nameService, double usableArea, double rentalCost, int maxNumberPeople, RentalType rentalTye, FreeServiceIncluded freeServiceIncluded) {
         super(nameService, usableArea, rentalCost, maxNumberPeople, rentalTye);
         this.freeServiceIncluded = freeServiceIncluded;
     }
 
-    public String getFreeServiceIncluded() {
+    public FreeServiceIncluded getFreeServiceIncluded() {
         return freeServiceIncluded;
     }
 
-    public void setFreeServiceIncluded(String freeServiceIncluded) {
+    public void setFreeServiceIncluded(FreeServiceIncluded freeServiceIncluded) {
         this.freeServiceIncluded = freeServiceIncluded;
     }
 }

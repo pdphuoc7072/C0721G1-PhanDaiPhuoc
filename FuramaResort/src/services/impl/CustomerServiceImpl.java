@@ -14,9 +14,15 @@ public class CustomerServiceImpl implements ICustomerService {
     Scanner scanner = new Scanner(System.in);
     static List<Customer> listCustomer = new LinkedList<>();
     static {
-        listCustomer.add(new Customer("Phan Tuấn Kiệt", "16/03/2019", "male", "201123456", "0905123456",
-                "ptk@gmail.com", 1, new CustomerType("diamond"),
-                new AddressOfCustomer("61", "Trần Văn Ơn", "Hòa An", "Cẩm Lệ", "Đà Nẵng")));
+        listCustomer.add(new Customer("Phan Tuấn Kiệt", "02/04/1992", "male", "201123456",
+                                      "0905123456", "ptk@gmail.com", 1, new CustomerType("diamond"),
+                                      new AddressOfCustomer("12", "Yên Thế", "Hòa An", "Cẩm Lệ", "Đà Nẵng")));
+        listCustomer.add(new Customer("Đoàn Văn E", "06/02/1996", "male", "458793246",
+                                      "0905467890", "lkorth@gmail.com", 2, new CustomerType("gold"),
+                                       new AddressOfCustomer("38", "Huỳnh Ngọc Huệ", "An Khê", "Thanh Khê", "Đà Nẵng")));
+        listCustomer.add(new Customer("Nguyễn Thị F", "05/07/1985", "female", "678097123",
+                                     "0956348670", "tuiopu@gmail.com", 3, new CustomerType("silver"),
+                                     new AddressOfCustomer("31", "Quảng Xương", "Quế Châu", "Quế Sơn", "Quảng Nam")));
     }
 
     @Override
