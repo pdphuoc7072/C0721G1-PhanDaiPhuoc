@@ -1,4 +1,4 @@
-package ss8._clean_code_va_refactoring.thuc_hanh.refactoring_tach_phuong_thuc;
+package ss8_clean_code_va_refactoring.thuc_hanh.refactoring_tach_phuong_thuc;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package ss8._clean_code_va_refactoring.bai_tap.refactoring;
+package ss8_clean_code_va_refactoring.bai_tap.refactoring;
 
 import java.util.Scanner;
 
