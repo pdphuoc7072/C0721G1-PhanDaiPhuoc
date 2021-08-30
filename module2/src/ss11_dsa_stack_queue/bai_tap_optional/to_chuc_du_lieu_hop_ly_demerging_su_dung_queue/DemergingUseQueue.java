@@ -1,6 +1,5 @@
 package ss11_dsa_stack_queue.bai_tap_optional.to_chuc_du_lieu_hop_ly_demerging_su_dung_queue;
 
-import java.time.LocalDate;
 import java.util.*;
 
 public class DemergingUseQueue {
@@ -10,13 +9,13 @@ public class DemergingUseQueue {
     public static void main(String[] args) {
         Queue<Person> queueMale = new LinkedList<>();
         Queue<Person> queueFemale = new LinkedList<>();
-        ArrayList<Person> listPerson = new ArrayList<>();
-        listPerson.add(new Person("An", "female", LocalDate.of(1996, 7, 27)));
-        listPerson.add(new Person("Nam", "male", LocalDate.of(1988, 2, 19)));
-        listPerson.add(new Person("Anh", "male", LocalDate.of(1989, 3, 12)));
-        listPerson.add(new Person("Bình", "male", LocalDate.of(1987, 1, 8)));
-        listPerson.add(new Person("Thủy", "female", LocalDate.of(1988, 2, 5)));
-        listPerson.add(new Person("Hiền", "female", LocalDate.of(1996, 12, 15)));
+        List<Person> listPerson = new ArrayList<>();
+        listPerson.add(new Person("An", "female", "27/07/1996"));
+        listPerson.add(new Person("Nam", "male", "19/02/1988"));
+        listPerson.add(new Person("Anh", "male", "01/07/1996"));
+        listPerson.add(new Person("Bình", "male", "08/01/1987"));
+        listPerson.add(new Person("Thủy", "female", "05/02/1988"));
+        listPerson.add(new Person("Hiền", "female", "15/07/1996"));
         Collections.sort(listPerson);
 
         System.out.println("Trước khi sắp xếp nữ trước nam, danh sách (đã sắp xếp theo ngày tháng năm sinh) là: \n" + listPerson);
@@ -32,7 +31,7 @@ public class DemergingUseQueue {
             }
         }
 
-        ArrayList<Person> listAfterDemerging = new ArrayList<>();
+        List<Person> listAfterDemerging = new ArrayList<>();
         while (!queueFemale.isEmpty()) {
             listAfterDemerging.add(queueFemale.poll());
         }
