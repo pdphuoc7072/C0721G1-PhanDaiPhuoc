@@ -17,13 +17,13 @@ public class CopyFile {
                 throw new FileNotFoundException();
             }
             OutputStream outputStream = new FileOutputStream(outPath);
-            int k;
-            int count = 0;
-            while ((k = inputStream.read()) != -1) {
-                outputStream.write(k);
-                count++;
+            int readEverCharacter;
+            int countCharacter = 0;
+            while ((readEverCharacter = inputStream.read()) != -1) {
+                outputStream.write(readEverCharacter);
+                countCharacter++;
             }
-            System.out.println("Hoàn thành. Số ký tự đã copy là: " + count);
+            System.out.println("Hoàn thành. Số ký tự đã copy là: " + countCharacter);
             outputStream.close();
         } catch (Exception e) {
             System.err.println("Tệp nguồn không tồn tại hoặc tập tin đích đã tồn tại. ");
