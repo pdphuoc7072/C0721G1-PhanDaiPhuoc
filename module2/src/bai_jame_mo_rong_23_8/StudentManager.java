@@ -1,4 +1,4 @@
-package bai_lam_them_23_8;
+package bai_jame_mo_rong_23_8;
 
 
 import java.util.Scanner;

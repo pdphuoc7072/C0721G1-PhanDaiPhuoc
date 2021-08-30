@@ -1,6 +1,6 @@
-package bai_lam_them_30_8;
+package bai_jame_mo_rong_23_8;
 
-public class Student implements Comparable<Student> {
+public class Student {
     private String nameStudent;
     private int ageStudent;
     private Address addressStudent;
@@ -40,15 +40,5 @@ public class Student implements Comparable<Student> {
     @Override
     public String toString () {
         return ("Name: " + getNameStudent() + ", Age: " + getAgeStudent() + ", Address: [" + getAddressStudent()) + "]";
-    }
-
-
-    @Override
-    public int compareTo(Student o) {
-        if (this.getNameStudent() == o.getNameStudent()) {
-            return this.getAgeStudent() - o.getAgeStudent();
-        } else {
-            return this.getNameStudent().compareTo(o.getNameStudent());
-        }
     }
 }

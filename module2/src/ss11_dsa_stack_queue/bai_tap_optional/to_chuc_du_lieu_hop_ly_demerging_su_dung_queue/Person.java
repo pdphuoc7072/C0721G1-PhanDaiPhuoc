@@ -2,7 +2,7 @@ package ss11_dsa_stack_queue.bai_tap_optional.to_chuc_du_lieu_hop_ly_demerging_s
 
 import java.time.LocalDate;
 
-public class Person {
+public class Person implements Comparable<Person> {
     private String name;
     private String gender;
     private LocalDate dateOfBirth;
@@ -43,5 +43,10 @@ public class Person {
     @Override
     public String toString () {
         return " name = " + getName() + ", gender = " + getGender() + ", dateOfBirth = " + getDateOfBirth() + "\n";
+    }
+
+    @Override
+    public int compareTo(Person o) {
+        return this.getDateOfBirth().compareTo(o.getDateOfBirth());
     }
 }
