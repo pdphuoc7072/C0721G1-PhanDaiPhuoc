@@ -102,19 +102,11 @@ public class ProductManager {
         }
     }
     public static void sortAscendingForPriceOfProduct() {
-        Collections.sort(listProduct, new Comparator<Product>() {
-            @Override
-            public int compare(Product o1, Product o2) {
-                return (int) (o1.getPriceOfProduct() - o2.getPriceOfProduct());
-            }
-        });
+        Collections.sort(listProduct, new SortAscendingForPriceOfProduct());
+        displayProduct();
     }
     public static void sortDescendingForPriceOfProduct() {
-        Collections.sort(listProduct, new Comparator<Product>() {
-            @Override
-            public int compare(Product o1, Product o2) {
-                return (int) (o2.getPriceOfProduct() - o1.getPriceOfProduct());
-            }
-        });
+        Collections.sort(listProduct, new SortDescendingForPriceOfProduct());
+        displayProduct();
     }
 }

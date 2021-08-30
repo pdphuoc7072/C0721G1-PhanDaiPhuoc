@@ -1,4 +1,4 @@
-package ss6_ke_thua.bai_tap.bai_tap_them;
+package bai_lam_them_23_8;
 
 
 import java.util.Scanner;

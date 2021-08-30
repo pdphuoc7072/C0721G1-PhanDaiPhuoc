@@ -1,7 +1,7 @@
-package ss6_ke_thua.bai_tap.bai_tap_them;
+package bai_lam_them_30_8;
 
 public class Address {
-    private int numHouse;
+    private String numHouse;
     private String street;
     private String ward;
     private String district;
@@ -10,7 +10,7 @@ public class Address {
     public Address() {
     }
 
-    public Address(int numHouse, String street, String ward, String district, String province) {
+    public Address(String numHouse, String street, String ward, String district, String province) {
         this.numHouse = numHouse;
         this.street = street;
         this.ward = ward;
@@ -18,11 +18,11 @@ public class Address {
         this.province = province;
     }
 
-    public int getNumHouse() {
+    public String getNumHouse() {
         return numHouse;
     }
 
-    public void setNumHouse(int numHouse) {
+    public void setNumHouse(String numHouse) {
         this.numHouse = numHouse;
     }
 

@@ -31,8 +31,8 @@ public class Main {
                     ProductManager.searchProduct();
                     break;
                 case 5:
-                    System.out.print("\t1. Sắp xếp theo giá giảm dần\n");
-                    System.out.print("\t2. Sắp xếp theo giá tăng dần\n");
+                    System.out.print("\t1. Sắp xếp theo giá tăng dần\n");
+                    System.out.print("\t2. Sắp xếp theo giá giảm dần\n");
                     System.out.print("Hãy chọn 1 hoặc 2: ");
                     int choice1 = Integer.parseInt(scanner.nextLine());
                     switch (choice1) {
