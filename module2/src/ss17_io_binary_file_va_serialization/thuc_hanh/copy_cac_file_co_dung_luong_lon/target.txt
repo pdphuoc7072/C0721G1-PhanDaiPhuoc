@@ -1,0 +1,8 @@
+[Thực hành] Copy các file có dung lượng lớn
+Mục tiêu
+Luyện tập làm việc với file binary.
+
+Mô tả
+Viết một ứng dụng cho phép copy các file có dung lượng lớn.
+
+Ứng dụng cho phép nhập vào đường dẫn của file nguồn, đường dẫn của thư mục đích và sao chép file nguồn sang thư mục đích.
