@@ -17,4 +17,9 @@ public class RentalType {
     public void setRentalType(String rentalType) {
         this.rentalType = rentalType;
     }
+
+    @Override
+    public String toString() {
+        return  rentalType;
+    }
 }

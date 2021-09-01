@@ -17,4 +17,11 @@ public class FreeServiceIncluded {
     public void setNameOfService(String nameOfService) {
         this.nameOfService = nameOfService;
     }
+
+    @Override
+    public String toString() {
+        return "FreeServiceIncluded{" +
+                "nameOfService='" + nameOfService + '\'' +
+                '}';
+    }
 }

@@ -1,20 +1,23 @@
 package models;
 
-public class Booking {
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
+public class Booking implements Comparable<Booking> {
     private String idOfBooking; // Mã booking
     private String startDate; // Ngày bắt đầu
     private String endDate; // Ngày kết thúc
     private String idOfCustomer; // Mã khách hàng
     private String nameOfServices; // Tên dịch vụ
-    private String servicesOfType; // Loại dịch vụ
+    private String idOfServices; // Loại dịch vụ
 
-    public Booking(String idOfBooking, String startDate, String endDate, String idOfCustomer, String nameOfServices, String servicesOfType) {
+    public Booking(String idOfBooking, String startDate, String endDate, String idOfCustomer, String nameOfServices, String idOfServices) {
         this.idOfBooking = idOfBooking;
         this.startDate = startDate;
         this.endDate = endDate;
         this.idOfCustomer = idOfCustomer;
         this.nameOfServices = nameOfServices;
-        this.servicesOfType = servicesOfType;
+        this.idOfServices = idOfServices;
     }
 
     public String getIdOfBooking() {
@@ -57,11 +60,38 @@ public class Booking {
         this.nameOfServices = nameOfServices;
     }
 
-    public String getServicesOfType() {
-        return servicesOfType;
+    public String getIdOfServices() {
+        return idOfServices;
     }
 
-    public void setServicesOfType(String servicesOfType) {
-        this.servicesOfType = servicesOfType;
+    public void setIdOfServices(String idOfServices) {
+        this.idOfServices = idOfServices;
+    }
+
+    @Override
+    public String toString() {
+        return "Booking{" +
+                "idOfBooking='" + idOfBooking + '\'' +
+                ", startDate='" + startDate + '\'' +
+                ", endDate='" + endDate + '\'' +
+                ", idOfCustomer='" + idOfCustomer + '\'' +
+                ", nameOfServices='" + nameOfServices + '\'' +
+                ", idOfServices ='" + idOfServices + '\'' +
+                '}';
+    }
+
+    @Override
+    public int compareTo(Booking o) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            if (sdf.parse(this.getStartDate()) == sdf.parse(o.getStartDate())) {
+                return (sdf.parse(this.getEndDate()).compareTo(sdf.parse(o.getEndDate())));
+            } else if (sdf.parse(this.getStartDate()).compareTo(sdf.parse(o.getStartDate())) > 0) {
+                return -1;
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return 1;
     }
 }

@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 
 public class CustomerServiceImpl implements ICustomerService {
-    Scanner scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
     static List<Customer> listCustomer = new LinkedList<>();
     static {
         listCustomer.add(new Customer("Phan Tuấn Kiệt", "02/04/1992", "male", "201123456",

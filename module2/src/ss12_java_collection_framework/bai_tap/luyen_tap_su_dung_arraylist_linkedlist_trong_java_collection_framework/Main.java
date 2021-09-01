@@ -37,10 +37,10 @@ public class Main {
                     int choice1 = Integer.parseInt(scanner.nextLine());
                     switch (choice1) {
                         case 1:
-                            ProductManager.sortDescendingForPriceOfProduct();
+                            ProductManager.sortAscendingForPriceOfProduct();
                             break;
                         case 2:
-                            ProductManager.sortAscendingForPriceOfProduct();
+                            ProductManager.sortDescendingForPriceOfProduct();
                             break;
                     }
                     break;

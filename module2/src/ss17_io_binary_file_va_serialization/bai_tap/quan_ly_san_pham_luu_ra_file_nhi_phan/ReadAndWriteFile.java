@@ -7,9 +7,9 @@ import java.util.List;
 public class ReadAndWriteFile {
     public static final String COMMA_DELIMITER = ",";
 
-    public static void writeToFile (String filePath, List<Product> listProduct) {
+    public static void writeToFile (String filePath, List<Product> listProduct, boolean check) {
         try {
-            FileWriter fw = new FileWriter(filePath, true);
+            FileWriter fw = new FileWriter(filePath, check);
             BufferedWriter bw = new BufferedWriter(fw);
             for (Product product : listProduct) {
                 bw.append(String.valueOf(product.getIdOfProduct()));
@@ -30,7 +30,6 @@ public class ReadAndWriteFile {
             e.printStackTrace();
         }
     }
-
     public static List<Product> readFromFile (String filePath) {
         List<Product> listProduct = new ArrayList<>();
         try {

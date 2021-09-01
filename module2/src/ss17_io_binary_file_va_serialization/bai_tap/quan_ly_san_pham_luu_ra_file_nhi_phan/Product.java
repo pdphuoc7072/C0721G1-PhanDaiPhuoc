@@ -2,7 +2,7 @@ package ss17_io_binary_file_va_serialization.bai_tap.quan_ly_san_pham_luu_ra_fil
 
 import java.io.Serializable;
 
-public class Product implements Serializable {
+public class Product implements Serializable, Comparable<Product> {
     private int idOfProduct;
     private String nameOfProduct;
     private String manufacturerOfProduct;
@@ -69,5 +69,10 @@ public class Product implements Serializable {
                 ", priceOfProduct = " + priceOfProduct +
                 ", otherDescription = " + otherDescription +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Product o) {
+        return this.getIdOfProduct() - o.getIdOfProduct();
     }
 }
