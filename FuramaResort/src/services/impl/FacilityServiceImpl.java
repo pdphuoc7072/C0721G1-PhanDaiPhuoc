@@ -9,22 +9,12 @@ import utils.ReadAndWriteFileOfVilla;
 import java.util.*;
 
 public class FacilityServiceImpl implements IFacilityService {
-//    private static Map<Facility, Integer> listFacility = new LinkedHashMap<>();
     private static String filePathOfVilla = "D:\\C0721G1_Phan_Dai_Phuoc\\FuramaResort\\src\\data\\villa.csv";
     private static String filePathOfHouse = "D:\\C0721G1_Phan_Dai_Phuoc\\FuramaResort\\src\\data\\house.csv";
     private static String filePathOfRoom = "D:\\C0721G1_Phan_Dai_Phuoc\\FuramaResort\\src\\data\\room.csv";
-//    static {
-//        listFacility.put(new Villa("1", "Villa 1", 100, 300, 8, new RentalType("day"), "5 stars", 40, 3), 0);
-//        listFacility.put(new Villa("2", "Villa 2", 200, 400, 10, new RentalType("day"), "5 stars", 80, 3), 0);
-//        listFacility.put(new Villa("3", "Villa 3", 150, 350, 8, new RentalType("day"), "5 stars", 60, 3), 0);
-//        listFacility.put(new House("4", "House 1", 70, 200, 5, new RentalType("day"), "5 stars", 2), 0);
-//        listFacility.put(new House("5", "House 2", 75, 220, 5, new RentalType("day"), "5 stars", 2), 0);
-//        listFacility.put(new House("6", "House 3", 80, 240, 5, new RentalType("day"), "5 stars", 2), 0);
-//        listFacility.put(new Room("7", "Room 1", 40, 150, 3, new RentalType("day"), new FreeServiceIncluded("karaoke")), 0);
-//        listFacility.put(new Room("8", "Room 2", 45, 160, 3, new RentalType("day"), new FreeServiceIncluded("massage")), 0);
-//        listFacility.put(new Room("9", "Room 3", 50, 170, 3, new RentalType("day"), new FreeServiceIncluded("karaoke")), 0);
-//    }
-    private static Map<Facility, Integer> listFacilityForMaintenance = new LinkedHashMap<>();
+    private static String filePathOfVillaForMaintenance = "D:\\C0721G1_Phan_Dai_Phuoc\\FuramaResort\\src\\data\\villa_for_maintenance.csv";
+    private static String filePathOfHouseForMaintenance = "D:\\C0721G1_Phan_Dai_Phuoc\\FuramaResort\\src\\data\\house_for_maintenance.csv";
+    private static String filePathOfRoomForMaintenance = "D:\\C0721G1_Phan_Dai_Phuoc\\FuramaResort\\src\\data\\room_for_maintenance.csv";
     static Scanner scanner = new Scanner(System.in);
 
     @Override
@@ -194,33 +184,59 @@ public class FacilityServiceImpl implements IFacilityService {
     }
 
     public void displayListForMaintenance () {
+        Map<Villa, Integer> villaListForMaintenance = getListVillaForMaintenance();
+        Map<House, Integer> houseListForMaintenance = getListHouseForMaintenance();
+        Map<Room, Integer> roomListForMaintenance = getListRoomForMaintenance();
+        Set<Villa> villaSetForMaintenance = villaListForMaintenance.keySet();
+        Set<House> houseSetForMaintenance = houseListForMaintenance.keySet();
+        Set<Room> roomSetForMaintenance = roomListForMaintenance.keySet();
+        for (Villa villa : villaSetForMaintenance) {
+            System.out.println(villa.toString() + ", Number Of Use = " + villaListForMaintenance.get(villa));
+        }
+        for (House house : houseSetForMaintenance) {
+            System.out.println(house.toString() + ", Number Of Use = " + houseListForMaintenance.get(house));
+        }
+        for (Room room : roomSetForMaintenance) {
+            System.out.println(room.toString() + ", Number Of Use = " + roomListForMaintenance.get(room));
+        }
+    }
+    public Map<Villa, Integer> getListVillaForMaintenance () {
         Map<Villa, Integer> villaList = getListVilla();
-        Map<House, Integer> houseList = getListHouse();
-        Map<Room, Integer> roomList = getListRoom();
         Set<Villa> villaSet = villaList.keySet();
-        Set<House> houseSet = houseList.keySet();
-        Set<Room> roomSet = roomList.keySet();
+        Map<Villa, Integer> villaListForMaintenance = new LinkedHashMap<>();
         for (Villa villa : villaSet) {
             if (villaList.get(villa) > 5) {
-                listFacilityForMaintenance.put(villa, villaList.get(villa));
+                villaListForMaintenance.put(villa, villaList.get(villa));
+                ReadAndWriteFileOfVilla.writeToFileOfVilla(filePathOfVillaForMaintenance, villaListForMaintenance, true);
                 villaList.put(villa, 0);
             }
         }
+        return ReadAndWriteFileOfVilla.readFromFileOfVilla(filePathOfVillaForMaintenance);
+    }
+    public Map<House, Integer> getListHouseForMaintenance () {
+        Map<House, Integer> houseList = getListHouse();
+        Set<House> houseSet = houseList.keySet();
+        Map<House, Integer> houseListForMaintenance = new LinkedHashMap<>();
         for (House house : houseSet) {
             if (houseList.get(house) > 5) {
-                listFacilityForMaintenance.put(house, houseList.get(house));
+                houseListForMaintenance.put(house, houseList.get(house));
+                ReadAndWriteFileOfHouse.writeToFileOfHouse(filePathOfHouseForMaintenance, houseListForMaintenance, true);
                 houseList.put(house, 0);
             }
         }
+        return ReadAndWriteFileOfHouse.readFromFileOfHouse(filePathOfHouseForMaintenance);
+    }
+    public Map<Room, Integer> getListRoomForMaintenance () {
+        Map<Room, Integer> roomList = getListRoom();
+        Set<Room> roomSet = roomList.keySet();
+        Map<Room, Integer> roomListForMaintenance = new LinkedHashMap<>();
         for (Room room : roomSet) {
             if (roomList.get(room) > 5) {
-                listFacilityForMaintenance.put(room, roomList.get(room));
+                roomListForMaintenance.put(room, roomList.get(room));
+                ReadAndWriteFileOfRoom.writeToFileOfRoom(filePathOfRoomForMaintenance, roomListForMaintenance, true);
                 roomList.put(room, 0);
             }
         }
-        Set<Facility> setListFacilityForMaintenance = listFacilityForMaintenance.keySet();
-        for (Facility facilityForMaintenance : setListFacilityForMaintenance) {
-            System.out.println(facilityForMaintenance + ", Number Of Use = " + listFacilityForMaintenance.get(facilityForMaintenance));
-        }
+        return ReadAndWriteFileOfRoom.readFromFileOfRoom(filePathOfRoomForMaintenance);
     }
 }

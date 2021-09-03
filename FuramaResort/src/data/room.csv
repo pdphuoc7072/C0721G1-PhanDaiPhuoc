@@ -1,5 +1,3 @@
-1,Room 1,40.0,150.0,3,day,karaoke,0
-2,Room 2,45.0,160.0,3,day,karaoke,0
-3,Room 3,50.0,170.0,3,day,massage,0
-4,Room 4,55.0,180.0,3,day,massage,0
-5,Room 5,60.0,190.0,3,day,massage,0
+7,Room 1,40.0,100.0,3,day,karaoke,1
+8,Room 2,40.0,110.0,3,day,massage,0
+9,Room 3,40.0,120.0,3,day,karaoke + massage,0
