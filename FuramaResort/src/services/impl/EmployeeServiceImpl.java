@@ -1,90 +1,79 @@
 package services.impl;
 
+import models.Customer;
 import models.EducationLevel;
 import models.Employee;
 import models.Position;
 import services.IEmployeeService;
+import utils.ReadAndWriteFileOfEmployee;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class EmployeeServiceImpl implements IEmployeeService {
     Scanner scanner = new Scanner(System.in);
-    static List<Employee> listEmployee = new ArrayList<>();
-    static {
-        listEmployee.add(new Employee("Phan Đại Phước", "01/01/1990", "male",
-                                   "123456789", "0905123456", "abcxyz@gmail.com", 1,
-                                   new EducationLevel("university"), new Position("expert")));
-        listEmployee.add(new Employee("Nguyễn Văn A", "02/08/1994", "male",
-                                      "456123789", "0905234098", "xyaghu@gmail.com", 2,
-                                      new EducationLevel("college"), new Position("waiter")));
-        listEmployee.add(new Employee("Trương Thị B", "08/12/1988", "female",
-                                      "578097124", "0901478932", "stuhjk@gmail.com", 3,
-                                       new EducationLevel("intermediate"), new Position("receptionist")));
-        listEmployee.add(new Employee("Ngô Văn C", "22/6/1992", "male",
-                                     "347812390", "0902965438", "aythugf@gmail.com", 4,
-                                      new EducationLevel("intermediate"), new Position("waiter")));
-        listEmployee.add(new Employee("Hà Thị D", "29/3/1994", "female",
-                                      "458124670", "0903409671", "drytui@gmail.com", 5,
-                                       new EducationLevel("college"), new Position("waitress")));
-    }
+    String filePath = "D:\\C0721G1_Phan_Dai_Phuoc\\FuramaResort\\src\\data\\employee.csv";
+
     @Override
-    public void addList () {
-        System.out.print("Please enter full name: ");
-        String inputName = scanner.nextLine();
-        System.out.print("Please enter birthday (dd/mm/yyyy): ");
-        String inputBirthday = scanner.nextLine();
-        System.out.print("Please enter gender (male/female): ");
-        String inputGender = scanner.nextLine();
-        System.out.print("Please enter Id card number: ");
-        String inputIdCardNumber = scanner.nextLine();
-        System.out.print("Please enter phone number: ");
-        String inputPhoneNumber = scanner.nextLine();
-        System.out.print("Please enter email: ");
-        String inputEmail = scanner.nextLine();
-        System.out.print("Please enter Id of the employee: ");
-        int inputIdOfEmployee = Integer.parseInt(scanner.nextLine());
-        System.out.print("Please enter education level (intermediate/college/university/post graduate): ");
-        String inputEducationLevel = scanner.nextLine();
-        System.out.print("Please enter position (receptionist/waiter:waitress/expert/supervision/manager/director): ");
-        String inputPosition = scanner.nextLine();
-        EducationLevel educationLevel = new EducationLevel(inputEducationLevel);
-        Position position = new Position(inputPosition);
-        boolean check = true;
-        for (int i = 0; i < listEmployee.size(); i++) {
-            if (listEmployee.get(i).getIdOfEmployee() == inputIdOfEmployee) {
+    public void add() {
+        List<Employee> employeeList = getList();
+        boolean flag;
+        String idOfEmployee;
+        do {
+            flag = true;
+            System.out.print("Please enter Id of the employee: ");
+            idOfEmployee = scanner.nextLine();
+            for (int i = 0; i < employeeList.size(); i++) {
+                if (employeeList.get(i).getIdOfEmployee().equals(idOfEmployee)) {
+                    flag = false;
+                    break;
+                }
+            }
+            if (!flag) {
                 System.out.print("Error. The id already exists in the list. Please re-enter. \n");
-                check = false;
-                break;
             }
-            if (inputIdOfEmployee == 0) {
-                System.out.print("Error. Id cannot be 0. Please re-enter. \n");
-                check = false;
-                break;
-            }
-        }
-        if (check) {
-            listEmployee.add(new Employee(inputName, inputBirthday, inputGender, inputIdCardNumber, inputPhoneNumber,
-                                          inputEmail, inputIdOfEmployee, educationLevel, position));
-        }
+        } while (!flag);
+
+        employeeList.clear();
+        System.out.print("Please enter full name: ");
+        String name = scanner.nextLine();
+        System.out.print("Please enter birthday (dd/mm/yyyy): ");
+        String birthday = scanner.nextLine();
+        System.out.print("Please enter gender (male/female): ");
+        String gender = scanner.nextLine();
+        System.out.print("Please enter Id card number: ");
+        String idCardNumber = scanner.nextLine();
+        System.out.print("Please enter phone number: ");
+        String phoneNumber = scanner.nextLine();
+        System.out.print("Please enter email: ");
+        String email = scanner.nextLine();
+        System.out.print("Please enter education level (intermediate/college/university/post graduate): ");
+        String educationLevelInput = scanner.nextLine();
+        System.out.print("Please enter position (receptionist/waiter:waitress/expert/supervision/manager/director): ");
+        String positionInput = scanner.nextLine();
+        EducationLevel educationLevel = new EducationLevel(educationLevelInput);
+        Position position = new Position(positionInput);
+        employeeList.add(new Employee(name, birthday, gender, idCardNumber, phoneNumber, email, idOfEmployee, educationLevel, position));
+        ReadAndWriteFileOfEmployee.writeEmployeeToFile(filePath, employeeList, true);
     }
 
     @Override
-    public void displayList() {
-        for (Employee employee : listEmployee) {
+    public void display() {
+        List<Employee> employeeList = getList();
+        for (Employee employee : employeeList) {
             System.out.print(employee.toString() + "\n");
         }
     }
 
     @Override
-    public void editList() {
+    public void edit() {
+        List<Employee> employeeList = getList();
         System.out.print("Please enter the id of the employee to be edit: ");
-        int idOfEmployeeForEdit = Integer.parseInt(scanner.nextLine());
-        boolean check = false;
-        for (int i = 0; i < listEmployee.size(); i++) {
-            if (listEmployee.get(i).getIdOfEmployee() == idOfEmployeeForEdit) {
-                check = true;
+        String idOfEmployeeForEdit = scanner.nextLine();
+        boolean flag = false;
+        for (int i = 0; i < employeeList.size(); i++) {
+            if (employeeList.get(i).getIdOfEmployee().equals(idOfEmployeeForEdit)) {
+                flag = true;
                 System.out.println("What do you want to edit?");
                 System.out.println("\t1. Edit employee's full name");
                 System.out.println("\t2. Edit employee's birthday");
@@ -96,51 +85,59 @@ public class EmployeeServiceImpl implements IEmployeeService {
                 System.out.println("\t8. Edit employee's position");
                 System.out.println("\t0. Return main menu");
                 System.out.print("Please choose from 0 to 8: ");
-                int choiceForEdit = Integer.parseInt(scanner.nextLine());
-                switch (choiceForEdit) {
+                int chooseForEdit = Integer.parseInt(scanner.nextLine());
+                switch (chooseForEdit) {
                     case 1:
                         System.out.print("Please enter new full name: ");
-                        String inputNewName = scanner.nextLine();
-                        listEmployee.get(i).setFullName(inputNewName);
+                        String newName = scanner.nextLine();
+                        employeeList.get(i).setFullName(newName);
+                        ReadAndWriteFileOfEmployee.writeEmployeeToFile(filePath, employeeList, false);
                         break;
                     case 2:
                         System.out.print("Please enter new birthday (dd/mm/yyyy): ");
-                        String inputNewBirthday = scanner.nextLine();
-                        listEmployee.get(i).setBirthday(inputNewBirthday);
+                        String newBirthday = scanner.nextLine();
+                        employeeList.get(i).setBirthday(newBirthday);
+                        ReadAndWriteFileOfEmployee.writeEmployeeToFile(filePath, employeeList, false);
                         break;
                     case 3:
                         System.out.print("Please enter new gender (male/female): ");
-                        String inputNewGender = scanner.nextLine();
-                        listEmployee.get(i).setGender(inputNewGender);
+                        String newGender = scanner.nextLine();
+                        employeeList.get(i).setGender(newGender);
+                        ReadAndWriteFileOfEmployee.writeEmployeeToFile(filePath, employeeList, false);
                         break;
                     case 4:
                         System.out.print("Please enter new Id card number: ");
-                        String inputNewIdCardNumber = scanner.nextLine();
-                        listEmployee.get(i).setIdCardNumber(inputNewIdCardNumber);
+                        String newIdCardNumber = scanner.nextLine();
+                        employeeList.get(i).setIdCardNumber(newIdCardNumber);
+                        ReadAndWriteFileOfEmployee.writeEmployeeToFile(filePath, employeeList, false);
                         break;
                     case 5:
                         System.out.print("Please enter new phone number: ");
-                        String inputNewPhoneNumber = scanner.nextLine();
-                        listEmployee.get(i).setPhoneNumber(inputNewPhoneNumber);
+                        String newPhoneNumber = scanner.nextLine();
+                        employeeList.get(i).setPhoneNumber(newPhoneNumber);
+                        ReadAndWriteFileOfEmployee.writeEmployeeToFile(filePath, employeeList, false);
                         break;
                     case 6:
                         System.out.print("Please enter new email: ");
-                        String inputNewEmail = scanner.nextLine();
-                        listEmployee.get(i).setEmail(inputNewEmail);
+                        String newEmail = scanner.nextLine();
+                        employeeList.get(i).setEmail(newEmail);
+                        ReadAndWriteFileOfEmployee.writeEmployeeToFile(filePath, employeeList, false);
                         break;
                     case 7:
                         System.out.print("Please enter new education level (intermediate/college/university/post graduate): ");
-                        String inputNewEducationLevel = scanner.nextLine();
+                        String newEducationLevelInput = scanner.nextLine();
                         EducationLevel newEducationLevel = new EducationLevel();
-                        newEducationLevel.setEducationLevel(inputNewEducationLevel);
-                        listEmployee.get(i).setEducationLevel(newEducationLevel);
+                        newEducationLevel.setEducationLevel(newEducationLevelInput);
+                        employeeList.get(i).setEducationLevel(newEducationLevel);
+                        ReadAndWriteFileOfEmployee.writeEmployeeToFile(filePath, employeeList, false);
                         break;
                     case 8:
                         System.out.print("Please enter new position (receptionist/waiter:waitress/expert/supervision/manager/director): ");
-                        String inputNewPosition = scanner.nextLine();
+                        String newPositionInput = scanner.nextLine();
                         Position newPosition = new Position();
-                        newPosition.setPosition(inputNewPosition);
-                        listEmployee.get(i).setPosition(newPosition);
+                        newPosition.setPosition(newPositionInput);
+                        employeeList.get(i).setPosition(newPosition);
+                        ReadAndWriteFileOfEmployee.writeEmployeeToFile(filePath, employeeList, false);
                         break;
                     case 0:
                         break;
@@ -149,8 +146,13 @@ public class EmployeeServiceImpl implements IEmployeeService {
                 }
             }
         }
-        if (!check) {
+        if (!flag) {
             System.out.println("Error. The id already exists in the list or Id cannot be 0. Please re-enter.");
         }
+    }
+
+    @Override
+    public List<Employee> getList() {
+        return ReadAndWriteFileOfEmployee.readEmployeeFromFile(filePath);
     }
 }

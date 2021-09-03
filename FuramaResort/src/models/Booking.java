@@ -87,11 +87,11 @@ public class Booking implements Comparable<Booking> {
             if (sdf.parse(this.getStartDate()) == sdf.parse(o.getStartDate())) {
                 return (sdf.parse(this.getEndDate()).compareTo(sdf.parse(o.getEndDate())));
             } else if (sdf.parse(this.getStartDate()).compareTo(sdf.parse(o.getStartDate())) > 0) {
-                return -1;
+                return 1;
             }
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return 1;
+        return -1;
     }
 }

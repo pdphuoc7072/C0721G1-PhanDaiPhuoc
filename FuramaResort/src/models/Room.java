@@ -3,8 +3,8 @@ package models;
 public class Room extends Facility {
     private FreeServiceIncluded freeServiceIncluded; // Dịch vụ miễn phí đi kèm
 
-    public Room(String idOfService, String nameService, double usableArea, double rentalCost, int maxNumberPeople, RentalType rentalTye, FreeServiceIncluded freeServiceIncluded) {
-        super(idOfService, nameService, usableArea, rentalCost, maxNumberPeople, rentalTye);
+    public Room(String idOfService, String nameOfService, double usableArea, double rentalCost, int maxNumberPeople, RentalType rentalTye, FreeServiceIncluded freeServiceIncluded) {
+        super(idOfService, nameOfService, usableArea, rentalCost, maxNumberPeople, rentalTye);
         this.freeServiceIncluded = freeServiceIncluded;
     }
 
@@ -20,7 +20,7 @@ public class Room extends Facility {
     public String toString() {
         return "Room{" +
                 super.toString() +
-                "freeServiceIncluded=" + freeServiceIncluded +
+                ", freeServiceIncluded = " + freeServiceIncluded +
                 '}';
     }
 }

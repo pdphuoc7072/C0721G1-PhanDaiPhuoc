@@ -2,15 +2,15 @@ package models;
 
 public abstract class Facility {
     private String idOfService; // Mã dịch vụ
-    private String nameService; // Tên dịch vụ
+    private String nameOfService; // Tên dịch vụ
     private double usableArea; // Diện tích sử dụng
     private double rentalCost; // Chi phí thuê
     private int maxNumberPeople; // Số lượng người tối đa
     private RentalType rentalTye; // Kiểu thuê
 
-    public Facility(String idOfService, String nameService, double usableArea, double rentalCost, int maxNumberPeople, RentalType rentalTye) {
+    public Facility(String idOfService, String nameOfService, double usableArea, double rentalCost, int maxNumberPeople, RentalType rentalTye) {
         this.idOfService = idOfService;
-        this.nameService = nameService;
+        this.nameOfService = nameOfService;
         this.usableArea = usableArea;
         this.rentalCost = rentalCost;
         this.maxNumberPeople = maxNumberPeople;
@@ -25,12 +25,12 @@ public abstract class Facility {
         this.idOfService = idOfService;
     }
 
-    public String getNameService() {
-        return nameService;
+    public String getNameOfService() {
+        return nameOfService;
     }
 
-    public void setNameService(String nameService) {
-        this.nameService = nameService;
+    public void setNameOfService(String nameOfService) {
+        this.nameOfService = nameOfService;
     }
 
     public double getUsableArea() {
@@ -68,7 +68,7 @@ public abstract class Facility {
     @Override
     public String toString() {
         return  "idOfService = " + idOfService +
-                ", nameService = " + nameService +
+                ", nameOfService = " + nameOfService +
                 ", usableArea = " + usableArea +
                 ", rentalCost = " + rentalCost +
                 ", maxNumberPeople = " + maxNumberPeople +

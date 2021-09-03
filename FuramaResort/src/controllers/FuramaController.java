@@ -1,9 +1,6 @@
 package controllers;
 
-import services.impl.BookingServiceImpl;
-import services.impl.CustomerServiceImpl;
-import services.impl.EmployeeServiceImpl;
-import services.impl.FacilityServiceImpl;
+import services.impl.*;
 
 import java.util.Scanner;
 
@@ -13,6 +10,7 @@ public class FuramaController {
         CustomerServiceImpl customerService = new CustomerServiceImpl();
         FacilityServiceImpl facilityService = new FacilityServiceImpl();
         BookingServiceImpl bookingService = new BookingServiceImpl();
+        ContactServiceImpl contactService = new ContactServiceImpl();
         Scanner scanner = new Scanner(System.in);
         int choice = -1;
         do {
@@ -37,13 +35,13 @@ public class FuramaController {
                         choiceNumber1 = Integer.parseInt(scanner.nextLine());
                         switch (choiceNumber1) {
                             case 1:
-                                employeeService.displayList();
+                                employeeService.display();
                                 break;
                             case 2:
-                                employeeService.addList();
+                                employeeService.add();
                                 break;
                             case 3:
-                                employeeService.editList();
+                                employeeService.edit();
                                 break;
                             case 4:
                                 break;
@@ -63,13 +61,13 @@ public class FuramaController {
                         choiceNumber2 = Integer.parseInt(scanner.nextLine());
                         switch (choiceNumber2) {
                             case 1:
-                                customerService.displayList();
+                                customerService.display();
                                 break;
                             case 2:
-                                customerService.addList();
+                                customerService.add();
                                 break;
                             case 3:
-                                customerService.editList();
+                                customerService.edit();
                                 break;
                             case 4:
                                 break;
@@ -89,10 +87,10 @@ public class FuramaController {
                         choiceNumber3 = Integer.parseInt(scanner.nextLine());
                         switch (choiceNumber3) {
                             case 1:
-                                facilityService.displayList();
+                                facilityService.display();
                                 break;
                             case 2:
-                                facilityService.addList();
+                                facilityService.add();
                                 break;
                             case 3:
                                 facilityService.displayListForMaintenance();
@@ -117,14 +115,15 @@ public class FuramaController {
                         choiceNumber4 = Integer.parseInt(scanner.nextLine());
                         switch (choiceNumber4) {
                             case 1:
-                                bookingService.addList();
+                                bookingService.add();
                                 break;
                             case 2:
-                                bookingService.displayList();
+                                bookingService.display();
                                 break;
                             case 3:
                                 break;
                             case 4:
+//                                contactService.getListContract();
                                 break;
                             case 5:
                                 break;

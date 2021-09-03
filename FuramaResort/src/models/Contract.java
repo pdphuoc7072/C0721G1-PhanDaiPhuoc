@@ -1,13 +1,13 @@
 package models;
 
 public class Contract {
-    private int numberOfContract; // Số hợp đồng
+    private String numberOfContract; // Số hợp đồng
     private String idOfBooking; // Mã booking
     private double preDeposit; // Số tiền cọc trước
     private double totalPayment; // Tổng số tiền thanh toán
     private String idOfCustomer; // Mã khách hàng
 
-    public Contract(int numberOfContract, String idOfBooking, double preDeposit, double totalPayment, String idOfCustomer) {
+    public Contract(String numberOfContract, String idOfBooking, double preDeposit, double totalPayment, String idOfCustomer) {
         this.numberOfContract = numberOfContract;
         this.idOfBooking = idOfBooking;
         this.preDeposit = preDeposit;
@@ -15,11 +15,11 @@ public class Contract {
         this.idOfCustomer = idOfCustomer;
     }
 
-    public int getNumberOfContract() {
+    public String getNumberOfContract() {
         return numberOfContract;
     }
 
-    public void setNumberOfContract(int numberOfContract) {
+    public void setNumberOfContract(String numberOfContract) {
         this.numberOfContract = numberOfContract;
     }
 
@@ -53,5 +53,16 @@ public class Contract {
 
     public void setIdOfCustomer(String idOfCustomer) {
         this.idOfCustomer = idOfCustomer;
+    }
+
+    @Override
+    public String toString() {
+        return "Contract{" +
+                "numberOfContract='" + numberOfContract + '\'' +
+                ", idOfBooking='" + idOfBooking + '\'' +
+                ", preDeposit=" + preDeposit +
+                ", totalPayment=" + totalPayment +
+                ", idOfCustomer='" + idOfCustomer + '\'' +
+                '}';
     }
 }

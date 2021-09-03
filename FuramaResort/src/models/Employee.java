@@ -1,24 +1,24 @@
 package models;
 
 public class Employee extends Person {
-    private int idOfEmployee; // Mã nhân viên
+    private String idOfEmployee; // Mã nhân viên
     private EducationLevel educationLevel; // Trình độ: trung cấp/cao đẳng/đại học/sau đại học
                                                       // intermediate/college/university/post graduate
     private Position position; // Vị trí: lễ tân/phục vụ nam:phục vụ nữ/chuyên viên/giám sát/quản lý/giám đốc
                                        // receptionist/waiter:waitress/expert/supervision/manager/director
 
-    public Employee(String fullName, String birthday, String gender, String idCardNumber, String phoneNumber, String email, int idOfEmployee, EducationLevel educationLevel, Position position) {
+    public Employee(String fullName, String birthday, String gender, String idCardNumber, String phoneNumber, String email, String idOfEmployee, EducationLevel educationLevel, Position position) {
         super(fullName, birthday, gender, idCardNumber, phoneNumber, email);
         this.idOfEmployee = idOfEmployee;
         this.educationLevel = educationLevel;
         this.position = position;
     }
 
-    public int getIdOfEmployee() {
+    public String getIdOfEmployee() {
         return idOfEmployee;
     }
 
-    public void setIdOfEmployee(int idOfEmployee) {
+    public void setIdOfEmployee(String idOfEmployee) {
         this.idOfEmployee = idOfEmployee;
     }
 

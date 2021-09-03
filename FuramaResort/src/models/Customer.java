@@ -1,22 +1,22 @@
 package models;
 
 public class Customer extends Person {
-    private int idOfCustomer; // Mã khách hàng
+    private String idOfCustomer; // Mã khách hàng
     private CustomerType customerType; // Loại khách hàng: diamond, platinium, gold, silver, member
     private AddressOfCustomer addressOfCustomer; // Địa chỉ của khách hàng
 
-    public Customer(String fullName, String birthday, String gender, String idCardNumber, String phoneNumber, String email, int idOfCustomer, CustomerType customerType, AddressOfCustomer addressOfCustomer) {
+    public Customer(String fullName, String birthday, String gender, String idCardNumber, String phoneNumber, String email, String idOfCustomer, CustomerType customerType, AddressOfCustomer addressOfCustomer) {
         super(fullName, birthday, gender, idCardNumber, phoneNumber, email);
         this.idOfCustomer = idOfCustomer;
         this.customerType = customerType;
         this.addressOfCustomer = addressOfCustomer;
     }
 
-    public int getIdOfCustomer() {
+    public String getIdOfCustomer() {
         return idOfCustomer;
     }
 
-    public void setIdOfCustomer(int idOfCustomer) {
+    public void setIdOfCustomer(String idOfCustomer) {
         this.idOfCustomer = idOfCustomer;
     }
 

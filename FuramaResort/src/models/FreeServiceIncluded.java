@@ -1,27 +1,27 @@
 package models;
 
 public class FreeServiceIncluded {
-    private String nameOfService; // Tên dịch vụ miễn phí
+    private String nameOfFreeService; // Tên dịch vụ miễn phí
 
     public FreeServiceIncluded() {
     }
 
-    public FreeServiceIncluded(String nameOfService) {
-        this.nameOfService = nameOfService;
+    public FreeServiceIncluded(String nameOfFreeService) {
+        this.nameOfFreeService = nameOfFreeService;
     }
 
-    public String getNameOfService() {
-        return nameOfService;
+    public String getNameOfFreeService() {
+        return nameOfFreeService;
     }
 
-    public void setNameOfService(String nameOfService) {
-        this.nameOfService = nameOfService;
+    public void setNameOfFreeService(String nameOfFreeService) {
+        this.nameOfFreeService = nameOfFreeService;
     }
 
     @Override
     public String toString() {
         return "FreeServiceIncluded{" +
-                "nameOfService='" + nameOfService + '\'' +
+                "nameOfFreeService='" + nameOfFreeService + '\'' +
                 '}';
     }
 }

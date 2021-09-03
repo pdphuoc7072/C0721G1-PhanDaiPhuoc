@@ -4,29 +4,36 @@ import models.AddressOfCustomer;
 import models.Customer;
 import models.CustomerType;
 import services.ICustomerService;
+import utils.ReadAndWriteFileOfCustomer;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
 
 public class CustomerServiceImpl implements ICustomerService {
     static Scanner scanner = new Scanner(System.in);
-    static List<Customer> listCustomer = new LinkedList<>();
-    static {
-        listCustomer.add(new Customer("Phan Tuấn Kiệt", "02/04/1992", "male", "201123456",
-                                      "0905123456", "ptk@gmail.com", 1, new CustomerType("diamond"),
-                                      new AddressOfCustomer("12", "Yên Thế", "Hòa An", "Cẩm Lệ", "Đà Nẵng")));
-        listCustomer.add(new Customer("Đoàn Văn E", "06/02/1996", "male", "458793246",
-                                      "0905467890", "lkorth@gmail.com", 2, new CustomerType("gold"),
-                                       new AddressOfCustomer("38", "Huỳnh Ngọc Huệ", "An Khê", "Thanh Khê", "Đà Nẵng")));
-        listCustomer.add(new Customer("Nguyễn Thị F", "05/07/1985", "female", "678097123",
-                                     "0956348670", "tuiopu@gmail.com", 3, new CustomerType("silver"),
-                                     new AddressOfCustomer("31", "Quảng Xương", "Quế Châu", "Quế Sơn", "Quảng Nam")));
-    }
+    static String filePath = "D:\\C0721G1_Phan_Dai_Phuoc\\FuramaResort\\src\\data\\customer.csv";
 
     @Override
-    public void addList() {
+    public void add() {
+        List<Customer> customerList = getList();
+        String idOfCustomer;
+        boolean check;
+        do {
+            check = true;
+            System.out.print("Please enter Id of Customer: ");
+            idOfCustomer = scanner.nextLine();
+            for (int i = 0; i< customerList.size(); i++) {
+                if (customerList.get(i).getIdOfCustomer().equals(idOfCustomer)) {
+                    check = false;
+                    break;
+                }
+            }
+            if (!check) {
+                System.out.print("Error. The id already exists in the list. Please re-enter. \n");
+            }
+        } while (!check);
+        customerList.clear();
         System.out.print("Please enter full name of customer: ");
         String nameOfCustomer = scanner.nextLine();
         System.out.print("Please enter birthday of customer (dd/mm/yyyy): ");
@@ -39,8 +46,7 @@ public class CustomerServiceImpl implements ICustomerService {
         String phoneNumberOfCustomer = scanner.nextLine();
         System.out.print("Please enter email of customer: ");
         String emailOfCustomer = scanner.nextLine();
-        System.out.print("Please enter Id of Customer: ");
-        int idOfCustomer = Integer.parseInt(scanner.nextLine());
+
         System.out.print("Please enter customer type (diamond/platinium/gold/silver/member): ");
         String customerOfType = scanner.nextLine();
         System.out.print("Please enter house's number of customer: ");
@@ -55,40 +61,31 @@ public class CustomerServiceImpl implements ICustomerService {
         String provinceOfCustomer = scanner.nextLine();
         CustomerType customerType = new CustomerType(customerOfType);
         AddressOfCustomer addressOfCustomer = new AddressOfCustomer(houseNumberOfCustomer, streetOfCustomer, wardOfCustomer, districtOfCustomer, provinceOfCustomer);
-        boolean check = true;
-        for (int i = 0; i< listCustomer.size(); i++) {
-            if (listCustomer.get(i).getIdOfCustomer() == idOfCustomer) {
-                System.out.print("Error. The id already exists in the list. Please re-enter. \n");
-                check = false;
-                break;
-            }
-            if (idOfCustomer == 0) {
-                System.out.print("Error. Id cannot be 0. Please re-enter. \n");
-                check = false;
-                break;
-            }
-        }
+
         if (check) {
-            listCustomer.add(new Customer(nameOfCustomer, birthdayOfCustomer, genderOfCustomer, idCardNumberOfCustomer,
+            customerList.add(new Customer(nameOfCustomer, birthdayOfCustomer, genderOfCustomer, idCardNumberOfCustomer,
                     phoneNumberOfCustomer, emailOfCustomer, idOfCustomer,customerType, addressOfCustomer));
+            ReadAndWriteFileOfCustomer.writeCustomerToFile(filePath, customerList, true);
         }
     }
 
     @Override
-    public void displayList() {
-        for (Customer customer : listCustomer) {
+    public void display() {
+        List<Customer> customerList = getList();
+        for (Customer customer : customerList) {
             System.out.print(customer.toString() + "\n");
         }
 
     }
 
     @Override
-    public void editList() {
+    public void edit() {
+        List<Customer> customerList = getList();
         System.out.print("Please enter the id of the customer to be edit: ");
-        int idOfCustomerForEdit = Integer.parseInt(scanner.nextLine());
+        String idOfCustomerForEdit = scanner.nextLine();
         boolean check = false;
-        for (int i = 0; i < listCustomer.size(); i++) {
-            if (listCustomer.get(i).getIdOfCustomer() == idOfCustomerForEdit) {
+        for (int i = 0; i < customerList.size(); i++) {
+            if (customerList.get(i).getIdOfCustomer().equals(idOfCustomerForEdit)) {
                 check = true;
                 System.out.print("What do you want to edit? \n");
                 System.out.print("\t1. Edit customer's full name \n");
@@ -106,39 +103,46 @@ public class CustomerServiceImpl implements ICustomerService {
                     case 1:
                         System.out.print("Please enter new full name: ");
                         String newFullNameOfCustomer = scanner.nextLine();
-                        listCustomer.get(i).setFullName(newFullNameOfCustomer);
+                        customerList.get(i).setFullName(newFullNameOfCustomer);
+                        ReadAndWriteFileOfCustomer.writeCustomerToFile(filePath, customerList, false);
                         break;
                     case 2:
                         System.out.print("Please enter new birthday: ");
                         String newBirthdayOfCustomer = scanner.nextLine();
-                        listCustomer.get(i).setBirthday(newBirthdayOfCustomer);
+                        customerList.get(i).setBirthday(newBirthdayOfCustomer);
+                        ReadAndWriteFileOfCustomer.writeCustomerToFile(filePath, customerList, false);
                         break;
                     case 3:
                         System.out.print("Please enter new gender: ");
                         String newGenderOfCustomer = scanner.nextLine();
-                        listCustomer.get(i).setGender(newGenderOfCustomer);
+                        customerList.get(i).setGender(newGenderOfCustomer);
+                        ReadAndWriteFileOfCustomer.writeCustomerToFile(filePath, customerList, false);
                         break;
                     case 4:
                         System.out.print("Please enter new Id card number: ");
                         String newIdCardNumberOfCustomer = scanner.nextLine();
-                        listCustomer.get(i).setIdCardNumber(newIdCardNumberOfCustomer);
+                        customerList.get(i).setIdCardNumber(newIdCardNumberOfCustomer);
+                        ReadAndWriteFileOfCustomer.writeCustomerToFile(filePath, customerList, false);
                         break;
                     case 5:
                         System.out.print("Please enter new phone number: ");
                         String newPhoneNumber = scanner.nextLine();
-                        listCustomer.get(i).setPhoneNumber(newPhoneNumber);
+                        customerList.get(i).setPhoneNumber(newPhoneNumber);
+                        ReadAndWriteFileOfCustomer.writeCustomerToFile(filePath, customerList, false);
                         break;
                     case 6:
                         System.out.println("Please enter new email: ");
                         String newEmailOfCustomer = scanner.nextLine();
-                        listCustomer.get(i).setEmail(newEmailOfCustomer);
+                        customerList.get(i).setEmail(newEmailOfCustomer);
+                        ReadAndWriteFileOfCustomer.writeCustomerToFile(filePath, customerList, false);
                         break;
                     case 7:
                         System.out.print("Please enter new customer type (diamond/platinium/gold/silver/member): ");
                         String newCustomerTye = scanner.nextLine();
                         CustomerType customerType = new CustomerType();
                         customerType.setCustomerType(newCustomerTye);
-                        listCustomer.get(i).setCustomerType(customerType);
+                        customerList.get(i).setCustomerType(customerType);
+                        ReadAndWriteFileOfCustomer.writeCustomerToFile(filePath, customerList, false);
                         break;
                     case 8:
                         System.out.print("\t1. Edit customer's house Number \n");
@@ -154,41 +158,46 @@ public class CustomerServiceImpl implements ICustomerService {
                                 System.out.print("Please enter new house number: ");
                                 String newHouseNumberOfCustomer = scanner.nextLine();
                                 AddressOfCustomer addressOfCustomer1 = new AddressOfCustomer();
-                                addressOfCustomer1 = listCustomer.get(i).getAddressOfCustomer();
+                                addressOfCustomer1 = customerList.get(i).getAddressOfCustomer();
                                 addressOfCustomer1.setHouseNumber(newHouseNumberOfCustomer);
-                                listCustomer.get(i).setAddressOfCustomer(addressOfCustomer1);
+                                customerList.get(i).setAddressOfCustomer(addressOfCustomer1);
+                                ReadAndWriteFileOfCustomer.writeCustomerToFile(filePath, customerList, false);
                                 break;
                             case 2:
                                 System.out.print("Please enter new street: ");
                                 String newStreetOfCustomer = scanner.nextLine();
                                 AddressOfCustomer addressOfCustomer2 = new AddressOfCustomer();
-                                addressOfCustomer2 = listCustomer.get(i).getAddressOfCustomer();
+                                addressOfCustomer2 = customerList.get(i).getAddressOfCustomer();
                                 addressOfCustomer2.setStreet(newStreetOfCustomer);
-                                listCustomer.get(i).setAddressOfCustomer(addressOfCustomer2);
+                                customerList.get(i).setAddressOfCustomer(addressOfCustomer2);
+                                ReadAndWriteFileOfCustomer.writeCustomerToFile(filePath, customerList, false);
                                 break;
                             case 3:
                                 System.out.print("Please enter new ward: ");
                                 String newWardOfCustomer = scanner.nextLine();
                                 AddressOfCustomer addressOfCustomer3 = new AddressOfCustomer();
-                                addressOfCustomer3 = listCustomer.get(i).getAddressOfCustomer();
+                                addressOfCustomer3 = customerList.get(i).getAddressOfCustomer();
                                 addressOfCustomer3.setWard(newWardOfCustomer);
-                                listCustomer.get(i).setAddressOfCustomer(addressOfCustomer3);
+                                customerList.get(i).setAddressOfCustomer(addressOfCustomer3);
+                                ReadAndWriteFileOfCustomer.writeCustomerToFile(filePath, customerList, false);
                                 break;
                             case 4:
                                 System.out.print("Please enter new district: ");
                                 String newDistrictOfCustomer = scanner.nextLine();
                                 AddressOfCustomer addressOfCustomer4 = new AddressOfCustomer();
-                                addressOfCustomer4 = listCustomer.get(i).getAddressOfCustomer();
+                                addressOfCustomer4 = customerList.get(i).getAddressOfCustomer();
                                 addressOfCustomer4.setDistrict(newDistrictOfCustomer);
-                                listCustomer.get(i).setAddressOfCustomer(addressOfCustomer4);
+                                customerList.get(i).setAddressOfCustomer(addressOfCustomer4);
+                                ReadAndWriteFileOfCustomer.writeCustomerToFile(filePath, customerList, false);
                                 break;
                             case 5:
                                 System.out.print("Please enter new province: ");
                                 String newProvinceOfCustomer = scanner.nextLine();
                                 AddressOfCustomer addressOfCustomer5 = new AddressOfCustomer();
-                                addressOfCustomer5 = listCustomer.get(i).getAddressOfCustomer();
+                                addressOfCustomer5 = customerList.get(i).getAddressOfCustomer();
                                 addressOfCustomer5.setProvince(newProvinceOfCustomer);
-                                listCustomer.get(i).setAddressOfCustomer(addressOfCustomer5);
+                                customerList.get(i).setAddressOfCustomer(addressOfCustomer5);
+                                ReadAndWriteFileOfCustomer.writeCustomerToFile(filePath, customerList, false);
                                 break;
                             case 0:
                                 break;
@@ -206,5 +215,10 @@ public class CustomerServiceImpl implements ICustomerService {
         if (!check) {
             System.out.print("Error. The id already exists in the list or Id cannot be 0. Please re-enter. \n");
         }
+    }
+
+    @Override
+    public List<Customer> getList() {
+        return ReadAndWriteFileOfCustomer.readCustomerFromFile(filePath);
     }
 }

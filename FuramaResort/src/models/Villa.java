@@ -5,8 +5,8 @@ public class Villa extends Facility {
     private double poolArea; // Diện tích hồ bơi
     private int numberFloor; // Số tầng
 
-    public Villa(String idOfService, String nameService, double usableArea, double rentalCost, int maxNumberPeople, RentalType rentalTye, String rateRoom, double poolArea, int numberFloor) {
-        super(idOfService, nameService, usableArea, rentalCost, maxNumberPeople, rentalTye);
+    public Villa(String idOfService, String nameOfService, double usableArea, double rentalCost, int maxNumberPeople, RentalType rentalTye, String rateRoom, double poolArea, int numberFloor) {
+        super(idOfService, nameOfService, usableArea, rentalCost, maxNumberPeople, rentalTye);
         this.rateRoom = rateRoom;
         this.poolArea = poolArea;
         this.numberFloor = numberFloor;
