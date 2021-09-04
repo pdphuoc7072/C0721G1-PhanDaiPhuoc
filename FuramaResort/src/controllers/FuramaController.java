@@ -109,8 +109,9 @@ public class FuramaController {
                         System.out.print("\t2. Display list booking \n");
                         System.out.print("\t3. Create new contracts \n");
                         System.out.print("\t4. Display list contracts \n");
-                        System.out.print("\t5. Edit contracts \n");
-                        System.out.print("\t6. Return main menu \n");
+                        System.out.print("\t5. Add and display list booking for contract \n");
+                        System.out.print("\t6. Edit contracts \n");
+                        System.out.print("\t7. Return main menu \n");
                         System.out.print("Enter your choice: ");
                         choiceNumber4 = Integer.parseInt(scanner.nextLine());
                         switch (choiceNumber4) {
@@ -121,18 +122,22 @@ public class FuramaController {
                                 bookingService.display();
                                 break;
                             case 3:
+                                contactService.add();
                                 break;
                             case 4:
-//                                contactService.getListContract();
+                                contactService.display();
                                 break;
                             case 5:
+                                contactService.addListBookingForContract();
                                 break;
                             case 6:
+                                break;
+                            case 7:
                                 break;
                             default:
                                 System.out.println("Error. Please re-enter your choice.");
                         }
-                    } while (choiceNumber4 != 6);
+                    } while (choiceNumber4 != 7);
                     break;
                 case 5:
                     int choiceNumber5 = -1;

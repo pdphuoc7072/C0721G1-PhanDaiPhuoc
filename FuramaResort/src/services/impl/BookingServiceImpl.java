@@ -2,10 +2,7 @@ package services.impl;
 
 import models.*;
 import services.IBookingService;
-import utils.ReadAndWriteFileOfBooking;
-import utils.ReadAndWriteFileOfHouse;
-import utils.ReadAndWriteFileOfRoom;
-import utils.ReadAndWriteFileOfVilla;
+import utils.*;
 
 import java.util.*;
 
@@ -15,6 +12,7 @@ public class BookingServiceImpl implements IBookingService {
     private static String filePathOfHouse = "D:\\C0721G1_Phan_Dai_Phuoc\\FuramaResort\\src\\data\\house.csv";
     private static String filePathOfRoom = "D:\\C0721G1_Phan_Dai_Phuoc\\FuramaResort\\src\\data\\room.csv";
     private static String filePathOfBooking = "D:\\C0721G1_Phan_Dai_Phuoc\\FuramaResort\\src\\data\\booking.csv";
+    private static String filePathOfBookingAfterAddForContract = "D:\\C0721G1_Phan_Dai_Phuoc\\FuramaResort\\src\\data\\booking_after_add_for_contract.csv";
     CustomerServiceImpl customerService = new CustomerServiceImpl();
     FacilityServiceImpl facilityService = new FacilityServiceImpl();
 
@@ -95,6 +93,7 @@ public class BookingServiceImpl implements IBookingService {
         bookingList.clear();
         bookingList.add(new Booking(idOfBooking, startDate, endDate, customerBooking.getIdOfCustomer(), nameOfService, idOfServiceBooking));
         ReadAndWriteFileOfBooking.writeBookingToFile(filePathOfBooking, bookingList, true);
+        ReadAndWriteFileOfBooking.writeBookingToFile(filePathOfBookingAfterAddForContract, bookingList, true);
 
         for (Villa villa : villaSet) {
             if (villa.getIdOfService().equals(idOfServiceBooking)) {
@@ -134,5 +133,8 @@ public class BookingServiceImpl implements IBookingService {
     @Override
     public List<Booking> getList() {
         return new ArrayList<>(ReadAndWriteFileOfBooking.readBookingFromFile(filePathOfBooking));
+    }
+    public List<Booking> getListBookingAfterAddForContract () {
+        return new ArrayList<>(ReadAndWriteFileOfBooking.readBookingFromFile(filePathOfBookingAfterAddForContract));
     }
 }
