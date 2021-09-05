@@ -10,6 +10,7 @@ public class AllRegex {
     private static final String RATE_ROOM_REGEX = "^[0-9]\\s[S][T][A][R][S]$";
     private static final String BOOKING_REGEX = "^(BK)((VL)|(HO)|(RO))[-]\\d{4}$";
     private static final String NUMBER_CONTRACT_REGEX = "^(CT)((VL)|(HO)|(RO))[-]\\d{4}$";
+    private static final String BIRTHDAY_REGEX = "^\\d{2}[-|/]\\d{2}[-|/]\\d{4}$";
     Pattern pattern;
     Matcher matcher;
     public AllRegex() {
@@ -77,6 +78,11 @@ public class AllRegex {
     }
     public boolean validateOfContract (String string) {
         pattern = Pattern.compile(NUMBER_CONTRACT_REGEX);
+        matcher = pattern.matcher(string);
+        return matcher.matches();
+    }
+    public boolean validateOfBirthday (String string) {
+        pattern = Pattern.compile(BIRTHDAY_REGEX);
         matcher = pattern.matcher(string);
         return matcher.matches();
     }

@@ -4,15 +4,23 @@ import models.AddressOfCustomer;
 import models.Customer;
 import models.CustomerType;
 import services.ICustomerService;
+import utils.AllRegex;
+import utils.InvalidBirthdayException;
 import utils.ReadAndWriteFileOfCustomer;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
+
 
 
 public class CustomerServiceImpl implements ICustomerService {
     static Scanner scanner = new Scanner(System.in);
     static String filePath = "D:\\C0721G1_Phan_Dai_Phuoc\\FuramaResort\\src\\data\\customer.csv";
+    AllRegex allRegex = new AllRegex();
 
     @Override
     public void add() {
@@ -36,8 +44,22 @@ public class CustomerServiceImpl implements ICustomerService {
         customerList.clear();
         System.out.print("Please enter full name of customer: ");
         String nameOfCustomer = scanner.nextLine();
-        System.out.print("Please enter birthday of customer (dd/mm/yyyy): ");
-        String birthdayOfCustomer = scanner.nextLine();
+
+        String birthdayOfCustomer;
+        boolean isValidOfBirthdayOfCustomer;
+        String checkValidOfBirthday;
+        do {
+            do {
+                System.out.print("Please enter birthday of customer (dd/mm/yyyy): ");
+                birthdayOfCustomer = scanner.nextLine();
+                isValidOfBirthdayOfCustomer = allRegex.validateOfBirthday(birthdayOfCustomer);
+                if (!isValidOfBirthdayOfCustomer) {
+                    System.out.println("The birthday must be in the correct format: dd/mm/yyyy");
+                }
+            } while (!isValidOfBirthdayOfCustomer);
+            checkValidOfBirthday = invalidOfBirthday(birthdayOfCustomer);
+        } while (checkValidOfBirthday.equals("Exception: Birthday is invalid"));
+
         System.out.print("Please enter gender of customer (male/female): ");
         String genderOfCustomer = scanner.nextLine();
         System.out.print("Please enter Id card number of customer: ");
@@ -220,5 +242,28 @@ public class CustomerServiceImpl implements ICustomerService {
     @Override
     public List<Customer> getList() {
         return ReadAndWriteFileOfCustomer.readCustomerFromFile(filePath);
+    }
+    public String invalidOfBirthday (String string) {
+        String s = "Exception: Birthday is invalid";
+        String s1 = "Birthday is valid";
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Calendar now = Calendar.getInstance();
+        Calendar born = Calendar.getInstance();
+        try {
+            now.setTime(new Date());
+            born.setTime(sdf.parse(string));
+            int age = now.get(Calendar.YEAR) - born.get(Calendar.YEAR);
+            if (age < 18 || age > 100) {
+                throw new InvalidBirthdayException(s);
+            } else {
+                System.out.println(s1);
+            }
+        } catch (InvalidBirthdayException e) {
+            System.out.println(e.getMessage());
+            return s;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return s1;
     }
 }

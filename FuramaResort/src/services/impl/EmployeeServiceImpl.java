@@ -1,18 +1,24 @@
 package services.impl;
 
-import models.Customer;
 import models.EducationLevel;
 import models.Employee;
 import models.Position;
 import services.IEmployeeService;
+import utils.AllRegex;
+import utils.InvalidBirthdayException;
 import utils.ReadAndWriteFileOfEmployee;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
 public class EmployeeServiceImpl implements IEmployeeService {
     Scanner scanner = new Scanner(System.in);
     String filePath = "D:\\C0721G1_Phan_Dai_Phuoc\\FuramaResort\\src\\data\\employee.csv";
+    AllRegex allRegex = new AllRegex();
 
     @Override
     public void add() {
@@ -37,8 +43,23 @@ public class EmployeeServiceImpl implements IEmployeeService {
         employeeList.clear();
         System.out.print("Please enter full name: ");
         String name = scanner.nextLine();
-        System.out.print("Please enter birthday (dd/mm/yyyy): ");
-        String birthday = scanner.nextLine();
+
+        String birthday;
+        boolean isValidOfBirthday;
+        String checkValidOfBirthday;
+        do {
+            do {
+                System.out.print("Please enter birthday (dd/mm/yyyy): ");
+                birthday = scanner.nextLine();
+                isValidOfBirthday = allRegex.validateOfBirthday(birthday);
+                if (!isValidOfBirthday) {
+                    System.out.println("The birthday must be in the correct format: dd/mm/yyyy");
+                }
+            } while (!isValidOfBirthday);
+            checkValidOfBirthday = invalidOfBirthday(birthday);
+        } while (checkValidOfBirthday.equals("Exception: Birthday is invalid"));
+
+
         System.out.print("Please enter gender (male/female): ");
         String gender = scanner.nextLine();
         System.out.print("Please enter Id card number: ");
@@ -154,5 +175,28 @@ public class EmployeeServiceImpl implements IEmployeeService {
     @Override
     public List<Employee> getList() {
         return ReadAndWriteFileOfEmployee.readEmployeeFromFile(filePath);
+    }
+    public String invalidOfBirthday (String string) {
+        String s = "Exception: Birthday is invalid";
+        String s1 = "Birthday is valid";
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Calendar now = Calendar.getInstance();
+        Calendar born = Calendar.getInstance();
+        try {
+            now.setTime(new Date());
+            born.setTime(sdf.parse(string));
+            int age = now.get(Calendar.YEAR) - born.get(Calendar.YEAR);
+            if (age < 18 || age > 100) {
+                throw new InvalidBirthdayException(s);
+            } else {
+                System.out.println(s1);
+            }
+        } catch (InvalidBirthdayException e) {
+            System.out.println(e.getMessage());
+            return s;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return s1;
     }
 }
