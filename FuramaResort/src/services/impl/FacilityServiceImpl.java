@@ -420,6 +420,7 @@ public class FacilityServiceImpl implements IFacilityService {
                 villaListForMaintenance.put(villa, villaList.get(villa));
                 ReadAndWriteFileOfVilla.writeToFileOfVilla(filePathOfVillaForMaintenance, villaListForMaintenance, true);
                 villaList.put(villa, 0);
+                ReadAndWriteFileOfVilla.writeToFileOfVilla(filePathOfVilla, villaList, false);
             }
         }
         return ReadAndWriteFileOfVilla.readFromFileOfVilla(filePathOfVillaForMaintenance);
@@ -433,6 +434,7 @@ public class FacilityServiceImpl implements IFacilityService {
                 houseListForMaintenance.put(house, houseList.get(house));
                 ReadAndWriteFileOfHouse.writeToFileOfHouse(filePathOfHouseForMaintenance, houseListForMaintenance, true);
                 houseList.put(house, 0);
+                ReadAndWriteFileOfHouse.writeToFileOfHouse(filePathOfHouse, houseList, false);
             }
         }
         return ReadAndWriteFileOfHouse.readFromFileOfHouse(filePathOfHouseForMaintenance);
@@ -446,6 +448,7 @@ public class FacilityServiceImpl implements IFacilityService {
                 roomListForMaintenance.put(room, roomList.get(room));
                 ReadAndWriteFileOfRoom.writeToFileOfRoom(filePathOfRoomForMaintenance, roomListForMaintenance, true);
                 roomList.put(room, 0);
+                ReadAndWriteFileOfRoom.writeToFileOfRoom(filePathOfRoom, roomList, false);
             }
         }
         return ReadAndWriteFileOfRoom.readFromFileOfRoom(filePathOfRoomForMaintenance);

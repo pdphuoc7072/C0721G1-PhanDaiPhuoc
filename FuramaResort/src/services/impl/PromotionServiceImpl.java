@@ -1,0 +1,100 @@
+package services.impl;
+
+import models.Booking;
+import models.Customer;
+import utils.ReadAndWriteFileOfBooking;
+import utils.ReadAndWriteFileOfCustomer;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
+public class PromotionServiceImpl {
+    private static String filePathOfBooking = "D:\\C0721G1_Phan_Dai_Phuoc\\FuramaResort\\src\\data\\booking.csv";
+    static String filePathOfCustomer = "D:\\C0721G1_Phan_Dai_Phuoc\\FuramaResort\\src\\data\\customer.csv";
+    BookingServiceImpl bookingService = new BookingServiceImpl();
+    CustomerServiceImpl customerService = new CustomerServiceImpl();
+    static Scanner scanner = new Scanner(System.in);
+
+    public void displayListCustomerUseService () {
+        Set<Booking> bookingList = ReadAndWriteFileOfBooking.readBookingFromFile(filePathOfBooking);
+        Set<Customer> listCustomerUseService = new TreeSet<>();
+        List<Customer> customerList = ReadAndWriteFileOfCustomer.readCustomerFromFile(filePathOfCustomer);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Calendar calendar = Calendar.getInstance();
+        System.out.print("Hãy nhập năm: ");
+        try {
+            int year = Integer.parseInt(scanner.nextLine());
+            String temp;
+            for (Booking booking : bookingList) {
+                calendar.setTime(sdf.parse(booking.getStartDate()));
+                if (year == calendar.get(Calendar.YEAR)) {
+                    temp = booking.getIdOfCustomer();
+                    for (int i = 0; i < customerList.size(); i++) {
+                        if (temp.equals(customerList.get(i).getIdOfCustomer())) {
+                            listCustomerUseService.add(customerList.get(i));
+                            break;
+                        }
+                    }
+                }
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        for (Customer customer : listCustomerUseService) {
+            System.out.println(customer.toString());
+        }
+    }
+    public void displayListCustomerGetVoucher () {
+        System.out.print("Hãy nhập vào tháng hiện tại: ");
+        int monthCurrent = Integer.parseInt(scanner.nextLine());
+        Set<Booking> bookingList = ReadAndWriteFileOfBooking.readBookingFromFile(filePathOfBooking);
+        List<Customer> customerList = ReadAndWriteFileOfCustomer.readCustomerFromFile(filePathOfCustomer);
+        Stack<Customer> listCustomerGetVoucher = new Stack<>();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Calendar calendar = Calendar.getInstance();
+        String temp;
+        try {
+
+            for (Booking booking : bookingList) {
+                calendar.setTime(sdf.parse(booking.getStartDate()));
+                if ((monthCurrent - 1) == calendar.get(Calendar.MONTH)) {
+                    temp = booking.getIdOfCustomer();
+                    for (int i = 0; i < customerList.size(); i++) {
+                        if (temp.equals(customerList.get(i).getIdOfCustomer())) {
+                            listCustomerGetVoucher.push(customerList.get(i));
+                            break;
+                        }
+                    }
+                }
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Stack<String> voucherList = new Stack<>();
+        System.out.println("Tháng 10 hiện tại có " + listCustomerGetVoucher.size() + " voucher");
+        System.out.print("Hãy nhập số lượng voucher 50%: ");
+        int voucher50 = Integer.parseInt(scanner.nextLine());
+        System.out.print("Hãy nhập số lượng voucher 20%: ");
+        int voucher20 = Integer.parseInt(scanner.nextLine());
+        System.out.print("Hãy nhập số lượng voucher 10%: ");
+        int voucher10 = Integer.parseInt(scanner.nextLine());
+        String s1 = "Voucher 50%";
+        String s2 = "Voucher 20%";
+        String s3 = "Voucher 10%";
+        for (int i = 0; i < voucher50; i++) {
+            voucherList.push(s1);
+        }
+        for (int i = 0; i < voucher20; i++) {
+            voucherList.push(s2);
+        }
+        for (int i = 0; i < voucher10; i++) {
+            voucherList.push(s3);
+        }
+        while (!voucherList.isEmpty()) {
+            System.out.println(listCustomerGetVoucher.peek() + " will get " + voucherList.peek());
+            listCustomerGetVoucher.pop();
+            voucherList.pop();
+        }
+    }
+}
