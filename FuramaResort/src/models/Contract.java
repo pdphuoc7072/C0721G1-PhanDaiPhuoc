@@ -1,9 +1,5 @@
 package models;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Objects;
-
 public class Contract implements Comparable<Contract> {
     private String numberOfContract; // Số hợp đồng
     private String idOfBooking; // Mã booking
@@ -70,15 +66,11 @@ public class Contract implements Comparable<Contract> {
                 '}';
     }
 
+
     @Override
     public int compareTo(Contract o) {
         return 1;
     }
-
-//    @Override
-//    public int compareTo(Contract o) {
-//        return 1;
-//    }
 
 //    @Override
 //    public boolean equals(Object o) {

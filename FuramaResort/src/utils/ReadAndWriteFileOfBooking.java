@@ -44,9 +44,9 @@ public class ReadAndWriteFileOfBooking {
                 bw.append(COMMA_DELIMITER);
                 bw.append(booking.getIdOfCustomer());
                 bw.append(COMMA_DELIMITER);
-                bw.append(booking.getNameOfServices());
+                bw.append(booking.getNameOfService());
                 bw.append(COMMA_DELIMITER);
-                bw.append(booking.getIdOfServices());
+                bw.append(booking.getIdOfService());
                 bw.newLine();
             }
             bw.flush();

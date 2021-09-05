@@ -12,8 +12,8 @@ public class ContactServiceImpl implements IContactService {
     private static String filePathOfBookingForContract = "D:\\C0721G1_Phan_Dai_Phuoc\\FuramaResort\\src\\data\\booking_for_contract.csv";
     private static String filePathOfRoom = "D:\\C0721G1_Phan_Dai_Phuoc\\FuramaResort\\src\\data\\room.csv";
     private static String filePathOfBookingAfterAddForContract = "D:\\C0721G1_Phan_Dai_Phuoc\\FuramaResort\\src\\data\\booking_after_add_for_contract.csv";
-    BookingServiceImpl bookingService = new BookingServiceImpl();
     static Scanner scanner = new Scanner(System.in);
+    AllRegex allRegex = new AllRegex();
 
     @Override
     public void add() {
@@ -24,12 +24,20 @@ public class ContactServiceImpl implements IContactService {
         } else {
             for (int i = 0; i < queueBooking.size(); i++) {
                 System.out.println(queueBooking.peek());
+
                 String numberContract;
                 boolean check;
+                boolean isValidOfNumberContract;
                 do {
                     check = true;
-                    System.out.print("Enter number of contract: ");
-                    numberContract = scanner.nextLine();
+                    do {
+                        System.out.print("Enter number of contract: ");
+                        numberContract = scanner.nextLine();
+                        isValidOfNumberContract = allRegex.validateOfContract(numberContract);
+                        if (!isValidOfNumberContract) {
+                            System.out.println("Error. The number contract must be in the correct format: CTXX-YYYY");
+                        }
+                    } while (!isValidOfNumberContract);
                     for (Contract contract : contractList) {
                         if (contract.getNumberOfContract().equals(numberContract)) {
                             check = false;
@@ -40,13 +48,15 @@ public class ContactServiceImpl implements IContactService {
                         System.out.println("This is number of contract already exists in the list");
                     }
                 } while (!check);
-                contractList.clear();
+
                 String idOfBooking = queueBooking.peek().getIdOfBooking();
                 System.out.print("Enter pre-deposit: ");
                 double preDeposit = Double.parseDouble(scanner.nextLine());
                 System.out.print("Enter total payment: ");
                 double totalPayment = Double.parseDouble(scanner.nextLine());
                 String idOfCustomer = queueBooking.peek().getIdOfCustomer();
+
+                contractList.clear();
                 contractList.add(new Contract(numberContract, idOfBooking, preDeposit, totalPayment, idOfCustomer));
                 ReadAndWriteFileOfContract.writeContractToFile(filePathOfContract, contractList, true);
                 queueBooking.poll();
@@ -67,17 +77,19 @@ public class ContactServiceImpl implements IContactService {
     public void addListBookingForContract () {
         Queue<Booking> queueBooking = new LinkedList<>();
         Set<Booking> bookingList = ReadAndWriteFileOfBooking.readBookingFromFile(filePathOfBookingAfterAddForContract);
+        List<Booking> bookings = new ArrayList<>();
+        bookings.addAll(bookingList);
         Map<Room, Integer> roomList = ReadAndWriteFileOfRoom.readFromFileOfRoom(filePathOfRoom);
         Set<Room> roomSet = roomList.keySet();
-        for (Booking booking : bookingList) {
+        for (int i = 0; i < bookings.size(); i++){
             for (Room room : roomSet) {
-                if ((booking.getIdOfServices().equals(room.getIdOfService()))) {
-                    bookingList.remove(booking);
+                if (bookings.get(i).getIdOfService().equals(room.getIdOfService())) {
+                    bookings.remove(i);
                     break;
                 }
             }
         }
-        for (Booking booking : bookingList) {
+        for (Booking booking : bookings) {
             queueBooking.add(booking);
         }
         bookingList.clear();

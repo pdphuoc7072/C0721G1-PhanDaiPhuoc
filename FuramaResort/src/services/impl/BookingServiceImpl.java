@@ -15,16 +15,25 @@ public class BookingServiceImpl implements IBookingService {
     private static String filePathOfBookingAfterAddForContract = "D:\\C0721G1_Phan_Dai_Phuoc\\FuramaResort\\src\\data\\booking_after_add_for_contract.csv";
     CustomerServiceImpl customerService = new CustomerServiceImpl();
     FacilityServiceImpl facilityService = new FacilityServiceImpl();
+    AllRegex allRegex = new AllRegex();
 
     @Override
     public void add() {
         Set<Booking> bookingList = ReadAndWriteFileOfBooking.readBookingFromFile(filePathOfBooking);
+
         String idOfBooking;
         boolean flag;
+        boolean isValidOfIdBooking;
         do {
             flag = true;
-            System.out.print("Enter Id of booking: ");
-            idOfBooking = scanner.nextLine();
+            do {
+                System.out.print("Enter Id of booking: ");
+                idOfBooking = scanner.nextLine();
+                isValidOfIdBooking = allRegex.validateOfBooking(idOfBooking);
+                if (!isValidOfIdBooking) {
+                    System.out.println("Error. The Id of booking must be in the correct format: BKXX-YYYY");
+                }
+            }while (!isValidOfIdBooking);
             for (Booking booking : bookingList) {
                 if (idOfBooking.equals(booking.getIdOfBooking())) {
                     flag = false;
@@ -34,8 +43,8 @@ public class BookingServiceImpl implements IBookingService {
             if (!flag) {
                 System.out.println("This id of booking already exists in the list");
             }
-
         } while (!flag);
+
         System.out.print("Enter start date (dd/MM/yyyy): ");
         String startDate = scanner.nextLine();
         System.out.print("Enter end date (dd/MM/yyyy): ");
@@ -67,8 +76,18 @@ public class BookingServiceImpl implements IBookingService {
         for (Room room : roomSet) {
             System.out.println("Id of service = " + room.getIdOfService() + ", name of service = " + room.getNameOfService());
         }
-        System.out.print("Enter id of service: ");
-        String idOfService = scanner.nextLine();
+
+        String idOfService;
+        boolean isValidOfIdService;
+        do {
+            System.out.print("Enter id of service: ");
+            idOfService = scanner.nextLine();
+            isValidOfIdService = allRegex.validateOfIdService(idOfService);
+            if (!isValidOfIdService) {
+                System.out.println("Error. The Id of service must be in the correct format: SVXX-YYYY");
+            }
+        } while (!isValidOfIdService);
+
         String idOfServiceBooking = null;
         for (Villa villa : villaSet) {
             if (idOfService.equals(villa.getIdOfService())) {

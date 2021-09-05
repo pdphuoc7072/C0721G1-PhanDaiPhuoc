@@ -1,7 +1,6 @@
 package utils;
 
-import models.FreeServiceIncluded;
-import models.House;
+import models.FreeInclusiveService;
 import models.RentalType;
 import models.Room;
 
@@ -26,7 +25,7 @@ public class ReadAndWriteFileOfRoom {
             while ((line = br.readLine()) != null) {
                 result = line.split(COMMA_DELIMITER);
                 roomList.put(new Room(result[0], result[1], Double.parseDouble(result[2]), Double.parseDouble(result[3]), Integer.parseInt(result[4]),
-                        new RentalType(result[5]), new FreeServiceIncluded(result[6])), Integer.parseInt(result[7]));
+                        new RentalType(result[5]), new FreeInclusiveService(result[6])), Integer.parseInt(result[7]));
             }
             fr.close();
             br.close();
@@ -53,7 +52,7 @@ public class ReadAndWriteFileOfRoom {
                 bw.append(COMMA_DELIMITER);
                 bw.append(room.getRentalTye().getRentalType());
                 bw.append(COMMA_DELIMITER);
-                bw.append(room.getFreeServiceIncluded().getNameOfFreeService());
+                bw.append(room.getFreeInclusiveService().getNameOfFreeService());
                 bw.append(COMMA_DELIMITER);
                 bw.append(String.valueOf(roomList.get(room)));
                 bw.newLine();

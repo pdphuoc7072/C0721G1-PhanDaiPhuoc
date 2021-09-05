@@ -8,16 +8,16 @@ public class Booking implements Comparable<Booking> {
     private String startDate; // Ngày bắt đầu
     private String endDate; // Ngày kết thúc
     private String idOfCustomer; // Mã khách hàng
-    private String nameOfServices; // Tên dịch vụ
-    private String idOfServices; // Loại dịch vụ
+    private String nameOfService; // Tên dịch vụ
+    private String idOfService; // Mã dịch vụ
 
-    public Booking(String idOfBooking, String startDate, String endDate, String idOfCustomer, String nameOfServices, String idOfServices) {
+    public Booking(String idOfBooking, String startDate, String endDate, String idOfCustomer, String nameOfService, String idOfService) {
         this.idOfBooking = idOfBooking;
         this.startDate = startDate;
         this.endDate = endDate;
         this.idOfCustomer = idOfCustomer;
-        this.nameOfServices = nameOfServices;
-        this.idOfServices = idOfServices;
+        this.nameOfService = nameOfService;
+        this.idOfService = idOfService;
     }
 
     public String getIdOfBooking() {
@@ -52,31 +52,31 @@ public class Booking implements Comparable<Booking> {
         this.idOfCustomer = idOfCustomer;
     }
 
-    public String getNameOfServices() {
-        return nameOfServices;
+    public String getNameOfService() {
+        return nameOfService;
     }
 
-    public void setNameOfServices(String nameOfServices) {
-        this.nameOfServices = nameOfServices;
+    public void setNameOfService(String nameOfService) {
+        this.nameOfService = nameOfService;
     }
 
-    public String getIdOfServices() {
-        return idOfServices;
+    public String getIdOfService() {
+        return idOfService;
     }
 
-    public void setIdOfServices(String idOfServices) {
-        this.idOfServices = idOfServices;
+    public void setIdOfService(String idOfService) {
+        this.idOfService = idOfService;
     }
 
     @Override
     public String toString() {
         return "Booking{" +
-                "idOfBooking='" + idOfBooking + '\'' +
-                ", startDate='" + startDate + '\'' +
-                ", endDate='" + endDate + '\'' +
-                ", idOfCustomer='" + idOfCustomer + '\'' +
-                ", nameOfServices='" + nameOfServices + '\'' +
-                ", idOfServices ='" + idOfServices + '\'' +
+                "idOfBooking = " + idOfBooking +
+                ", startDate = " + startDate +
+                ", endDate = " + endDate +
+                ", idOfCustomer = " + idOfCustomer +
+                ", nameOfService = " + nameOfService +
+                ", idOfService = " + idOfService +
                 '}';
     }
 

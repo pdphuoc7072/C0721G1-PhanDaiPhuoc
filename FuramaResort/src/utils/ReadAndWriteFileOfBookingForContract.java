@@ -5,7 +5,6 @@ import models.Booking;
 import java.io.*;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Set;
 
 public class ReadAndWriteFileOfBookingForContract {
     private static final String COMMA_DELIMITER = ",";
@@ -45,9 +44,9 @@ public class ReadAndWriteFileOfBookingForContract {
                 bw.append(COMMA_DELIMITER);
                 bw.append(booking.getIdOfCustomer());
                 bw.append(COMMA_DELIMITER);
-                bw.append(booking.getNameOfServices());
+                bw.append(booking.getNameOfService());
                 bw.append(COMMA_DELIMITER);
-                bw.append(booking.getIdOfServices());
+                bw.append(booking.getIdOfService());
                 bw.newLine();
             }
             bw.flush();
