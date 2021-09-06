@@ -1,7 +1,5 @@
 package models;
 
-import java.util.Objects;
-
 public class Customer extends Person implements Comparable<Customer> {
     private String idOfCustomer; // Mã khách hàng
     private CustomerType customerType; // Loại khách hàng: diamond, platinium, gold, silver, member
@@ -50,19 +48,6 @@ public class Customer extends Person implements Comparable<Customer> {
 
     @Override
     public int compareTo(Customer o) {
-        return 1;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Customer customer = (Customer) o;
-        return idOfCustomer.equals(customer.idOfCustomer);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(idOfCustomer);
+        return this.getIdOfCustomer().compareTo(o.getIdOfCustomer());
     }
 }

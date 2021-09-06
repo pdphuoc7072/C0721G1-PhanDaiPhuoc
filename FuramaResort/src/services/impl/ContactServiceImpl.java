@@ -50,10 +50,13 @@ public class ContactServiceImpl implements IContactService {
                 } while (!check);
 
                 String idOfBooking = queueBooking.peek().getIdOfBooking();
+
                 System.out.print("Enter pre-deposit: ");
                 double preDeposit = Double.parseDouble(scanner.nextLine());
+
                 System.out.print("Enter total payment: ");
                 double totalPayment = Double.parseDouble(scanner.nextLine());
+
                 String idOfCustomer = queueBooking.peek().getIdOfCustomer();
 
                 contractList.clear();

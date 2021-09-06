@@ -45,10 +45,27 @@ public class BookingServiceImpl implements IBookingService {
             }
         } while (!flag);
 
-        System.out.print("Enter start date (dd/MM/yyyy): ");
-        String startDate = scanner.nextLine();
-        System.out.print("Enter end date (dd/MM/yyyy): ");
-        String endDate = scanner.nextLine();
+        String startDate;
+        boolean isValidOfStartDate;
+        do {
+            System.out.print("Enter start date (dd/MM/yyyy): ");
+            startDate = scanner.nextLine();
+            isValidOfStartDate = allRegex.validateOfDate(startDate);
+            if (!isValidOfStartDate) {
+                System.out.println("The start date must be in the correct format: dd/mm/yyyy");
+            }
+        } while (!isValidOfStartDate);
+
+        String endDate;
+        boolean isValidOfEndDate;
+        do {
+            System.out.print("Enter end date (dd/MM/yyyy): ");
+            endDate = scanner.nextLine();
+            isValidOfEndDate = allRegex.validateOfDate(endDate);
+            if (!isValidOfEndDate) {
+                System.out.println("The end date must be in the correct format: dd/mm/yyyy");
+            }
+        } while (!isValidOfEndDate);
 
         System.out.println("List of customer: ");
         List<Customer> listCustomer = customerService.getList();
@@ -107,8 +124,10 @@ public class BookingServiceImpl implements IBookingService {
                 break;
             }
         }
+
         System.out.print("Enter name of service: ");
         String nameOfService = scanner.nextLine();
+
         bookingList.clear();
         bookingList.add(new Booking(idOfBooking, startDate, endDate, customerBooking.getIdOfCustomer(), nameOfService, idOfServiceBooking));
         ReadAndWriteFileOfBooking.writeBookingToFile(filePathOfBooking, bookingList, true);

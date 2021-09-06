@@ -10,7 +10,10 @@ public class AllRegex {
     private static final String RATE_ROOM_REGEX = "^[0-9]\\s[S][T][A][R][S]$";
     private static final String BOOKING_REGEX = "^(BK)((VL)|(HO)|(RO))[-]\\d{4}$";
     private static final String NUMBER_CONTRACT_REGEX = "^(CT)((VL)|(HO)|(RO))[-]\\d{4}$";
-    private static final String BIRTHDAY_REGEX = "^\\d{2}[-|/]\\d{2}[-|/]\\d{4}$";
+    private static final String DATE_REGEX = "^\\d{2}[-|/]\\d{2}[-|/]\\d{4}$";
+    private static final String EMAIL_REGEX = "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$";
+    private static final String PHONE_NUMBER_REGEX = "^[0][35789][0-9]{8}$";
+    private static final String ID_CARD_NUMBER_REGEX = "^[0-9]{9}$";
     Pattern pattern;
     Matcher matcher;
     public AllRegex() {
@@ -81,8 +84,23 @@ public class AllRegex {
         matcher = pattern.matcher(string);
         return matcher.matches();
     }
-    public boolean validateOfBirthday (String string) {
-        pattern = Pattern.compile(BIRTHDAY_REGEX);
+    public boolean validateOfDate (String string) {
+        pattern = Pattern.compile(DATE_REGEX);
+        matcher = pattern.matcher(string);
+        return matcher.matches();
+    }
+    public boolean validateOfEmail (String string) {
+        pattern = Pattern.compile(EMAIL_REGEX);
+        matcher = pattern.matcher(string);
+        return matcher.matches();
+    }
+    public boolean validateOfPhoneNumber (String string) {
+        pattern = Pattern.compile(PHONE_NUMBER_REGEX);
+        matcher = pattern.matcher(string);
+        return matcher.matches();
+    }
+    public boolean validateOfIdCardNumber (String string) {
+        pattern = Pattern.compile(ID_CARD_NUMBER_REGEX);
         matcher = pattern.matcher(string);
         return matcher.matches();
     }

@@ -22,4 +22,5 @@ public class CustomerType {
     public String toString() {
         return "'" + customerType + '\'';
     }
+
 }
