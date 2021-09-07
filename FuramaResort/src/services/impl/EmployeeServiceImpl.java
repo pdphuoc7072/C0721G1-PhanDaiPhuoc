@@ -25,80 +25,166 @@ public class EmployeeServiceImpl implements IEmployeeService {
         List<Employee> employeeList = getList();
 
         boolean checkIdOfEmployee;
-        String idOfEmployee;
+        boolean isValidIdOfEmployee;
+        boolean flagOfId;
+        String idOfEmployee = null;
         do {
             checkIdOfEmployee = true;
-            System.out.print("Please enter Id of the employee: ");
-            idOfEmployee = scanner.nextLine();
-            for (int i = 0; i < employeeList.size(); i++) {
-                if (employeeList.get(i).getIdOfEmployee().equals(idOfEmployee)) {
-                    checkIdOfEmployee = false;
-                    break;
+            flagOfId = false;
+            try {
+                System.out.print("Please enter Id of the employee: ");
+                idOfEmployee = scanner.nextLine();
+                isValidIdOfEmployee = allRegex.validateOfIdPerson(idOfEmployee);
+                if (!isValidIdOfEmployee) {
+                    throw new Exception("The Id of employee must be in the correct format");
                 }
+                for (int i = 0; i < employeeList.size(); i++) {
+                    if (employeeList.get(i).getIdOfEmployee().equals(idOfEmployee)) {
+                        checkIdOfEmployee = false;
+                        break;
+                    }
+                }
+                if (!checkIdOfEmployee) {
+                    throw new Exception("Error. The id already exists in the list. Please re-enter.");
+                }
+                flagOfId = isValidIdOfEmployee && checkIdOfEmployee;
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
-            if (!checkIdOfEmployee) {
-                System.out.print("Error. The id already exists in the list. Please re-enter. \n");
-            }
-        } while (!checkIdOfEmployee);
+        } while (!flagOfId);
 
         System.out.print("Please enter full name: ");
         String nameOfEmployee = scanner.nextLine();
 
         String birthdayOfEmployee;
         boolean isValidOfBirthday;
-        String checkExceptionOfBirthday;
+        boolean flag;
         do {
-            do {
-                System.out.print("Please enter birthday (dd/mm/yyyy): ");
-                birthdayOfEmployee = scanner.nextLine();
-                isValidOfBirthday = allRegex.validateOfDate(birthdayOfEmployee);
-                if (!isValidOfBirthday) {
-                    System.out.println("The birthday must be in the correct format: dd/mm/yyyy");
+            System.out.print("Please enter birthday (dd/mm/yyyy): ");
+            birthdayOfEmployee = scanner.nextLine();
+            isValidOfBirthday = allRegex.validateOfDate(birthdayOfEmployee);
+            if (!isValidOfBirthday) {
+                System.out.println("The birthday must be in the correct format: dd/mm/yyyy");
+            }
+            flag = isValidOfBirthday && invalidOfBirthday(birthdayOfEmployee);
+        } while (!flag);
+
+        String genderOfEmployee = null;
+        while (true) {
+            try {
+                String[] genderOfArray = {"MALE", "FEMALE", "OTHER"};
+                for (int j = 0; j < genderOfArray.length; j++) {
+                    System.out.println((j+1) + ". " + genderOfArray[j]);
                 }
-            } while (!isValidOfBirthday);
-            checkExceptionOfBirthday = invalidOfBirthday(birthdayOfEmployee);
-        } while (checkExceptionOfBirthday.equals("Exception: Birthday is invalid"));
+                System.out.print("Please enter gender: ");
+                int chooseOfGender = Integer.parseInt(scanner.nextLine());
+                if (chooseOfGender > genderOfArray.length) {
+                    throw new Exception("Error. Please re-enter.");
+                }
+                for (int j = 0; j < genderOfArray.length; j++) {
+                    genderOfEmployee = genderOfArray[chooseOfGender - 1];
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
 
-        System.out.print("Please enter gender (male/female): ");
-        String genderOfEmployee = scanner.nextLine();
-
-        String idCardNumberOfEmployee;
+        String idCardNumberOfEmployee = null;
         boolean isValidOfIdCardNumber;
         do {
-            System.out.print("Please enter Id card number: ");
-            idCardNumberOfEmployee = scanner.nextLine();
-            isValidOfIdCardNumber = allRegex.validateOfIdCardNumber(idCardNumberOfEmployee);
-            if (!isValidOfIdCardNumber) {
-                System.out.println("Error. The Id card number must be in the correct format");
+            isValidOfIdCardNumber = true;
+            try {
+                System.out.print("Please enter Id card number: ");
+                idCardNumberOfEmployee = scanner.nextLine();
+                isValidOfIdCardNumber = allRegex.validateOfIdCardNumber(idCardNumberOfEmployee);
+                if (!isValidOfIdCardNumber) {
+                    throw new Exception("Error. The Id card number must be in the correct format");
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
         } while (!isValidOfIdCardNumber);
 
-        String phoneNumberOfEmployee;
+        String phoneNumberOfEmployee = null;
         boolean isValidOfPhoneNumber;
         do {
-            System.out.print("Please enter phone number: ");
-            phoneNumberOfEmployee = scanner.nextLine();
-            isValidOfPhoneNumber = allRegex.validateOfPhoneNumber(phoneNumberOfEmployee);
-            if (!isValidOfPhoneNumber) {
-                System.out.println("Error. The phone number must be in the correct format");
+            isValidOfPhoneNumber = true;
+            try {
+                System.out.print("Please enter phone number: ");
+                phoneNumberOfEmployee = scanner.nextLine();
+                isValidOfPhoneNumber = allRegex.validateOfPhoneNumber(phoneNumberOfEmployee);
+                if (!isValidOfPhoneNumber) {
+                    throw new Exception("Error. The phone number must be in the correct format");
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
         } while (!isValidOfPhoneNumber);
 
-        String emailOfEmployee;
+        String emailOfEmployee = null;
         boolean isValidOfEmail;
         do {
-            System.out.print("Please enter email: ");
-            emailOfEmployee = scanner.nextLine();
-            isValidOfEmail = allRegex.validateOfEmail(emailOfEmployee);
-            if (!isValidOfEmail) {
-                System.out.println("Error. The email must be in the correct format");
+            isValidOfEmail = true;
+            try {
+                System.out.print("Please enter email: ");
+                emailOfEmployee = scanner.nextLine();
+                isValidOfEmail = allRegex.validateOfEmail(emailOfEmployee);
+                if (!isValidOfEmail) {
+                    throw new Exception("Error. The email must be in the correct format");
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
         } while (!isValidOfEmail);
 
-        System.out.print("Please enter education level (intermediate/college/university/post graduate): ");
-        String educationLevelOfEmployee = scanner.nextLine();
-        System.out.print("Please enter position (receptionist/waiter:waitress/expert/supervision/manager/director): ");
-        String positionOfEmployee = scanner.nextLine();
+        String educationLevelOfEmployee = null;
+        while (true) {
+            try {
+                String[] educationLevelOfArray = {"INTERMEDIATE", "COLLEGE", "UNIVERSITY", "POST GRADUATE"};
+                for (int j = 0; j < educationLevelOfArray.length; j++) {
+                    System.out.println((j+1) + ". " + educationLevelOfArray[j]);
+                }
+                System.out.print("Please enter education level: ");
+                int chooseOfEducationLevel = Integer.parseInt(scanner.nextLine());
+                if (chooseOfEducationLevel > educationLevelOfArray.length) {
+                    throw new Exception("Error. Please re-enter.");
+                }
+                for (int j = 0; j < educationLevelOfArray.length; j++) {
+                    educationLevelOfEmployee = educationLevelOfArray[chooseOfEducationLevel - 1];
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        String positionOfEmployee = null;
+        while (true) {
+            try {
+                String[] positionOfArray = {"RECEPTIONIST", "WAITER", "WAITRESS", "EXPERT", "SUPERVISION", "MANAGER", "DIRECTOR"};
+                for (int i = 0; i < positionOfArray.length; i++) {
+                    System.out.println((i+1) + ". " + positionOfArray[i]);
+                }
+                System.out.print("Please enter position: ");
+                int chooseOfPosition = Integer.parseInt(scanner.nextLine());
+                if (chooseOfPosition > positionOfArray.length) {
+                    throw new Exception("Error. Please re-enter.");
+                }
+                for (int i = 0; i < positionOfArray.length; i++) {
+                    positionOfEmployee = positionOfArray[chooseOfPosition - 1];
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
 
         employeeList.clear();
         EducationLevel educationLevel = new EducationLevel(educationLevelOfEmployee);
@@ -118,86 +204,210 @@ public class EmployeeServiceImpl implements IEmployeeService {
     @Override
     public void edit() {
         List<Employee> employeeList = getList();
-        System.out.print("Please enter the id of the employee to be edit: ");
-        String idOfEmployeeForEdit = scanner.nextLine();
-        boolean checkIdOfEmployeeForEdit = false;
-        for (int i = 0; i < employeeList.size(); i++) {
-            if (employeeList.get(i).getIdOfEmployee().equals(idOfEmployeeForEdit)) {
-                checkIdOfEmployeeForEdit = true;
-                System.out.println("What do you want to edit?");
-                System.out.println("\t1. Edit employee's full name");
-                System.out.println("\t2. Edit employee's birthday");
-                System.out.println("\t3. Edit employee's gender");
-                System.out.println("\t4. Edit employee's Id card number");
-                System.out.println("\t5. Edit employee's phone number");
-                System.out.println("\t6. Edit employee's email");
-                System.out.println("\t7. Edit employee's education level");
-                System.out.println("\t8. Edit employee's position");
-                System.out.println("\t0. Return main menu");
-                System.out.print("Please choose from 0 to 8: ");
-                int chooseForEdit = Integer.parseInt(scanner.nextLine());
-                switch (chooseForEdit) {
-                    case 1:
-                        System.out.print("Please enter new full name: ");
-                        String newNameOfEmployee = scanner.nextLine();
-                        employeeList.get(i).setFullName(newNameOfEmployee);
-                        ReadAndWriteFileOfEmployee.writeEmployeeToFile(filePath, employeeList, false);
-                        break;
-                    case 2:
-                        System.out.print("Please enter new birthday (dd/mm/yyyy): ");
-                        String newBirthdayOfEmployee = scanner.nextLine();
-                        employeeList.get(i).setBirthday(newBirthdayOfEmployee);
-                        ReadAndWriteFileOfEmployee.writeEmployeeToFile(filePath, employeeList, false);
-                        break;
-                    case 3:
-                        System.out.print("Please enter new gender (male/female): ");
-                        String newGenderOfEmployee = scanner.nextLine();
-                        employeeList.get(i).setGender(newGenderOfEmployee);
-                        ReadAndWriteFileOfEmployee.writeEmployeeToFile(filePath, employeeList, false);
-                        break;
-                    case 4:
-                        System.out.print("Please enter new Id card number: ");
-                        String newIdCardNumberOfEmployee = scanner.nextLine();
-                        employeeList.get(i).setIdCardNumber(newIdCardNumberOfEmployee);
-                        ReadAndWriteFileOfEmployee.writeEmployeeToFile(filePath, employeeList, false);
-                        break;
-                    case 5:
-                        System.out.print("Please enter new phone number: ");
-                        String newPhoneNumberOfEmployee = scanner.nextLine();
-                        employeeList.get(i).setPhoneNumber(newPhoneNumberOfEmployee);
-                        ReadAndWriteFileOfEmployee.writeEmployeeToFile(filePath, employeeList, false);
-                        break;
-                    case 6:
-                        System.out.print("Please enter new email: ");
-                        String newEmailOfEmployee = scanner.nextLine();
-                        employeeList.get(i).setEmail(newEmailOfEmployee);
-                        ReadAndWriteFileOfEmployee.writeEmployeeToFile(filePath, employeeList, false);
-                        break;
-                    case 7:
-                        System.out.print("Please enter new education level (intermediate/college/university/post graduate): ");
-                        String newEducationLevelOfEmployee = scanner.nextLine();
-                        EducationLevel newEducationLevel = new EducationLevel();
-                        newEducationLevel.setEducationLevel(newEducationLevelOfEmployee);
-                        employeeList.get(i).setEducationLevel(newEducationLevel);
-                        ReadAndWriteFileOfEmployee.writeEmployeeToFile(filePath, employeeList, false);
-                        break;
-                    case 8:
-                        System.out.print("Please enter new position (receptionist/waiter:waitress/expert/supervision/manager/director): ");
-                        String newPositionOfEmployee = scanner.nextLine();
-                        Position newPosition = new Position();
-                        newPosition.setPosition(newPositionOfEmployee);
-                        employeeList.get(i).setPosition(newPosition);
-                        ReadAndWriteFileOfEmployee.writeEmployeeToFile(filePath, employeeList, false);
-                        break;
-                    case 0:
-                        break;
-                    default:
-                        System.out.println("Error. Please re-enter");
+
+        boolean isValidOfIdOfEmployeeForEdit;
+        boolean checkIdOfEmployeeForEdit;
+        String idOfEmployeeForEdit;
+        while (true) {
+            try {
+                checkIdOfEmployeeForEdit = false;
+                System.out.print("Please enter the id of the employee to be edit: ");
+                idOfEmployeeForEdit = scanner.nextLine();
+                isValidOfIdOfEmployeeForEdit = allRegex.validateOfIdPerson(idOfEmployeeForEdit);
+                if (!isValidOfIdOfEmployeeForEdit) {
+                    throw new Exception("The Id of employee must be in the correct format");
                 }
+                for (int i = 0; i < employeeList.size(); i++) {
+                    if (employeeList.get(i).getIdOfEmployee().equals(idOfEmployeeForEdit)) {
+                        checkIdOfEmployeeForEdit = true;
+                        System.out.println("What do you want to edit?");
+                        System.out.println("\t1. Edit employee's full name");
+                        System.out.println("\t2. Edit employee's birthday");
+                        System.out.println("\t3. Edit employee's gender");
+                        System.out.println("\t4. Edit employee's Id card number");
+                        System.out.println("\t5. Edit employee's phone number");
+                        System.out.println("\t6. Edit employee's email");
+                        System.out.println("\t7. Edit employee's education level");
+                        System.out.println("\t8. Edit employee's position");
+                        System.out.println("\t0. Return main menu");
+                        System.out.print("Please choose from 0 to 8: ");
+                        int chooseForEdit = Integer.parseInt(scanner.nextLine());
+                        switch (chooseForEdit) {
+                            case 1:
+                                System.out.print("Please enter new full name: ");
+                                String newNameOfEmployee = scanner.nextLine();
+                                employeeList.get(i).setFullName(newNameOfEmployee);
+                                ReadAndWriteFileOfEmployee.writeEmployeeToFile(filePath, employeeList, false);
+                                break;
+                            case 2:
+                                String newBirthdayOfEmployee;
+                                boolean isValidOfNewBirthday;
+                                boolean flag;
+                                do {
+                                    System.out.print("Please enter birthday (dd/mm/yyyy): ");
+                                    newBirthdayOfEmployee = scanner.nextLine();
+                                    isValidOfNewBirthday = allRegex.validateOfDate(newBirthdayOfEmployee);
+                                    if (!isValidOfNewBirthday) {
+                                        System.out.println("The birthday must be in the correct format: dd/mm/yyyy");
+                                    }
+                                    flag = isValidOfNewBirthday && invalidOfBirthday(newBirthdayOfEmployee);
+                                } while (!flag);
+                                employeeList.get(i).setBirthday(newBirthdayOfEmployee);
+                                ReadAndWriteFileOfEmployee.writeEmployeeToFile(filePath, employeeList, false);
+                                break;
+                            case 3:
+                                String newGenderOfEmployee = null;
+                                while (true) {
+                                    try {
+                                        String[] genderOfArray = {"MALE", "FEMALE", "OTHER"};
+                                        for (int j = 0; j < genderOfArray.length; j++) {
+                                            System.out.println((j+1) + ". " + genderOfArray[j]);
+                                        }
+                                        System.out.print("Please enter gender: ");
+                                        int chooseOfGender = Integer.parseInt(scanner.nextLine());
+                                        if (chooseOfGender > genderOfArray.length) {
+                                            throw new Exception("Error. Please re-enter.");
+                                        }
+                                        for (int j = 0; j < genderOfArray.length; j++) {
+                                            newGenderOfEmployee = genderOfArray[chooseOfGender - 1];
+                                        }
+                                        break;
+                                    } catch (NumberFormatException e) {
+                                        System.out.println(e.getMessage());
+                                    } catch (Exception e) {
+                                        System.out.println(e.getMessage());
+                                    }
+                                }
+                                employeeList.get(i).setGender(newGenderOfEmployee);
+                                ReadAndWriteFileOfEmployee.writeEmployeeToFile(filePath, employeeList, false);
+                                break;
+                            case 4:
+                                String newIdCardNumberOfEmployee = null;
+                                boolean isValidOfNewIdCardNumber;
+                                do {
+                                    isValidOfNewIdCardNumber = true;
+                                    try {
+                                        System.out.print("Please enter Id card number: ");
+                                        newIdCardNumberOfEmployee = scanner.nextLine();
+                                        isValidOfNewIdCardNumber = allRegex.validateOfIdCardNumber(newIdCardNumberOfEmployee);
+                                        if (!isValidOfNewIdCardNumber) {
+                                            throw new Exception("Error. The Id card number must be in the correct format");
+                                        }
+                                    } catch (Exception e) {
+                                        System.out.println(e.getMessage());
+                                    }
+                                } while (!isValidOfNewIdCardNumber);
+                                employeeList.get(i).setIdCardNumber(newIdCardNumberOfEmployee);
+                                ReadAndWriteFileOfEmployee.writeEmployeeToFile(filePath, employeeList, false);
+                                break;
+                            case 5:
+                                String newPhoneNumberOfEmployee = null;
+                                boolean isValidOfNewPhoneNumber;
+                                do {
+                                    isValidOfNewPhoneNumber = true;
+                                    try {
+                                        System.out.print("Please enter phone number: ");
+                                        newPhoneNumberOfEmployee = scanner.nextLine();
+                                        isValidOfNewPhoneNumber = allRegex.validateOfPhoneNumber(newPhoneNumberOfEmployee);
+                                        if (!isValidOfNewPhoneNumber) {
+                                            throw new Exception("Error. The phone number must be in the correct format");
+                                        }
+                                    } catch (Exception e) {
+                                        System.out.println(e.getMessage());
+                                    }
+                                } while (!isValidOfNewPhoneNumber);
+                                employeeList.get(i).setPhoneNumber(newPhoneNumberOfEmployee);
+                                ReadAndWriteFileOfEmployee.writeEmployeeToFile(filePath, employeeList, false);
+                                break;
+                            case 6:
+                                String newEmailOfEmployee = null;
+                                boolean isValidOfNewEmail;
+                                do {
+                                    isValidOfNewEmail = true;
+                                    try {
+                                        System.out.print("Please enter email: ");
+                                        newEmailOfEmployee = scanner.nextLine();
+                                        isValidOfNewEmail = allRegex.validateOfEmail(newEmailOfEmployee);
+                                        if (!isValidOfNewEmail) {
+                                            throw new Exception("Error. The email must be in the correct format");
+                                        }
+                                    } catch (Exception e) {
+                                        System.out.println(e.getMessage());
+                                    }
+                                } while (!isValidOfNewEmail);
+                                employeeList.get(i).setEmail(newEmailOfEmployee);
+                                ReadAndWriteFileOfEmployee.writeEmployeeToFile(filePath, employeeList, false);
+                                break;
+                            case 7:
+                                String newEducationLevelOfEmployee = null;
+                                while (true) {
+                                    try {
+                                        String[] educationLevelOfArray = {"INTERMEDIATE", "COLLEGE", "UNIVERSITY", "POST GRADUATE"};
+                                        for (int j = 0; j < educationLevelOfArray.length; j++) {
+                                            System.out.println((j+1) + ". " + educationLevelOfArray[j]);
+                                        }
+                                        System.out.print("Please enter education level: ");
+                                        int chooseOfEducationLevel = Integer.parseInt(scanner.nextLine());
+                                        if (chooseOfEducationLevel > educationLevelOfArray.length) {
+                                            throw new Exception("Error. Please re-enter.");
+                                        }
+                                        for (int j = 0; j < educationLevelOfArray.length; j++) {
+                                            newEducationLevelOfEmployee = educationLevelOfArray[chooseOfEducationLevel - 1];
+                                        }
+                                        break;
+                                    } catch (NumberFormatException e) {
+                                        System.out.println(e.getMessage());
+                                    } catch (Exception e) {
+                                        System.out.println(e.getMessage());
+                                    }
+                                }
+                                EducationLevel newEducationLevel = new EducationLevel();
+                                newEducationLevel.setEducationLevel(newEducationLevelOfEmployee);
+                                employeeList.get(i).setEducationLevel(newEducationLevel);
+                                ReadAndWriteFileOfEmployee.writeEmployeeToFile(filePath, employeeList, false);
+                                break;
+                            case 8:
+                                String newPositionOfEmployee = null;
+                                while (true) {
+                                    try {
+                                        String[] positionOfArray = {"RECEPTIONIST", "WAITER", "WAITRESS", "EXPERT", "SUPERVISION", "MANAGER", "DIRECTOR"};
+                                        for (int j = 0; j < positionOfArray.length; j++) {
+                                            System.out.println((j+1) + ". " + positionOfArray[j]);
+                                        }
+                                        System.out.print("Please enter position: ");
+                                        int chooseOfPosition = Integer.parseInt(scanner.nextLine());
+                                        if (chooseOfPosition > positionOfArray.length) {
+                                            throw new Exception("Error. Please re-enter.");
+                                        }
+                                        for (int j = 0; j < positionOfArray.length; j++) {
+                                            newPositionOfEmployee = positionOfArray[chooseOfPosition - 1];
+                                        }
+                                        break;
+                                    } catch (NumberFormatException e) {
+                                        System.out.println(e.getMessage());
+                                    } catch (Exception e) {
+                                        System.out.println(e.getMessage());
+                                    }
+                                }
+                                Position newPosition = new Position();
+                                newPosition.setPosition(newPositionOfEmployee);
+                                employeeList.get(i).setPosition(newPosition);
+                                ReadAndWriteFileOfEmployee.writeEmployeeToFile(filePath, employeeList, false);
+                                break;
+                            case 0:
+                                break;
+                            default:
+                                System.out.println("Error. Please re-enter");
+                        }
+                    }
+                }
+                if (!checkIdOfEmployeeForEdit) {
+                    throw new Exception("Error. The id of customer does not exists in the list. Please re-enter.");
+                }
+                break;
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
-        }
-        if (!checkIdOfEmployeeForEdit) {
-            System.out.println("Error. The id already exists in the list or Id cannot be 0. Please re-enter.");
         }
     }
 
@@ -205,9 +415,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
     public List<Employee> getList() {
         return ReadAndWriteFileOfEmployee.readEmployeeFromFile(filePath);
     }
-    public String invalidOfBirthday (String string) {
-        String stringException = "Exception: Birthday is invalid";
-        String stringNotException = "Birthday is valid";
+    public boolean invalidOfBirthday (String string) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Calendar now = Calendar.getInstance();
         Calendar born = Calendar.getInstance();
@@ -216,16 +424,15 @@ public class EmployeeServiceImpl implements IEmployeeService {
             born.setTime(sdf.parse(string));
             int age = now.get(Calendar.YEAR) - born.get(Calendar.YEAR);
             if (age < 18 || age > 100) {
-                throw new InvalidBirthdayException(stringException);
-            } else {
-                System.out.println(stringNotException);
+                throw new InvalidBirthdayException("Exception: Birthday is invalid");
             }
+            return true;
         } catch (InvalidBirthdayException e) {
             System.out.println(e.getMessage());
-            return stringException;
+            return false;
         } catch (ParseException e) {
             e.printStackTrace();
+            return false;
         }
-        return stringNotException;
     }
 }

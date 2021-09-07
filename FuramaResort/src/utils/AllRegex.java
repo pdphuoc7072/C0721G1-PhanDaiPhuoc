@@ -14,6 +14,7 @@ public class AllRegex {
     private static final String EMAIL_REGEX = "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$";
     private static final String PHONE_NUMBER_REGEX = "^[0][35789][0-9]{8}$";
     private static final String ID_CARD_NUMBER_REGEX = "^[0-9]{9}$";
+    private static final String ID_PERSON_REGEX = "^\\d*$";
     Pattern pattern;
     Matcher matcher;
     public AllRegex() {
@@ -101,6 +102,11 @@ public class AllRegex {
     }
     public boolean validateOfIdCardNumber (String string) {
         pattern = Pattern.compile(ID_CARD_NUMBER_REGEX);
+        matcher = pattern.matcher(string);
+        return matcher.matches();
+    }
+    public boolean validateOfIdPerson (String string) {
+        pattern = Pattern.compile(ID_PERSON_REGEX);
         matcher = pattern.matcher(string);
         return matcher.matches();
     }

@@ -26,79 +26,146 @@ public class CustomerServiceImpl implements ICustomerService {
     public void add() {
         List<Customer> customerList = getList();
 
-        String idOfCustomer;
+        String idOfCustomer = null;
         boolean checkIdOfCustomer;
+        boolean isValidOfIdOfCustomer;
+        boolean flagOfIdOfCustomer;
         do {
             checkIdOfCustomer = true;
-            System.out.print("Please enter Id of Customer: ");
-            idOfCustomer = scanner.nextLine();
-            for (int i = 0; i< customerList.size(); i++) {
-                if (customerList.get(i).getIdOfCustomer().equals(idOfCustomer)) {
-                    checkIdOfCustomer = false;
-                    break;
+            flagOfIdOfCustomer = false;
+            try {
+                System.out.print("Please enter Id of Customer: ");
+                idOfCustomer = scanner.nextLine();
+                isValidOfIdOfCustomer = allRegex.validateOfIdPerson(idOfCustomer);
+                if (!isValidOfIdOfCustomer) {
+                    throw new Exception("The Id of customer must be in the correct format");
                 }
+                for (int i = 0; i< customerList.size(); i++) {
+                    if (customerList.get(i).getIdOfCustomer().equals(idOfCustomer)) {
+                        checkIdOfCustomer = false;
+                        break;
+                    }
+                }
+                if (!checkIdOfCustomer) {
+                    throw new Exception("Error. The id already exists in the list. Please re-enter.");
+                }
+                flagOfIdOfCustomer = isValidOfIdOfCustomer && checkIdOfCustomer;
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
-            if (!checkIdOfCustomer) {
-                System.out.print("Error. The id already exists in the list. Please re-enter. \n");
-            }
-        } while (!checkIdOfCustomer);
+        } while (!flagOfIdOfCustomer);
 
         System.out.print("Please enter full name of customer: ");
         String nameOfCustomer = scanner.nextLine();
 
         String birthdayOfCustomer;
         boolean isValidOfBirthday;
-        String checkExceptionOfBirthday;
+        boolean flagOfBirthday;
         do {
-            do {
-                System.out.print("Please enter birthday of customer (dd/mm/yyyy): ");
-                birthdayOfCustomer = scanner.nextLine();
-                isValidOfBirthday = allRegex.validateOfDate(birthdayOfCustomer);
-                if (!isValidOfBirthday) {
-                    System.out.println("The birthday must be in the correct format: dd/mm/yyyy");
+            System.out.print("Please enter birthday of customer (dd/mm/yyyy): ");
+            birthdayOfCustomer = scanner.nextLine();
+            isValidOfBirthday = allRegex.validateOfDate(birthdayOfCustomer);
+            if (!isValidOfBirthday) {
+                System.out.println("The birthday must be in the correct format: dd/mm/yyyy");
+            }
+            flagOfBirthday = isValidOfBirthday && invalidOfBirthday(birthdayOfCustomer);
+        } while (!flagOfBirthday);
+
+        String genderOfCustomer = null;
+        while (true) {
+            try {
+                String[] genderOfArray = {"MALE", "FEMALE", "OTHER"};
+                for (int j = 0; j < genderOfArray.length; j++) {
+                    System.out.println((j+1) + ". " + genderOfArray[j]);
                 }
-            } while (!isValidOfBirthday);
-            checkExceptionOfBirthday = invalidOfBirthday(birthdayOfCustomer);
-        } while (checkExceptionOfBirthday.equals("Exception: Birthday is invalid"));
+                System.out.print("Please enter gender: ");
+                int chooseOfGender = Integer.parseInt(scanner.nextLine());
+                if (chooseOfGender > genderOfArray.length) {
+                    throw new Exception("Error. Please re-enter.");
+                }
+                for (int j = 0; j < genderOfArray.length; j++) {
+                    genderOfCustomer = genderOfArray[chooseOfGender - 1];
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
 
-        System.out.print("Please enter gender of customer (male/female): ");
-        String genderOfCustomer = scanner.nextLine();
-
-        String idCardNumberOfCustomer;
+        String idCardNumberOfCustomer = null;
         boolean isValidOfIdCardNumber;
         do {
-            System.out.print("Please enter Id card number of customer: ");
-            idCardNumberOfCustomer = scanner.nextLine();
-            isValidOfIdCardNumber = allRegex.validateOfIdCardNumber(idCardNumberOfCustomer);
-            if (!isValidOfIdCardNumber) {
-                System.out.println("Error. The Id card number must be in the correct format");
+            isValidOfIdCardNumber = true;
+            try {
+                System.out.print("Please enter Id card number of customer: ");
+                idCardNumberOfCustomer = scanner.nextLine();
+                isValidOfIdCardNumber = allRegex.validateOfIdCardNumber(idCardNumberOfCustomer);
+                if (!isValidOfIdCardNumber) {
+                    throw new Exception("Error. The Id card number must be in the correct format");
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
         } while (!isValidOfIdCardNumber);
 
-        String phoneNumberOfCustomer;
+        String phoneNumberOfCustomer = null;
         boolean isValidOfPhoneNumber;
         do {
-            System.out.print("Please enter phone number of customer: ");
-            phoneNumberOfCustomer = scanner.nextLine();
-            isValidOfPhoneNumber = allRegex.validateOfPhoneNumber(phoneNumberOfCustomer);
-            if (!isValidOfPhoneNumber) {
-                System.out.println("Error. The phone number must be in the correct format");
+            isValidOfPhoneNumber = true;
+            try {
+                System.out.print("Please enter phone number of customer: ");
+                phoneNumberOfCustomer = scanner.nextLine();
+                isValidOfPhoneNumber = allRegex.validateOfPhoneNumber(phoneNumberOfCustomer);
+                if (!isValidOfPhoneNumber) {
+                    throw new Exception("Error. The phone number must be in the correct format");
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
         } while (!isValidOfPhoneNumber);
 
-        String emailOfCustomer;
+        String emailOfCustomer = null;
         boolean isValidEmailOfCustomer;
         do {
-            System.out.print("Please enter email of customer: ");
-            emailOfCustomer = scanner.nextLine();
-            isValidEmailOfCustomer = allRegex.validateOfEmail(emailOfCustomer);
-            if (!isValidEmailOfCustomer) {
-                System.out.println("Error. The email must be in the correct format");
+            isValidEmailOfCustomer = true;
+            try {
+                System.out.print("Please enter email of customer: ");
+                emailOfCustomer = scanner.nextLine();
+                isValidEmailOfCustomer = allRegex.validateOfEmail(emailOfCustomer);
+                if (!isValidEmailOfCustomer) {
+                    throw new Exception("Error. The email must be in the correct format");
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
         } while (!isValidEmailOfCustomer);
 
-        System.out.print("Please enter customer type (diamond/platinium/gold/silver/member): ");
-        String customerOfType = scanner.nextLine();
+
+        String customerOfType = null;
+        while (true) {
+            try {
+                String[] customerOfTypeOfArray = {"DIAMOND", "PLATINIUM", "GOLD", "SILVER", "MEMBER"};
+                for (int j = 0; j < customerOfTypeOfArray.length; j++) {
+                    System.out.println((j+1) + ". " + customerOfTypeOfArray[j]);
+                }
+                System.out.print("Please enter customer type: ");
+                int chooseCustomerOfType = Integer.parseInt(scanner.nextLine());
+                if (chooseCustomerOfType > customerOfTypeOfArray.length) {
+                    throw new Exception("Error. Please re-enter.");
+                }
+                for (int j = 0; j < customerOfTypeOfArray.length; j++) {
+                    customerOfType = customerOfTypeOfArray[chooseCustomerOfType - 1];
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
         System.out.print("Please enter house's number of customer: ");
         String houseNumberOfCustomer = scanner.nextLine();
         System.out.print("Please enter street's name of customer: ");
@@ -131,171 +198,225 @@ public class CustomerServiceImpl implements ICustomerService {
     @Override
     public void edit() {
         List<Customer> customerList = getList();
-        System.out.print("Please enter the id of the customer to be edit: ");
-        String idOfCustomerForEdit = scanner.nextLine();
-        boolean check = false;
-        for (int i = 0; i < customerList.size(); i++) {
-            if (customerList.get(i).getIdOfCustomer().equals(idOfCustomerForEdit)) {
-                check = true;
-                System.out.print("What do you want to edit? \n");
-                System.out.print("\t1. Edit customer's full name \n");
-                System.out.print("\t2. Edit customer's birthday\n");
-                System.out.print("\t3. Edit customer's gender\n");
-                System.out.print("\t4. Edit customer's Id card number\n");
-                System.out.print("\t5. Edit customer's phone number\n");
-                System.out.print("\t6. Edit customer's email\n");
-                System.out.print("\t7. Edit customer's customer type\n");
-                System.out.print("\t8. Edit customer's address\n");
-                System.out.print("\t0. Return main menu\n");
-                System.out.print("Please choose from 0 to 8: ");
-                int chooseForEdit = Integer.parseInt(scanner.nextLine());
-                switch (chooseForEdit) {
-                    case 1:
-                        System.out.print("Please enter new full name: ");
-                        String newFullNameOfCustomer = scanner.nextLine();
-                        customerList.get(i).setFullName(newFullNameOfCustomer);
-                        ReadAndWriteFileOfCustomer.writeCustomerToFile(filePath, customerList, false);
-                        break;
-                    case 2:
-                        String newBirthdayOfCustomer;
-                        boolean isValidOfNewBirthday;
-                        do {
-                            System.out.print("Please enter new birthday: ");
-                            newBirthdayOfCustomer = scanner.nextLine();
-                            isValidOfNewBirthday = allRegex.validateOfDate(newBirthdayOfCustomer);
-                            if (!isValidOfNewBirthday) {
-                                System.out.println("The birthday must be in the correct format: dd/mm/yyyy");
-                            }
-                        } while (!isValidOfNewBirthday);
-                        customerList.get(i).setBirthday(newBirthdayOfCustomer);
-                        ReadAndWriteFileOfCustomer.writeCustomerToFile(filePath, customerList, false);
-                        break;
-                    case 3:
-                        System.out.print("Please enter new gender: ");
-                        String newGenderOfCustomer = scanner.nextLine();
-                        customerList.get(i).setGender(newGenderOfCustomer);
-                        ReadAndWriteFileOfCustomer.writeCustomerToFile(filePath, customerList, false);
-                        break;
-                    case 4:
-                        String newIdCardNumberOfCustomer;
-                        boolean isValidOfNewIdCardNumber;
-                        do {
-                            System.out.print("Please enter new Id card number: ");
-                            newIdCardNumberOfCustomer = scanner.nextLine();
-                            isValidOfNewIdCardNumber = allRegex.validateOfIdCardNumber(newIdCardNumberOfCustomer);
-                            if (!isValidOfNewIdCardNumber) {
-                                System.out.println("Error. The Id card number must be in the correct format");
-                            }
-                        } while (!isValidOfNewIdCardNumber);
-                        customerList.get(i).setIdCardNumber(newIdCardNumberOfCustomer);
-                        ReadAndWriteFileOfCustomer.writeCustomerToFile(filePath, customerList, false);
-                        break;
-                    case 5:
-                        String newPhoneNumberOfCustomer;
-                        boolean isValidOfNewPhoneNumber;
-                        do {
-                            System.out.print("Please enter new phone number: ");
-                            newPhoneNumberOfCustomer = scanner.nextLine();
-                            isValidOfNewPhoneNumber = allRegex.validateOfPhoneNumber(newPhoneNumberOfCustomer);
-                            if (!isValidOfNewPhoneNumber) {
-                                System.out.println("Error. The phone number must be in the correct format");
-                            }
-                        } while (!isValidOfNewPhoneNumber);
-                        customerList.get(i).setPhoneNumber(newPhoneNumberOfCustomer);
-                        ReadAndWriteFileOfCustomer.writeCustomerToFile(filePath, customerList, false);
-                        break;
-                    case 6:
-                        String newEmailOfCustomer;
-                        boolean isValidOfNewEmail;
-                        do {
-                            System.out.println("Please enter new email: ");
-                            newEmailOfCustomer = scanner.nextLine();
-                            isValidOfNewEmail = allRegex.validateOfEmail(newEmailOfCustomer);
-                            if (!isValidOfNewEmail) {
-                                System.out.println("Error. The email must be in the correct format");
-                            }
-                        } while (!isValidOfNewEmail);
-                        customerList.get(i).setEmail(newEmailOfCustomer);
-                        ReadAndWriteFileOfCustomer.writeCustomerToFile(filePath, customerList, false);
-                        break;
-                    case 7:
-                        System.out.print("Please enter new customer type (diamond/platinium/gold/silver/member): ");
-                        String newCustomerTye = scanner.nextLine();
-                        CustomerType customerType = new CustomerType();
-                        customerType.setCustomerType(newCustomerTye);
-                        customerList.get(i).setCustomerType(customerType);
-                        ReadAndWriteFileOfCustomer.writeCustomerToFile(filePath, customerList, false);
-                        break;
-                    case 8:
-                        System.out.print("\t1. Edit customer's house Number \n");
-                        System.out.print("\t2. Edit customer's street \n");
-                        System.out.print("\t3. Edit customer's ward \n");
-                        System.out.print("\t4. Edit customer's district \n");
-                        System.out.print("\t5. Edit customer's province\n");
+        boolean isValidOfIdOfCustomerForEdit;
+        boolean checkIdOfCustomerForEdit;
+        String idOfCustomerForEdit;
+        while (true) {
+            try {
+                checkIdOfCustomerForEdit = false;
+                System.out.print("Please enter the id of the customer to be edit: ");
+                idOfCustomerForEdit = scanner.nextLine();
+                isValidOfIdOfCustomerForEdit = allRegex.validateOfIdPerson(idOfCustomerForEdit);
+                if (!isValidOfIdOfCustomerForEdit) {
+                    throw new Exception("The Id of customer must be in the correct format");
+                }
+                for (int i = 0; i < customerList.size(); i++) {
+                    if (customerList.get(i).getIdOfCustomer().equals(idOfCustomerForEdit)) {
+                        checkIdOfCustomerForEdit = true;
+                        System.out.print("What do you want to edit? \n");
+                        System.out.print("\t1. Edit customer's full name \n");
+                        System.out.print("\t2. Edit customer's birthday\n");
+                        System.out.print("\t3. Edit customer's gender\n");
+                        System.out.print("\t4. Edit customer's Id card number\n");
+                        System.out.print("\t5. Edit customer's phone number\n");
+                        System.out.print("\t6. Edit customer's email\n");
+                        System.out.print("\t7. Edit customer's customer type\n");
+                        System.out.print("\t8. Edit customer's address\n");
                         System.out.print("\t0. Return main menu\n");
-                        System.out.print("Please choose from 0 to 5: ");
-                        int chooseAddressForEdit = Integer.parseInt(scanner.nextLine());
-                        switch (chooseAddressForEdit) {
+                        System.out.print("Please choose from 0 to 8: ");
+                        int chooseForEdit = Integer.parseInt(scanner.nextLine());
+                        switch (chooseForEdit) {
                             case 1:
-                                System.out.print("Please enter new house number: ");
-                                String newHouseNumberOfCustomer = scanner.nextLine();
-                                AddressOfCustomer addressOfCustomer1 = new AddressOfCustomer();
-                                addressOfCustomer1 = customerList.get(i).getAddressOfCustomer();
-                                addressOfCustomer1.setHouseNumber(newHouseNumberOfCustomer);
-                                customerList.get(i).setAddressOfCustomer(addressOfCustomer1);
+                                System.out.print("Please enter new full name: ");
+                                String newFullNameOfCustomer = scanner.nextLine();
+                                customerList.get(i).setFullName(newFullNameOfCustomer);
                                 ReadAndWriteFileOfCustomer.writeCustomerToFile(filePath, customerList, false);
                                 break;
                             case 2:
-                                System.out.print("Please enter new street: ");
-                                String newStreetOfCustomer = scanner.nextLine();
-                                AddressOfCustomer addressOfCustomer2 = new AddressOfCustomer();
-                                addressOfCustomer2 = customerList.get(i).getAddressOfCustomer();
-                                addressOfCustomer2.setStreet(newStreetOfCustomer);
-                                customerList.get(i).setAddressOfCustomer(addressOfCustomer2);
+                                String newBirthdayOfCustomer;
+                                boolean isValidOfNewBirthday;
+                                do {
+                                    System.out.print("Please enter new birthday: ");
+                                    newBirthdayOfCustomer = scanner.nextLine();
+                                    isValidOfNewBirthday = allRegex.validateOfDate(newBirthdayOfCustomer);
+                                    if (!isValidOfNewBirthday) {
+                                        System.out.println("The birthday must be in the correct format: dd/mm/yyyy");
+                                    }
+                                } while (!isValidOfNewBirthday);
+                                customerList.get(i).setBirthday(newBirthdayOfCustomer);
                                 ReadAndWriteFileOfCustomer.writeCustomerToFile(filePath, customerList, false);
                                 break;
                             case 3:
-                                System.out.print("Please enter new ward: ");
-                                String newWardOfCustomer = scanner.nextLine();
-                                AddressOfCustomer addressOfCustomer3 = new AddressOfCustomer();
-                                addressOfCustomer3 = customerList.get(i).getAddressOfCustomer();
-                                addressOfCustomer3.setWard(newWardOfCustomer);
-                                customerList.get(i).setAddressOfCustomer(addressOfCustomer3);
+                                String newGenderOfCustomer = null;
+                                while (true) {
+                                    try {
+                                        String[] genderOfArray = {"MALE", "FEMALE", "OTHER"};
+                                        for (int j = 0; j < genderOfArray.length; j++) {
+                                            System.out.println((j+1) + ". " + genderOfArray[j]);
+                                        }
+                                        System.out.print("Please enter gender: ");
+                                        int chooseOfGender = Integer.parseInt(scanner.nextLine());
+                                        if (chooseOfGender > genderOfArray.length) {
+                                            throw new Exception("Error. Please re-enter.");
+                                        }
+                                        for (int j = 0; j < genderOfArray.length; j++) {
+                                            newGenderOfCustomer = genderOfArray[chooseOfGender - 1];
+                                        }
+                                        break;
+                                    } catch (NumberFormatException e) {
+                                        System.out.println(e.getMessage());
+                                    } catch (Exception e) {
+                                        System.out.println(e.getMessage());
+                                    }
+                                }
+                                customerList.get(i).setGender(newGenderOfCustomer);
                                 ReadAndWriteFileOfCustomer.writeCustomerToFile(filePath, customerList, false);
                                 break;
                             case 4:
-                                System.out.print("Please enter new district: ");
-                                String newDistrictOfCustomer = scanner.nextLine();
-                                AddressOfCustomer addressOfCustomer4 = new AddressOfCustomer();
-                                addressOfCustomer4 = customerList.get(i).getAddressOfCustomer();
-                                addressOfCustomer4.setDistrict(newDistrictOfCustomer);
-                                customerList.get(i).setAddressOfCustomer(addressOfCustomer4);
+                                String newIdCardNumberOfCustomer;
+                                boolean isValidOfNewIdCardNumber;
+                                do {
+                                    System.out.print("Please enter new Id card number: ");
+                                    newIdCardNumberOfCustomer = scanner.nextLine();
+                                    isValidOfNewIdCardNumber = allRegex.validateOfIdCardNumber(newIdCardNumberOfCustomer);
+                                    if (!isValidOfNewIdCardNumber) {
+                                        System.out.println("Error. The Id card number must be in the correct format");
+                                    }
+                                } while (!isValidOfNewIdCardNumber);
+                                customerList.get(i).setIdCardNumber(newIdCardNumberOfCustomer);
                                 ReadAndWriteFileOfCustomer.writeCustomerToFile(filePath, customerList, false);
                                 break;
                             case 5:
-                                System.out.print("Please enter new province: ");
-                                String newProvinceOfCustomer = scanner.nextLine();
-                                AddressOfCustomer addressOfCustomer5 = new AddressOfCustomer();
-                                addressOfCustomer5 = customerList.get(i).getAddressOfCustomer();
-                                addressOfCustomer5.setProvince(newProvinceOfCustomer);
-                                customerList.get(i).setAddressOfCustomer(addressOfCustomer5);
+                                String newPhoneNumberOfCustomer;
+                                boolean isValidOfNewPhoneNumber;
+                                do {
+                                    System.out.print("Please enter new phone number: ");
+                                    newPhoneNumberOfCustomer = scanner.nextLine();
+                                    isValidOfNewPhoneNumber = allRegex.validateOfPhoneNumber(newPhoneNumberOfCustomer);
+                                    if (!isValidOfNewPhoneNumber) {
+                                        System.out.println("Error. The phone number must be in the correct format");
+                                    }
+                                } while (!isValidOfNewPhoneNumber);
+                                customerList.get(i).setPhoneNumber(newPhoneNumberOfCustomer);
                                 ReadAndWriteFileOfCustomer.writeCustomerToFile(filePath, customerList, false);
+                                break;
+                            case 6:
+                                String newEmailOfCustomer;
+                                boolean isValidOfNewEmail;
+                                do {
+                                    System.out.println("Please enter new email: ");
+                                    newEmailOfCustomer = scanner.nextLine();
+                                    isValidOfNewEmail = allRegex.validateOfEmail(newEmailOfCustomer);
+                                    if (!isValidOfNewEmail) {
+                                        System.out.println("Error. The email must be in the correct format");
+                                    }
+                                } while (!isValidOfNewEmail);
+                                customerList.get(i).setEmail(newEmailOfCustomer);
+                                ReadAndWriteFileOfCustomer.writeCustomerToFile(filePath, customerList, false);
+                                break;
+                            case 7:
+                                String newCustomerOfType = null;
+                                while (true) {
+                                    try {
+                                        String[] customerOfTypeOfArray = {"DIAMOND", "PLATINIUM", "GOLD", "SILVER", "MEMBER"};
+                                        for (int j = 0; j < customerOfTypeOfArray.length; j++) {
+                                            System.out.println((j+1) + ". " + customerOfTypeOfArray[j]);
+                                        }
+                                        System.out.print("Please enter customer type: ");
+                                        int chooseCustomerOfType = Integer.parseInt(scanner.nextLine());
+                                        if (chooseCustomerOfType > customerOfTypeOfArray.length) {
+                                            throw new Exception("Error. Please re-enter.");
+                                        }
+                                        for (int j = 0; j < customerOfTypeOfArray.length; j++) {
+                                            newCustomerOfType = customerOfTypeOfArray[chooseCustomerOfType - 1];
+                                        }
+                                        break;
+                                    } catch (NumberFormatException e) {
+                                        System.out.println(e.getMessage());
+                                    } catch (Exception e) {
+                                        System.out.println(e.getMessage());
+                                    }
+                                }
+                                CustomerType customerType = new CustomerType();
+                                customerType.setCustomerType(newCustomerOfType);
+                                customerList.get(i).setCustomerType(customerType);
+                                ReadAndWriteFileOfCustomer.writeCustomerToFile(filePath, customerList, false);
+                                break;
+                            case 8:
+                                System.out.print("\t1. Edit customer's house Number \n");
+                                System.out.print("\t2. Edit customer's street \n");
+                                System.out.print("\t3. Edit customer's ward \n");
+                                System.out.print("\t4. Edit customer's district \n");
+                                System.out.print("\t5. Edit customer's province\n");
+                                System.out.print("\t0. Return main menu\n");
+                                System.out.print("Please choose from 0 to 5: ");
+                                int chooseAddressForEdit = Integer.parseInt(scanner.nextLine());
+                                switch (chooseAddressForEdit) {
+                                    case 1:
+                                        System.out.print("Please enter new house number: ");
+                                        String newHouseNumberOfCustomer = scanner.nextLine();
+                                        AddressOfCustomer addressOfCustomer1 = new AddressOfCustomer();
+                                        addressOfCustomer1 = customerList.get(i).getAddressOfCustomer();
+                                        addressOfCustomer1.setHouseNumber(newHouseNumberOfCustomer);
+                                        customerList.get(i).setAddressOfCustomer(addressOfCustomer1);
+                                        ReadAndWriteFileOfCustomer.writeCustomerToFile(filePath, customerList, false);
+                                        break;
+                                    case 2:
+                                        System.out.print("Please enter new street: ");
+                                        String newStreetOfCustomer = scanner.nextLine();
+                                        AddressOfCustomer addressOfCustomer2 = new AddressOfCustomer();
+                                        addressOfCustomer2 = customerList.get(i).getAddressOfCustomer();
+                                        addressOfCustomer2.setStreet(newStreetOfCustomer);
+                                        customerList.get(i).setAddressOfCustomer(addressOfCustomer2);
+                                        ReadAndWriteFileOfCustomer.writeCustomerToFile(filePath, customerList, false);
+                                        break;
+                                    case 3:
+                                        System.out.print("Please enter new ward: ");
+                                        String newWardOfCustomer = scanner.nextLine();
+                                        AddressOfCustomer addressOfCustomer3 = new AddressOfCustomer();
+                                        addressOfCustomer3 = customerList.get(i).getAddressOfCustomer();
+                                        addressOfCustomer3.setWard(newWardOfCustomer);
+                                        customerList.get(i).setAddressOfCustomer(addressOfCustomer3);
+                                        ReadAndWriteFileOfCustomer.writeCustomerToFile(filePath, customerList, false);
+                                        break;
+                                    case 4:
+                                        System.out.print("Please enter new district: ");
+                                        String newDistrictOfCustomer = scanner.nextLine();
+                                        AddressOfCustomer addressOfCustomer4 = new AddressOfCustomer();
+                                        addressOfCustomer4 = customerList.get(i).getAddressOfCustomer();
+                                        addressOfCustomer4.setDistrict(newDistrictOfCustomer);
+                                        customerList.get(i).setAddressOfCustomer(addressOfCustomer4);
+                                        ReadAndWriteFileOfCustomer.writeCustomerToFile(filePath, customerList, false);
+                                        break;
+                                    case 5:
+                                        System.out.print("Please enter new province: ");
+                                        String newProvinceOfCustomer = scanner.nextLine();
+                                        AddressOfCustomer addressOfCustomer5 = new AddressOfCustomer();
+                                        addressOfCustomer5 = customerList.get(i).getAddressOfCustomer();
+                                        addressOfCustomer5.setProvince(newProvinceOfCustomer);
+                                        customerList.get(i).setAddressOfCustomer(addressOfCustomer5);
+                                        ReadAndWriteFileOfCustomer.writeCustomerToFile(filePath, customerList, false);
+                                        break;
+                                    case 0:
+                                        break;
+                                    default:
+                                        System.out.print("Error. Please re-enter");
+                                }
                                 break;
                             case 0:
                                 break;
                             default:
                                 System.out.print("Error. Please re-enter");
                         }
-                        break;
-                    case 0:
-                        break;
-                    default:
-                        System.out.print("Error. Please re-enter");
+                    }
                 }
+                if (!checkIdOfCustomerForEdit) {
+                    throw new Exception("Error. The id of customer does not exists in the list. Please re-enter");
+                }
+                break;
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
-        }
-        if (!check) {
-            System.out.print("Error. The id already exists in the list or Id cannot be 0. Please re-enter. \n");
         }
     }
 
@@ -303,9 +424,7 @@ public class CustomerServiceImpl implements ICustomerService {
     public List<Customer> getList() {
         return ReadAndWriteFileOfCustomer.readCustomerFromFile(filePath);
     }
-    public String invalidOfBirthday (String string) {
-        String stringException = "Exception: Birthday is invalid";
-        String stringNotException = "Birthday is valid";
+    public boolean invalidOfBirthday (String string) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Calendar now = Calendar.getInstance();
         Calendar born = Calendar.getInstance();
@@ -313,17 +432,16 @@ public class CustomerServiceImpl implements ICustomerService {
             now.setTime(new Date());
             born.setTime(sdf.parse(string));
             int age = now.get(Calendar.YEAR) - born.get(Calendar.YEAR);
-            if (age < 18 || age > 100) {
-                throw new InvalidBirthdayException(stringException);
-            } else {
-                System.out.println(stringNotException);
+            if (age > 100) {
+                throw new InvalidBirthdayException("Exception: Birthday is invalid");
             }
+            return true;
         } catch (InvalidBirthdayException e) {
             System.out.println(e.getMessage());
-            return stringException;
+            return false;
         } catch (ParseException e) {
             e.printStackTrace();
+            return false;
         }
-        return stringNotException;
     }
 }

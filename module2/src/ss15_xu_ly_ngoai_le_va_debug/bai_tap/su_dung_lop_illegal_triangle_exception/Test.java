@@ -15,7 +15,7 @@ public class Test {
             new Triangle(sideAOfTriangle, sideBOfTriangle, sideCOfTriangle);
             System.out.println("Đây là 3 cạnh của 1 tam giác");
         } catch (IllegalTriangleException e) {
-            System.err.println(e);
+            System.err.println(e.getMessage());
         }
     }
 }
