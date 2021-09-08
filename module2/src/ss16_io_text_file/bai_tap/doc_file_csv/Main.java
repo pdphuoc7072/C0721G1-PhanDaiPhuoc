@@ -36,6 +36,7 @@ public class Main {
             while ((line = bufferedReader.readLine()) != null) {
                 printCountry(parseCsvLine(line));
             }
+            bufferedReader.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

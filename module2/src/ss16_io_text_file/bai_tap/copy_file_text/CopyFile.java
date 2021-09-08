@@ -24,6 +24,7 @@ public class CopyFile {
                 count++;
             }
             System.out.println("Hoàn thành. Số ký tự đã copy là: " + count);
+            inputStream.close();
             outputStream.close();
         } catch (Exception e) {
             System.err.println("Tệp nguồn không tồn tại hoặc tập tin đích đã tồn tại. ");
