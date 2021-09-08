@@ -17,54 +17,78 @@ public class ContactServiceImpl implements IContactService {
 
     @Override
     public void add() {
-        Queue<Booking> queueBooking = ReadAndWriteFileOfBookingForContract.readBookingForContractFromFile(filePathOfBookingForContract);
-        Set<Contract> contractList = getListContract();
-        if (queueBooking.isEmpty()) {
-            System.out.println("Done contract");
-        } else {
-            for (int i = 0; i < queueBooking.size(); i++) {
-                System.out.println(queueBooking.peek());
+        while (true) {
+            try {
+                Queue<Booking> queueBooking = ReadAndWriteFileOfBookingForContract.readBookingForContractFromFile(filePathOfBookingForContract);
+                Set<Contract> contractList = getListContract();
+                if (queueBooking.isEmpty()) {
+                    System.out.println("Done contract");
+                } else {
+                    for (int i = 0; i < queueBooking.size(); i++) {
+                        System.out.println(queueBooking.peek());
 
-                String numberContract;
-                boolean check;
-                boolean isValidOfNumberContract;
-                do {
-                    check = true;
-                    do {
-                        System.out.print("Enter number of contract: ");
-                        numberContract = scanner.nextLine();
-                        isValidOfNumberContract = allRegex.validateOfContract(numberContract);
-                        if (!isValidOfNumberContract) {
-                            System.out.println("Error. The number contract must be in the correct format: CTXX-YYYY");
+                        String numberContract;
+                        boolean check;
+                        boolean isValidOfNumberContract;
+                        do {
+                            check = true;
+                            do {
+                                System.out.print("Enter number of contract: ");
+                                numberContract = scanner.nextLine();
+                                isValidOfNumberContract = allRegex.validateOfContract(numberContract);
+                                if (!isValidOfNumberContract) {
+                                    System.out.println("Error. The number contract must be in the correct format: CTXX-YYYY");
+                                }
+                            } while (!isValidOfNumberContract);
+                            for (Contract contract : contractList) {
+                                if (contract.getNumberOfContract().equals(numberContract)) {
+                                    check = false;
+                                    break;
+                                }
+                            }
+                            if (!check) {
+                                System.out.println("This is number of contract already exists in the list");
+                            }
+                        } while (!check);
+
+                        String idOfBooking = queueBooking.peek().getIdOfBooking();
+
+                        double preDeposit;
+                        while (true) {
+                            try {
+                                System.out.print("Enter pre-deposit: ");
+                                preDeposit = Double.parseDouble(scanner.nextLine());
+                                break;
+                            } catch (NumberFormatException e) {
+                                System.out.println(e.getMessage());
+                            }
                         }
-                    } while (!isValidOfNumberContract);
-                    for (Contract contract : contractList) {
-                        if (contract.getNumberOfContract().equals(numberContract)) {
-                            check = false;
-                            break;
+
+                        double totalPayment;
+                        while (true) {
+                            try {
+                                System.out.print("Enter total payment: ");
+                                totalPayment = Double.parseDouble(scanner.nextLine());
+                                break;
+                            } catch (NumberFormatException e) {
+                                System.out.println(e.getMessage());
+                            }
                         }
+
+
+                        String idOfCustomer = queueBooking.peek().getIdOfCustomer();
+
+                        contractList.clear();
+                        contractList.add(new Contract(numberContract, idOfBooking, preDeposit, totalPayment, idOfCustomer));
+                        ReadAndWriteFileOfContract.writeContractToFile(filePathOfContract, contractList, true);
+                        queueBooking.poll();
+                        ReadAndWriteFileOfBookingForContract.writeBookingForContractToFile(filePathOfBookingForContract, queueBooking, false);
+                        break;
                     }
-                    if (!check) {
-                        System.out.println("This is number of contract already exists in the list");
-                    }
-                } while (!check);
-
-                String idOfBooking = queueBooking.peek().getIdOfBooking();
-
-                System.out.print("Enter pre-deposit: ");
-                double preDeposit = Double.parseDouble(scanner.nextLine());
-
-                System.out.print("Enter total payment: ");
-                double totalPayment = Double.parseDouble(scanner.nextLine());
-
-                String idOfCustomer = queueBooking.peek().getIdOfCustomer();
-
-                contractList.clear();
-                contractList.add(new Contract(numberContract, idOfBooking, preDeposit, totalPayment, idOfCustomer));
-                ReadAndWriteFileOfContract.writeContractToFile(filePathOfContract, contractList, true);
-                queueBooking.poll();
-                ReadAndWriteFileOfBookingForContract.writeBookingForContractToFile(filePathOfBookingForContract, queueBooking, false);
+                }
                 break;
+            } catch (Exception e) {
+                System.out.println("Error. " + e.getMessage());
             }
         }
     }
