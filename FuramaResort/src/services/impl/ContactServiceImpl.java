@@ -134,7 +134,88 @@ public class ContactServiceImpl implements IContactService {
 
     @Override
     public void edit() {
+        Set<Contract> contractList = getListContract();
+        display();
 
+        String numberOfContractForEdit;
+        boolean isValidOfNumberContractForEdit;
+        boolean check;
+        do {
+            check = false;
+            do {
+                System.out.print("Please enter number of contract for edit: ");
+                numberOfContractForEdit = scanner.nextLine();
+                isValidOfNumberContractForEdit = allRegex.validateOfContract(numberOfContractForEdit);
+                if (!isValidOfNumberContractForEdit) {
+                    System.out.println("Error. The number contract must be in the correct format: CTXX-YYYY");
+                }
+            } while (!isValidOfNumberContractForEdit);
+            for (Contract contract : contractList) {
+                if (contract.getNumberOfContract().equals(numberOfContractForEdit)) {
+                    check = true;
+                    try {
+                        System.out.println("What do you want to edit?");
+                        System.out.println("1. Edit number of contract");
+                        System.out.println("2. Edit pre-deposit");
+                        System.out.println("3. Edit total payment");
+                        System.out.print("Please enter number: ");
+                        int choose = Integer.parseInt(scanner.nextLine());
+                        switch (choose) {
+                            case 1:
+                                String newNumberOfContract;
+                                boolean isValidOfNewNumberContract;
+                                do {
+                                    System.out.print("Please enter new number of contract: ");
+                                    newNumberOfContract = scanner.nextLine();
+                                    isValidOfNewNumberContract = allRegex.validateOfContract(newNumberOfContract);
+                                    if (!isValidOfNewNumberContract) {
+                                        System.out.println("Error. The number contract must be in the correct format: CTXX-YYYY");
+                                    }
+                                } while (!isValidOfNewNumberContract);
+                                contract.setNumberOfContract(newNumberOfContract);
+                                ReadAndWriteFileOfContract.writeContractToFile(filePathOfContract, contractList, false);
+                                break;
+                            case 2:
+                                double newPreDeposit;
+                                while (true) {
+                                    try {
+                                        System.out.print("Please enter new pre deposit: ");
+                                        newPreDeposit = Double.parseDouble(scanner.nextLine());
+                                        break;
+                                    } catch (NumberFormatException e) {
+                                        System.out.println(e.getMessage());
+                                    }
+                                }
+                                contract.setPreDeposit(newPreDeposit);
+                                ReadAndWriteFileOfContract.writeContractToFile(filePathOfContract, contractList, false);
+                                break;
+                            case 3:
+                                double newTotalPayment;
+                                while (true) {
+                                    try {
+                                        System.out.print("Please enter new total payment: ");
+                                        newTotalPayment = Double.parseDouble(scanner.nextLine());
+                                        break;
+                                    } catch (NumberFormatException e) {
+                                        System.out.println(e.getMessage());
+                                    }
+                                }
+                                contract.setTotalPayment(newTotalPayment);
+                                ReadAndWriteFileOfContract.writeContractToFile(filePathOfContract, contractList, false);
+                                break;
+                            default:
+                                System.out.println("Error. Please re-enter.");
+                        }
+                    } catch (NumberFormatException e) {
+                        System.out.println(e.getMessage());
+                    }
+                    break;
+                }
+            }
+            if (!check) {
+                System.out.println("This is number of contract already exists in the list");
+            }
+        }while (!check);
     }
 
     @Override

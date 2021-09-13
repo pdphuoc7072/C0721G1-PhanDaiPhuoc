@@ -1,6 +1,7 @@
 package bai_lam_them_1.model;
 
 public class Contact {
+    private int id;
     private String fullName;
     private String phoneNumber;
     private String address;
@@ -12,7 +13,8 @@ public class Contact {
     public Contact() {
     }
 
-    public Contact(String fullName, String phoneNumber, String address, String email, String facebook, String gender, String birthday) {
+    public Contact(int id, String fullName, String phoneNumber, String address, String email, String facebook, String gender, String birthday) {
+        this.id = id;
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
         this.address = address;
@@ -20,6 +22,14 @@ public class Contact {
         this.facebook = facebook;
         this.gender = gender;
         this.birthday = birthday;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFullName() {
@@ -81,7 +91,8 @@ public class Contact {
     @Override
     public String toString() {
         return "Contact{" +
-                "fullName='" + fullName + '\'' +
+                "id='" + id + '\'' +
+                ", fullName='" + fullName + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", address='" + address + '\'' +
                 ", email='" + email + '\'' +
@@ -90,7 +101,9 @@ public class Contact {
                 ", birthday='" + birthday + '\'' +
                 '}';
     }
+
     public String getStringToCSV () {
-        return this.fullName + "," + this.phoneNumber + "," + this.address + "," + this.email + "," + this.facebook + "," + this.gender + "," + this.birthday;
+        return this.id + "," + this.fullName + "," + this.phoneNumber + "," + this.address + "," + this.email + "," + this.facebook + "," + this.gender + "," + this.birthday;
     }
+
 }

@@ -4,7 +4,7 @@ import services.impl.*;
 
 import java.util.Scanner;
 
-public class FuramaController {
+public class MainController {
     public static void main(String[] args) {
         EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
         CustomerServiceImpl customerService = new CustomerServiceImpl();
@@ -134,6 +134,7 @@ public class FuramaController {
                                         contactService.addListBookingForContract();
                                         break;
                                     case 6:
+                                        contactService.edit();
                                         break;
                                     case 7:
                                         break;

@@ -5,7 +5,6 @@ import bai_lam_them_1.service.IContactService;
 import bai_lam_them_1.util.ReadAndWrite;
 import bai_lam_them_1.util.regex.Regex;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -13,9 +12,17 @@ public class ContactServiceImpl implements IContactService {
     private static final String PATH = "src\\bai_lam_them_1\\data\\contact.csv";
     static Scanner scanner = new Scanner(System.in);
     Regex regex = new Regex();
+
     @Override
     public void add() {
-        List<Contact> contactList = new ArrayList<>();
+        List<Contact> contactList = ReadAndWrite.readContactList(PATH);
+
+        int id = 0;
+        if (contactList.isEmpty()) {
+            id = 1;
+        } else {
+            id = contactList.get(contactList.size() - 1).getId() + 1;
+        }
 
         String fullName;
         boolean isValidOfFullName;
@@ -61,11 +68,11 @@ public class ContactServiceImpl implements IContactService {
             try {
                 String[] arrayOfGender = {"male", "female", "other"};
                 for (int i = 0; i < arrayOfGender.length; i++) {
-                    System.out.println((i+1) + ". " + arrayOfGender[i]);
+                    System.out.println((i + 1) + ". " + arrayOfGender[i]);
                 }
                 System.out.print("Hãy chọn số: ");
                 int chooseOfGender = Integer.parseInt(scanner.nextLine());
-                gender = arrayOfGender[chooseOfGender-1];
+                gender = arrayOfGender[chooseOfGender - 1];
                 System.out.println("Bạn đã chon: " + gender);
                 break;
             } catch (NumberFormatException e) {
@@ -84,9 +91,9 @@ public class ContactServiceImpl implements IContactService {
             }
         } while (!isValidOfBirthday);
 
-        Contact contact = new Contact(fullName, phoneNumber, address, email, facebook, gender, birthday);
+        Contact contact = new Contact(id, fullName, phoneNumber, address, email, facebook, gender, birthday);
         contactList.add(contact);
-        ReadAndWrite.writeContactList(contactList, PATH, true);
+        ReadAndWrite.writeContactList(contactList, PATH, false);
     }
 
     @Override
@@ -191,7 +198,8 @@ public class ContactServiceImpl implements IContactService {
             System.out.println("Không tìm thấy số điện thoại cần xóa trong danh bạ");
         }
     }
-    public void searchByName () {
+
+    public void searchByName() {
         List<Contact> contactList = ReadAndWrite.readContactList(PATH);
         System.out.print("Hãy nhập tên cần tìm: ");
         String nameForSearch = scanner.nextLine();
@@ -206,7 +214,8 @@ public class ContactServiceImpl implements IContactService {
             System.out.println("Không tìm thấy tên trong danh bạ");
         }
     }
-    public void searchByNumberPhone () {
+
+    public void searchByNumberPhone() {
         List<Contact> contactList = ReadAndWrite.readContactList(PATH);
         System.out.print("Hãy nhập số điện thoại cần tìm: ");
         String numberPhoneForSearch = scanner.nextLine();

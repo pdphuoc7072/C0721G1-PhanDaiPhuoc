@@ -51,7 +51,7 @@ public class ReadAndWrite {
         List<String> stringList = readStringList(path);
         for (String string : stringList) {
             String[] arrayString = string.split(",");
-            Contact contact = new Contact(arrayString[0], arrayString[1], arrayString[2], arrayString[3], arrayString[4], arrayString[5], arrayString[6]);
+            Contact contact = new Contact(Integer.parseInt(arrayString[0]), arrayString[1], arrayString[2], arrayString[3], arrayString[4], arrayString[5], arrayString[6], arrayString[7]);
             contactList.add(contact);
         }
         return contactList;
