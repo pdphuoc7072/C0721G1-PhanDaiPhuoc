@@ -1,0 +1,18 @@
+Viết chương trình quản lý cán bộ theo hướng đối tượng. Trong đó:
+a.Thông tin của cán bộ bao gồm thông tin sau:
+-Mã cán bộ
+-- Họ tên
+-Giới tính
+- Quê quán
+-Năm sinh
+--Chuyên môn
+-Trình độ
+--Hệ số lương
+-Phụ cấp
+-Thực lĩnh :Không nhập dữ liệu vào, tính theo công thức= (HSL + PC)*450000
+b. Yêu cầu viết chương trình dưới dạng hướng đối tượng để thực hiện các thao tác  sau:
+-Tạo và nhập một danh sách cán bộ
+-Hiển thi danh sách cán bộ hiện có trong danh sách
+-Đếm xem có bao nhiêu cán bộ nữ trong cơ quan
+-Tính tổng số lương thu nhập của toàn bộ cán bộ trong danh sách
+-Liệt kê các cán bộ có chuyên môn “ Công nghệ thông tin “ hiện có trong danh sách
