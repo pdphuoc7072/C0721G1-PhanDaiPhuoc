@@ -1,11 +1,11 @@
-package bai_lam_them_2.util;
+package bai_lam_them_2.util.read_and_write;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ReadAndWrite {
-    public static void writeStringList (List<String> stringList, String path, boolean check) {
+    static void writeStringList (List<String> stringList, String path, boolean check) {
         File file = new File(path);
         try {
             FileWriter fileWriter = new FileWriter(file, check);
@@ -19,7 +19,7 @@ public class ReadAndWrite {
             e.printStackTrace();
         }
     }
-    public static List<String> readStringList (String path) {
+    static List<String> readStringList (String path) {
         List<String> stringList = new ArrayList<>();
         File file = new File(path);
         try {

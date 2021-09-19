@@ -38,6 +38,11 @@ public class Car extends Transportation {
                 '}';
     }
 
+    @Override
+    public void showInfo() {
+        System.out.println(toString());
+    }
+
     public String getStringToCSV () {
         return super.getString() + "," + this.numberOfSeats + "," + this.vehicleOfType;
     }

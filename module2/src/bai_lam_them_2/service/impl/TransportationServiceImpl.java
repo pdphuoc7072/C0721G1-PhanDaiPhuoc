@@ -3,10 +3,10 @@ package bai_lam_them_2.service.impl;
 import bai_lam_them_2.model.*;
 
 import bai_lam_them_2.service.TransportationService;
-import bai_lam_them_2.util.ReadAndWriteForBike;
-import bai_lam_them_2.util.ReadAndWriteForCar;
-import bai_lam_them_2.util.ReadAndWriteForTruck;
-import bai_lam_them_2.util.ReadManufacturerFile;
+import bai_lam_them_2.util.read_and_write.ReadAndWriteForBike;
+import bai_lam_them_2.util.read_and_write.ReadAndWriteForCar;
+import bai_lam_them_2.util.read_and_write.ReadAndWriteForTruck;
+import bai_lam_them_2.util.read_and_write.ReadManufacturerFile;
 import bai_lam_them_2.util.exception.NotFoundVehicleException;
 import bai_lam_them_2.util.regex.Regex;
 
@@ -55,7 +55,7 @@ public class TransportationServiceImpl implements TransportationService {
                                 }
                                 System.out.print("Hãy chọn số: ");
                                 int chooseManufacturerForTruck = Integer.parseInt(scanner.nextLine());
-                                if (chooseManufacturerForTruck > manufacturerList.size()) {
+                                if (chooseManufacturerForTruck > manufacturerList.size() || chooseManufacturerForTruck <= 0) {
                                     throw new Exception("Lỗi. Hãy nhập lại.");
                                 }
                                 manufacturerForTruck = manufacturerList.get(chooseManufacturerForTruck - 1).getManufacturer();
@@ -127,7 +127,7 @@ public class TransportationServiceImpl implements TransportationService {
                                 }
                                 System.out.print("Hãy chọn số: ");
                                 int chooseManufacturerForCar = Integer.parseInt(scanner.nextLine());
-                                if (chooseManufacturerForCar > manufacturerList.size()) {
+                                if (chooseManufacturerForCar > manufacturerList.size() || chooseManufacturerForCar <= 0) {
                                     throw new Exception("Lỗi. Hãy nhập lại.");
                                 }
                                 manufacturerForCar = manufacturerList.get(chooseManufacturerForCar - 1).getManufacturer();
@@ -183,7 +183,7 @@ public class TransportationServiceImpl implements TransportationService {
                                 }
                                 System.out.print("Hãy chọn số: ");
                                 int chooseVehicleOfTypeForCar = Integer.parseInt(scanner.nextLine());
-                                if (chooseVehicleOfTypeForCar > arrayOfVehicleOfType.length) {
+                                if (chooseVehicleOfTypeForCar > arrayOfVehicleOfType.length || chooseVehicleOfTypeForCar <= 0) {
                                     throw new Exception("Lỗi. Hãy nhập lại.");
                                 }
                                 vehicleOfTypeForCar = arrayOfVehicleOfType[chooseVehicleOfTypeForCar - 1];

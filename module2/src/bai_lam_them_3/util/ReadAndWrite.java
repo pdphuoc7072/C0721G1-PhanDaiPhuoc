@@ -1,13 +1,25 @@
-package bai_lam_them_2.util;
-
-import bai_lam_them_2.model.Manufacturer;
+package bai_lam_them_3.util;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReadManufacturerFile {
-    private static List<String> readStringList (String path) {
+public class ReadAndWrite {
+    static void writeStringList (List<String> stringList, String path, boolean check) {
+        File file = new File(path);
+        try {
+            FileWriter fileWriter = new FileWriter(file, check);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            for (String string : stringList) {
+                bufferedWriter.write(string);
+                bufferedWriter.newLine();
+            }
+            bufferedWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    static List<String> readStringList (String path) {
         List<String> stringList = new ArrayList<>();
         File file = new File(path);
         try {
@@ -24,15 +36,5 @@ public class ReadManufacturerFile {
             e.printStackTrace();
         }
         return stringList;
-    }
-    public static List<Manufacturer> readManufacturerList (String path) {
-        List<Manufacturer> manufacturerList = new ArrayList<>();
-        List<String> stringList = readStringList(path);
-        for (String string : stringList) {
-            String[] array = string.split(",");
-            Manufacturer manufacturer = new Manufacturer(array[0], array[1], array[2]);
-            manufacturerList.add(manufacturer);
-        }
-        return manufacturerList;
     }
 }

@@ -27,6 +27,11 @@ public class Truck extends Transportation {
                 '}';
     }
 
+    @Override
+    public void showInfo() {
+        System.out.println(toString());
+    }
+
     public String getStringToCSV () {
         return super.getString() + "," + this.tonnage;
     }

@@ -61,4 +61,5 @@ public abstract class Transportation {
     public String getString () {
         return this.licensePlate + "," + this.manufacturer + "," + this.yearOfManufacture + "," + this.owner;
     }
+    public abstract void showInfo ();
 }
